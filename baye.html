@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <style>
+            .container {
+                display: inline-block;
+                position: relative;
+                width: 100%;
+            }
+            .dummy {
+                margin-top: 60%;
+            }
+            .dummy30 {
+                margin-top: 30%;
+            }
+            .element {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
+            .fill {
+                width: 100%;
+                height: 100%;
+                background-color: silver;
+            }
+            body {
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+            button {
+                width:30%;
+                height:100%;
+            }
+            canvas {
+                image-rendering: optimizeSpeed;             /* Older versions of FF          */
+                image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+                image-rendering: -webkit-optimize-contrast; /* Safari                        */
+                image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+                image-rendering: pixelated;                 /* Awesome future-browsers       */
+                -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+            }
+        </style>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+    </head>
+    <body onkeydown="onKeyDown()">
+        <div class="container" style="">
+            <div class="dummy"></div>
+            <div class="element">
+                <canvas class="fill" id="lcd" width="160" height="96"></canvas>
+            </div>
+        </div>
+        <div class="container" style="">
+            <div class="dummy30"></div>
+            <div class="element">
+                <button type="button" onclick="sendKey(VK_SEARCH)">Search</button>
+                <button type="button" onclick="sendKey(VK_UP)">Up</button>
+                <button type="button" onclick="sendKey(VK_HELP)">Help</button>
+            </div>
+        </div>
+        <div class="container" style="">
+            <div class="dummy30"></div>
+            <div class="element">
+                <button type="button" onclick="sendKey(VK_LEFT)">Left</button>
+                <button type="button" onclick="sendKey(VK_DOWN)">Down</button>
+                <button type="button" onclick="sendKey(VK_RIGHT)">Right</button>
+            </div>
+        </div>
+        <div class="container" style="">
+            <div class="dummy30"></div>
+            <div class="element">
+                <button type="button" onclick="sendKey(VK_EXIT)">Esc</button>
+                <button type="button" onclick="sendKey(VK_ENTER)">Enter</button>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="lcd.js"></script>
+<script src="baye.js"></script>
+
