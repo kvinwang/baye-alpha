@@ -69,6 +69,7 @@ var 		VK_MODIFY	=		0x32;
 var 		VK_SEARCH	=		0x33;
 
 function onKeyDown() {
+    console.log(event.keyCode)
     switch (event.keyCode) {
         case 13:
             sendKey(VK_ENTER);
@@ -79,7 +80,13 @@ function onKeyDown() {
         case 70:
             sendKey(VK_SEARCH);
             break;
+        case 83:
+            sendKey(VK_SEARCH);
+            break;
         case 32:
+            sendKey(VK_EXIT);
+            break;
+        case 27:
             sendKey(VK_EXIT);
             break;
         case 38:
