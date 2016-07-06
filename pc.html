@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>三国霸业</title>
+        <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/flex-layout-attribute/1.0.3/css/flex-layout-attribute.css" />
+        <link rel="stylesheet" type="text/css" href="baye.css" />
+    </head>
+    <body onkeydown="onKeyDown()">
+        <div layout="row center-center" >
+            <div class="container" style="width:480px">
+                <div class="dummy"></div>
+                <div class="element">
+                    <canvas class="fill" id="lcd" width="160" height="96"></canvas>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div layout="row center-center" >
+            <div style="width:500px" >
+                <div layout="column center-left" style="font-size:14px" >
+                    <div><h2>按键说明:</h2></div>
+                    <div>电脑键盘 -> 电子词典</div>
+                    <div>上下左右 -> 上下左右</div>
+                    <div>H键 -> 帮助</div>
+                    <div>S键 -> 查找</div>
+                    <div>回车键 -> 输入</div>
+                    <div>空格键 -> 返回</div>
+                </div>
+                <div layout="column center-left" >
+                    <div style="color: red"><h2>扫描二维码在手机上玩</h2></div>
+                    <img src="qr.gif" alt="">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="lcd.js"></script>
+<script src="baye.js"></script>
+
