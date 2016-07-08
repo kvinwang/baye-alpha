@@ -69,7 +69,6 @@ var 		VK_MODIFY	=		0x32;
 var 		VK_SEARCH	=		0x33;
 
 function onKeyDown() {
-    console.log(event.keyCode)
     switch (event.keyCode) {
         case 13:
             sendKey(VK_ENTER);
@@ -102,4 +101,40 @@ function onKeyDown() {
             sendKey(VK_RIGHT);
             break;
     }
+}
+
+function bin2hex (s) {
+
+  var i, l, o = "", n;
+
+  s += "";
+
+  for (i = 0, l = s.length; i < l; i++) {
+    n = s.charCodeAt(i).toString(16)
+    o += n.length < 2 ? "0" + n : n;
+  }
+
+  return o;
+}
+
+function loadLib(files) {
+    var reader = new FileReader()
+    if (!reader) {
+        alert("浏览器不支持载入文件");
+    }
+    reader.onload = function() {
+        var data = bin2hex(reader.result);
+        window.localStorage['baye//data/dat.lib'] = data;
+        window.location = window.location
+    }
+    reader.readAsBinaryString(files[0]);
+}
+
+function clearLib() {
+    window.localStorage.removeItem('baye//data/dat.lib')
+    window.location = window.location
+}
+
+if (typeof(Storage) === "undefined") {
+    alert("你的浏览器不支持存档")
 }

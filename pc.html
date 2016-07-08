@@ -2,7 +2,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>三国霸业</title>
-        <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/flex-layout-attribute/1.0.3/css/flex-layout-attribute.css" />
+        <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/flex-layout-attribute/1.0.3/css/flex-layout-attribute.css" />
         <link rel="stylesheet" type="text/css" href="baye.css" />
     </head>
     <body onkeydown="onKeyDown()">
@@ -31,6 +31,12 @@
                         <div style="color: red"><h2>扫一扫用手机玩</h2></div>
                         <img src="qr.gif" alt="">
                     </div>
+                </div>
+                <br>
+                <br>
+                <div>
+                    载入Lib: <input type="file" onchange="loadLib(this.files)">
+                    <input type="button" onclick="clearLib()" value="清除Lib">
                 </div>
             </div>
         </div>
