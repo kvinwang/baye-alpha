@@ -35,7 +35,13 @@
                 <br>
                 <br>
                 <div>
-                    载入Lib: <input type="file" onchange="loadLib(this.files)">
+                    <script>
+                        if (window.FileReader === undefined) {
+                            document.write('你的浏览器不支持载入Lib');
+                        } else {
+                            document.write('载入Lib: <input type="file" onchange="loadLib(this.files)">');
+                        }
+                    </script>
                     <input type="button" onclick="clearLib()" value="清除Lib">
                 </div>
             </div>
