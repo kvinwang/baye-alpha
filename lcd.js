@@ -1,5 +1,8 @@
 function getLCD() {
     var canvas = document.getElementById('lcd');
+    if (canvas.getContext === undefined) {
+        alert("你的浏览器不支持HTML5");
+    }
     var ctx = canvas.getContext('2d');
     return ctx;
 }
