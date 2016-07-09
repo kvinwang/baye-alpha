@@ -14,32 +14,32 @@
     <body onkeydown="onKeyDown()">
         <div class="container" style="">
             <div class="dummy"></div>
-            <div class="element">
+            <div class="element lcd">
                 <canvas class="fill" id="lcd" width="160" height="96"></canvas>
             </div>
         </div>
-        <div class="container">
+        <div class="container" style="margin-top:2px">
             <div class="dummy30"></div>
             <div class="element">
-                <button class="btn" type="button" onclick="sendKey(VK_SEARCH)">Search</button>
-                <button class="btn" type="button" onclick="sendKey(VK_UP)">Up</button>
-                <button class="btn" type="button" onclick="sendKey(VK_HELP)">Help</button>
+                <button class="btn fn" type="button" onclick="sendKey(VK_SEARCH)">查找</button>
+                <button class="btn nav" type="button" onclick="sendKey(VK_UP)">上</button>
+                <button class="btn fn" type="button" onclick="sendKey(VK_HELP)">帮助</button>
             </div>
         </div>
         <div class="container">
             <div class="dummy30"></div>
             <div class="element">
-                <button class="btn" type="button" onclick="sendKey(VK_LEFT)">Left</button>
-                <button class="btn" type="button" onclick="sendKey(VK_DOWN)">Down</button>
-                <button class="btn" type="button" onclick="sendKey(VK_RIGHT)">Right</button>
+                <button class="btn nav" type="button" onclick="sendKey(VK_LEFT)">左</button>
+                <button class="btn nav" type="button" onclick="sendKey(VK_DOWN)">下</button>
+                <button class="btn nav" type="button" onclick="sendKey(VK_RIGHT)">右</button>
             </div>
         </div>
         <div class="container">
             <div class="dummy30"></div>
             <div class="element">
-                <button class="btn" type="button" onclick="sendKey(VK_EXIT)">Esc</button>
-                <button class="btn" type="button" onclick="sendKey(VK_ENTER)">Enter</button>
-                <button class="btn" type="button" onclick="sendKey(VK_EXIT)">Esc</button>
+                <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
+                <button class="btn enter" type="button" onclick="sendKey(VK_ENTER)">输入</button>
+                <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
             </div>
         </div>
     </body>
