@@ -25,10 +25,12 @@
 body {
     background-color: #f5f5f5;
 }
-button {
+
+.btn {
     width:30%;
     height:100%;
 }
+
 canvas {
     image-rendering: optimizeSpeed;             /* Older versions of FF          */
     image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
