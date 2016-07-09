@@ -7,23 +7,6 @@ function getLCD() {
     return ctx;
 }
 
-function flushLCDBuffer1(buffer, w, h, lineSize) {
-    var scale = 2;
-    var lcd = getLCD();
-    for (var y = 0; y < h; y += 1) {
-        for (var x = 0; x < w; x += 1) {
-            var ind = lineSize*y + x;
-            var pixel = getValue(buffer + ind, "i8");
-            if (pixel != 0) {
-                lcd.fillStyle = '#000000';
-            } else {
-                lcd.fillStyle = '#E0E0E0';
-            }
-            lcd.fillRect(x*scale, y*scale, scale, scale);
-        }
-    }
-}
-
 function flushLCDBuffer(buffer, w, h, lineSize) {
     var scale = 2;
     var lcd = getLCD();
@@ -121,23 +104,23 @@ function bin2hex (s) {
 }
 
 function loadLib(files) {
-    var reader = new FileReader()
+    var reader = new FileReader();
     if (!reader) {
         alert("浏览器不支持载入文件");
     }
     reader.onload = function() {
         var data = bin2hex(reader.result);
         window.localStorage['baye//data/dat.lib'] = data;
-        window.location = window.location
+        window.location.reload();
     }
     reader.readAsBinaryString(files[0]);
 }
 
 function clearLib() {
-    window.localStorage.removeItem('baye//data/dat.lib')
-    window.location = window.location
+    window.localStorage.removeItem('baye//data/dat.lib');
+    window.location.reload();
 }
 
 if (typeof(Storage) === "undefined") {
-    alert("你的浏览器不支持存档")
+    alert("你的浏览器不支持存档");
 }
