@@ -6,8 +6,7 @@
         <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
         <style>
             body {
-                overflow-x: hidden;
-                overflow-y: hidden;
+                overflow: hidden;
             }
         </style>
     </head>
@@ -43,8 +42,16 @@
             </div>
         </div>
     </body>
+
 </html>
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="lcd.js"></script>
 <script src="baye.js"></script>
+<script>
+    fitKeyboardSize(160, 96);
+    $(window).resize(function(){
+        fitKeyboardSize(160, 96);
+    });
+</script>
+
 
