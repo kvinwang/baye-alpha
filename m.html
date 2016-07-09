@@ -40,6 +40,7 @@
                 <div class="element">
                     <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
                     <button class="btn enter" type="button" onclick="sendKey(VK_ENTER)">输入</button>
+                    <button class="btn s" type="button" onclick="switchLayout()">*</button>
                 </div>
             </div>
 
@@ -51,11 +52,8 @@
 <script src="lcd.js"></script>
 <script>
     (function (){
-        var fit = function() {
-            fitKeyboardSize(250, 160, 96);
-        };
-        fit();
-        $(window).resize(fit);
+        fitKeyboardSize();
+        $(window).resize(fitKeyboardSize);
     })();
 </script>
 <script src="baye.js"></script>
