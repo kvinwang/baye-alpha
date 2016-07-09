@@ -18,41 +18,44 @@
                 <canvas class="fill" id="lcd" width="160" height="96"></canvas>
             </div>
         </div>
-        <div class="container" style="margin-top:2px">
-            <div class="dummy30"></div>
-            <div class="element">
-                <button class="btn fn" type="button" onclick="sendKey(VK_SEARCH)">查找</button>
-                <button class="btn nav" type="button" onclick="sendKey(VK_UP)">上</button>
-                <button class="btn fn" type="button" onclick="sendKey(VK_HELP)">帮助</button>
+        <div class="keypad">
+            <div class="container" style="margin-top:2px">
+                <div class="dummy30"></div>
+                <div class="element">
+                    <button class="btn fn" type="button" onclick="sendKey(VK_SEARCH)">查找</button>
+                    <button class="btn nav" type="button" onclick="sendKey(VK_UP)">上</button>
+                    <button class="btn fn" type="button" onclick="sendKey(VK_HELP)">帮助</button>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="dummy30"></div>
-            <div class="element">
-                <button class="btn nav" type="button" onclick="sendKey(VK_LEFT)">左</button>
-                <button class="btn nav" type="button" onclick="sendKey(VK_DOWN)">下</button>
-                <button class="btn nav" type="button" onclick="sendKey(VK_RIGHT)">右</button>
+            <div class="container">
+                <div class="dummy30"></div>
+                <div class="element">
+                    <button class="btn nav" type="button" onclick="sendKey(VK_LEFT)">左</button>
+                    <button class="btn nav" type="button" onclick="sendKey(VK_DOWN)">下</button>
+                    <button class="btn nav" type="button" onclick="sendKey(VK_RIGHT)">右</button>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="dummy30"></div>
-            <div class="element">
-                <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
-                <button class="btn enter" type="button" onclick="sendKey(VK_ENTER)">输入</button>
-                <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
+            <div class="container">
+                <div class="dummy30"></div>
+                <div class="element">
+                    <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
+                    <button class="btn enter" type="button" onclick="sendKey(VK_ENTER)">输入</button>
+                </div>
             </div>
+
         </div>
     </body>
 
 </html>
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="lcd.js"></script>
-<script src="baye.js"></script>
 <script>
-    fitKeyboardSize(160, 96);
-    $(window).resize(function(){
-        fitKeyboardSize(160, 96);
-    });
+    (function (){
+        var fit = function() {
+            fitKeyboardSize(250, 160, 96);
+        };
+        fit();
+        $(window).resize(fit);
+    })();
 </script>
-
-
+<script src="baye.js"></script>

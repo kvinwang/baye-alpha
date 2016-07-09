@@ -125,17 +125,17 @@ if (typeof(Storage) === "undefined") {
     alert("你的浏览器不支持存档");
 }
 
-function fitKeyboardSize(lcdWidth, lcdHeight) {
+function fitKeyboardSize(kbWidth, lcdWidth, lcdHeight) {
     var w = document.body.clientWidth;
     var h = document.body.clientHeight;
 
     if (h / w > lcdHeight/lcdWidth) {
-        var kbHeight = h - w * lcdHeight/lcdWidth;
-        var kbWidth = w;
-        var ratio = kbHeight / 3 / kbWidth * 100;
-        if (ratio > 33) {
-            ratio = 33;
+        var availableHeight = h - w * lcdHeight/lcdWidth;
+        var ratio = availableHeight / 3 / kbWidth * 100;
+        if (ratio > 30) {
+            ratio = 30;
         }
+        var kbHeight =
         $(".dummy30").css("margin-top", ratio + "%");
     }
 }
