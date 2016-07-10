@@ -268,7 +268,7 @@ function loadLibLists(container) {
 
 function redirect() {
     if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|Mobile|ARM)/i)){
-        window.location.href = "m.html";
+        window.location.href = "m.html#redirect";
     } else {
         window.location.href = "pc.html";
     }

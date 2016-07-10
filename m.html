@@ -1,3 +1,13 @@
+<script>
+    //goHomeIfNeeded
+    (function() {
+        if(window.location.href.match(/(#redirect)/i)){
+            window.location.href = window.location.href.replace(/(#redirect)/, "#");
+        } else {
+            window.location.href = "index.html";
+        }
+    })();
+</script>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
