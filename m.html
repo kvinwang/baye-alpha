@@ -23,25 +23,25 @@
             <div class="container" style="margin-top:2px">
                 <div class="dummy30"></div>
                 <div class="element">
-                    <button class="btn fn" type="button" onclick="sendKey(VK_SEARCH)">查找</button>
-                    <button class="btn nav" type="button" onclick="sendKey(VK_UP)">上</button>
-                    <button class="btn fn" type="button" onclick="sendKey(VK_HELP)">帮助</button>
+                    <button class="btn fn" type="button" ontap="sendKey(VK_SEARCH)">查找</button>
+                    <button class="btn nav" type="button" ontap="sendKey(VK_UP)">上</button>
+                    <button class="btn fn" type="button" ontap="sendKey(VK_HELP)">帮助</button>
                 </div>
             </div>
             <div class="container">
                 <div class="dummy30"></div>
                 <div class="element">
-                    <button class="btn nav" type="button" onclick="sendKey(VK_LEFT)">左</button>
-                    <button class="btn nav" type="button" onclick="sendKey(VK_DOWN)">下</button>
-                    <button class="btn nav" type="button" onclick="sendKey(VK_RIGHT)">右</button>
+                    <button class="btn nav" type="button" ontap="sendKey(VK_LEFT)">左</button>
+                    <button class="btn nav" type="button" ontap="sendKey(VK_DOWN)">下</button>
+                    <button class="btn nav" type="button" ontap="sendKey(VK_RIGHT)">右</button>
                 </div>
             </div>
             <div class="container">
                 <div class="dummy30"></div>
                 <div class="element">
-                    <button class="btn fn" type="button" onclick="sendKey(VK_EXIT)">返回</button>
-                    <button class="btn enter" type="button" onclick="sendKey(VK_ENTER)">输入</button>
-                    <button class="btn s" type="button" onclick="switchLayout()">*</button>
+                    <button class="btn fn" type="button" ontap="sendKey(VK_EXIT)">返回</button>
+                    <button class="btn enter" type="button" ontap="sendKey(VK_ENTER)">输入</button>
+                    <button class="btn s" type="button" ontap="switchLayout()">*</button>
                 </div>
             </div>
 
@@ -50,6 +50,7 @@
 
 </html>
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="tappy.js"></script>
 <script src="lcd.js"></script>
 <script>
     (function (){
@@ -63,6 +64,12 @@
                 $("#tip").hide(200);
             }, 2000);
         }
+        $(".btn").each(function(){
+            var action = $(this).attr("ontap");
+            $(this).bind( "tap", function(){
+                eval(action);
+            });
+        });
     })();
 </script>
 <script src="baye.js"></script>
