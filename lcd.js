@@ -103,22 +103,35 @@ function bin2hex (s) {
   return o;
 }
 
+function loadLibBin(bin) {
+    var data = bin2hex(bin);
+    window.localStorage['baye//data/dat.lib'] = data;
+    redirect();
+}
+
 function loadLib(files) {
+    loadLibFromFile(files[0]);
+}
+
+function loadLibFromFile(file) {
     var reader = new FileReader();
     if (!reader) {
         alert("浏览器不支持载入文件");
     }
     reader.onload = function() {
-        var data = bin2hex(reader.result);
-        window.localStorage['baye//data/dat.lib'] = data;
-        window.location.reload();
+        loadLibBin(reader.result);
     }
-    reader.readAsBinaryString(files[0]);
+    reader.readAsBinaryString(file);
 }
 
 function clearLib() {
     window.localStorage.removeItem('baye//data/dat.lib');
-    window.location.reload();
+    window.localStorage.removeItem('baye/libname');
+    redirect();
+}
+
+function getLibName() {
+    return window.localStorage['baye/libname'];
 }
 
 if (typeof(Storage) === "undefined") {
@@ -158,5 +171,106 @@ function fitKeyboardSize() {
 function switchLayout() {
     layoutType = (layoutType == 0) ? 1 : 0;
     fitKeyboardSize();
+}
+
+String.prototype.format = function(args) {
+    var result = this;
+    if (arguments.length > 0) {
+        if (arguments.length == 1 && typeof (args) == "object") {
+            for (var key in args) {
+                if(args[key]!=undefined){
+                    var reg = new RegExp("({" + key + "})", "g");
+                    result = result.replace(reg, args[key]);
+                }
+            }
+        }
+        else {
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i] != undefined) {
+                    var reg = new RegExp("({[" + i + "]})", "g");
+                    result = result.replace(reg, arguments[i]);
+                }
+            }
+        }
+    }
+    return result;
+}
+
+function ajaxGet(path, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path, true);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function(e) {
+      if (this.status == 200) {
+        var blob = this.response;
+        callback(blob);
+      }
+    };
+
+    xhr.send();
+}
+
+function chooseLib(title, path, self_) {
+    var self = $(self_);
+    self.html("请稍候...");
+    self.attr("disabled", "disabled");
+
+    if (path && path.length > 0) {
+        ajaxGet(path, function(blob) {
+            loadLibFromFile(blob);
+            window.localStorage['baye/libname'] = title;
+        });
+    } else {
+        clearLib();
+    }
+}
+
+function loadDetail(id, path) {
+    var e = $(id);
+    if (e.is(":hidden")) {
+        if (e.html().length > 0) {
+            e.show();
+        } else {
+            $.get(path, {}, function(text) {
+                e.html(text.replace(/(?:\r\n|\r|\n)/g, '<br />'));
+                e.show();
+            });
+        }
+    } else {
+        e.hide();
+    }
+}
+
+function loadLibLists(container) {
+
+    $.ajax({
+         type:"GET",
+         url:"libs.json",
+         dataType:"json",
+     }).success(function(json) {
+        var tpl = $("#item_temp").html();
+
+        html = "";
+        for (i in json) {
+            html += tpl.format(
+            {
+             title: json[i]["title"],
+             libpath: json[i]["path"],
+             descid: i,
+             descpath: json[i]["path"]+'.txt',
+            }
+            );
+        }
+        $(container).html(html);
+    });
+}
+
+function redirect() {
+    if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|Mobile|ARM)/i)){
+        window.location.href = "m.html";
+    } else {
+        window.location.href = "pc.html";
+    }
 }
 
