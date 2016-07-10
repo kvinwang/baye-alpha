@@ -274,3 +274,6 @@ function redirect() {
     }
 }
 
+function goHome() {
+    window.location.href = "index.html";
+}
