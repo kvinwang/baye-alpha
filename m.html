@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body onkeydown="onKeyDown()">
+    <body onkeydown="onKeyDown()" id="touchpad">
         <div class="container" style="">
             <div class="dummy"></div>
             <div class="element lcd">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div id="tip" class="alert alert-success" style="display:none"></div>
-        <div class="keypad">
+        <div class="keypad" id="keypad">
             <div class="container" style="margin-top:2px">
                 <div class="dummy30"></div>
                 <div class="element">
@@ -42,7 +42,7 @@
                 <div class="dummy30"></div>
                 <div class="element">
                     <button class="btn nav" type="button" ontap="sendKey(VK_LEFT)">左</button>
-                    <button class="btn nav" type="button" ontap="sendKey(VK_DOWN)">下</button>
+                    <button class="btn nav" type="button" ontap="sendKey(VK_DOWN)">下<br>(触控板)</button>
                     <button class="btn nav" type="button" ontap="sendKey(VK_RIGHT)">右</button>
                 </div>
             </div>
@@ -64,8 +64,11 @@
 <script src="lcd.js"></script>
 <script>
     (function (){
+        touchPadInit("touchpad");
         fitKeyboardSize();
+
         $(window).resize(fitKeyboardSize);
+
         var libName = getLibName() || "步步高原版";
         if (libName && libName.length > 0) {
             $("#tip").html(libName + "载入中...");

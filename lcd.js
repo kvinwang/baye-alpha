@@ -277,3 +277,145 @@ function redirect() {
 function goHome() {
     window.location.href = "index.html";
 }
+
+function disablePageScroll() {
+    document.body.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    }, false);
+}
+
+function touchPadInit(elementID) {
+    var activeTouch = null;
+    var originX = 0;
+    var originY = 0;
+    var lastX = 0;
+    var lastY = 0;
+    var touchMoved = false;
+    var xMoved = 0;
+    var yMoved = 0;
+    var previousMovingTime = 0;
+    var previousX = 0;
+    var previousY = 0;
+//    var normalBackgroundColor = "#fff";
+
+    function raiseKey(key) {
+        sendKey(key);
+    }
+
+    function resetTouch() {
+        activeTouch = null;
+        touchMoved = false;
+        xMoved = 0;
+        yMoved = 0;
+        previousX = 0;
+        previousY = 0;
+        // todo: reset color
+    }
+
+    function touchBegan(event) {
+        if (activeTouch || event.targetTouches.length < 1) {
+            return;
+        }
+        activeTouch = event.targetTouches[0];
+        previousMovingTime = event.timeStamp;
+        previousX = lastX = originX = activeTouch.screenX;
+        previousY = lastY = originY = activeTouch.screenY;
+        touchMoved = false;
+        // todo: color
+    }
+
+    function find(touches, touch) {
+         for (var i in touches) {
+            if (touch.identifier == touches[i].identifier) {
+                return touches[i];
+            }
+         }
+         return null;
+    }
+
+    function touchEnded(event) {
+        if (activeTouch && find(event.changedTouches, activeTouch)) {
+            resetTouch();
+        }
+    }
+
+    function processPointMove(point,
+                        previousPoint,
+                        previousStayPoint,
+                        dT,
+                        stepMax,
+                        stepMin,
+                        speedMax,
+                        speedThreshold,
+                        vkUp,
+                        vkDown)
+    {
+        var speed = (point - previousPoint) / dT;
+        var dP = point - previousStayPoint;
+
+
+        speed = Math.abs(speed);
+        if (speed > speedThreshold) {
+            speed -= speedThreshold;
+        }
+        else {
+            speed = 0;
+        }
+
+        speed = Math.pow(speed, 2);
+        speedMax = Math.pow(speedMax, 2);
+        speed = Math.min(speed, speedMax);
+
+        var step = stepMax - speed / speedMax * (stepMax - stepMin);
+        var count = Math.floor(Math.abs(dP) / step);
+        if (count > 0) {
+            for (var i = 0; i < count; i++) {
+                raiseKey( dP < 0 ? vkUp : vkDown);
+            }
+            return point;
+        }
+        return previousStayPoint;
+    }
+
+    function touchMove(event) {
+        if (activeTouch) {
+            var newTouch = find(event.changedTouches, activeTouch);
+            if (!newTouch) {
+                return;
+            }
+
+            var x = newTouch.screenX;
+            var y = newTouch.screenY;
+
+            var dt = event.timeStamp - previousMovingTime;
+            previousMovingTime = event.timeStamp;
+
+            var dX = x - previousX;
+            var dY = y - previousY;
+            var speedX = dX / dt;
+            var speedY = dX / dt;
+            var ratio = Math.abs(speedX / speedY);
+
+            if (ratio < 0.6) {//考虑垂直锁定
+                lastX = x;
+            } else if (ratio > 1.8) { //水平锁定
+                lastY = y;
+            }
+
+            lastY = processPointMove(y, previousY, lastY, dt, 30, 0.3, 2000, 800, VK_UP, VK_DOWN);
+            lastX = processPointMove(x, previousX, lastX, dt, 30, 8, 1000, 500, VK_LEFT, VK_RIGHT);
+
+            previousX = x;
+            previousY = y;
+
+            touchMoved = true;
+        }
+    }
+
+    var element = document.getElementById(elementID);
+
+    element.addEventListener("touchstart", touchBegan);
+    element.addEventListener("touchmove", touchMove);
+    element.addEventListener("touchend", touchEnded);
+    disablePageScroll();
+}
