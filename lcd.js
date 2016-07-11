@@ -151,25 +151,35 @@ function fitKeyboardSize() {
 
     if (h / w > lcdHeight/lcdWidth) {
         var availableHeight = h - w * lcdHeight/lcdWidth;
-        kbWidth = (layoutType == 0) ? w : keypadWidth;
+        kbWidth = (layoutType == 1) ? keypadWidth : w;
         var ratio = availableHeight / 3 / kbWidth * 100;
         if (ratio > 30) {
             ratio = 30;
         }
         $(".dummy30").css("margin-top", ratio + "%");
-        if (layoutType == 0) {
-            $(".keypad").removeAttr("style");
-        } else {
+
+        if (layoutType == 1) {
             $(".keypad").css("width", keypadWidth);
             $(".keypad").css("position", "absolute");
             $(".keypad").css("right", 0);
             $(".keypad").css("bottom", 10);
+        } else {
+            $(".keypad").removeAttr("style");
+        }
+
+        if (layoutType == 2) {
+            $("#keypad1").hide();
+            $("#keypad2").show();
+        } else {
+            $("#keypad2").hide();
+            $("#keypad1").show();
         }
     }
 }
 
 function switchLayout() {
-    layoutType = (layoutType == 0) ? 1 : 0;
+    layoutType += 1;
+    layoutType %= 3;
     fitKeyboardSize();
 }
 
