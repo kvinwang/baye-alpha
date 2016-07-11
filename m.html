@@ -24,7 +24,7 @@
     <body onkeydown="onKeyDown()" id="touchpad">
         <div class="container" style="">
             <div class="dummy"></div>
-            <div class="element lcd">
+            <div class="element lcd" id="lcd-container" ontap="sendKey(VK_ENTER)">
                 <canvas class="fill" id="lcd" width="160" height="96"></canvas>
             </div>
         </div>
@@ -77,12 +77,15 @@
                 $("#tip").hide(200);
             }, 2000);
         }
-        $(".btn").each(function(){
+
+        function tap(){
             var action = $(this).attr("ontap");
             $(this).bind( "tap", function(){
                 eval(action);
             });
-        });
+        }
+        $(".btn").each(tap);
+        $("#lcd-container").each(tap);
     })();
 </script>
 <script src="baye.js"></script>
