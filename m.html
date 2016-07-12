@@ -1,11 +1,16 @@
 <script>
     //goHomeIfNeeded
     (function() {
-        if(window.location.href.match(/(#redirect)/i)){
-            window.location.href = window.location.href.replace(/(#redirect)/, "#");
-        } else {
-            window.location.href = "index.html";
+        var match = window.location.hash.match(/#([0-9]*)/i)
+        if(match){
+            var ts = parseInt(match[1]);
+            var now = new Date().getTime() / 1000;
+            var dt = now - ts;
+            if (ts && 0 <= dt && dt < 3600) {
+                return;
+            }
         }
+        window.location.href = "index.html";
     })();
 </script>
 <html>

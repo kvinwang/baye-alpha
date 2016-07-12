@@ -278,7 +278,8 @@ function loadLibLists(container) {
 
 function redirect() {
     if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|Mobile|ARM)/i)){
-        window.location.href = "m.html#redirect";
+        var now = new Date().getTime() / 1000;
+        window.location.href = "m.html#" + now.toString();
     } else {
         window.location.href = "pc.html";
     }
