@@ -146,8 +146,8 @@ var keypadWidth = 250;
 
 
 function layoutKeyboard() {
-    var w = document.body.clientWidth;
-    var h = document.body.clientHeight;
+    var w = window.innerWidth
+    var h = window.innerHeight
 
     if (h / w > lcdHeight/lcdWidth) {
         var availableHeight = h - w * lcdHeight/lcdWidth;
