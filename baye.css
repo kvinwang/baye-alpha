@@ -104,3 +104,8 @@ canvas {
     image-rendering: pixelated;                 /* Awesome future-browsers       */
     -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
 }
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
