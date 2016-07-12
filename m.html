@@ -77,9 +77,9 @@
 <script>
     (function (){
         touchPadInit("touchpad");
-        fitKeyboardSize();
+        layoutKeyboard();
 
-        $(window).resize(fitKeyboardSize);
+        $(window).resize(layoutKeyboard);
 
         var libName = getLibName() || "步步高原版";
         if (libName && libName.length > 0) {

@@ -145,7 +145,7 @@ var lcdHeight = 96;
 var keypadWidth = 250;
 
 
-function fitKeyboardSize() {
+function layoutKeyboard() {
     var w = document.body.clientWidth;
     var h = document.body.clientHeight;
 
@@ -180,7 +180,7 @@ function fitKeyboardSize() {
 function switchLayout() {
     layoutType += 1;
     layoutType %= 3;
-    fitKeyboardSize();
+    layoutKeyboard();
 }
 
 String.prototype.format = function(args) {
@@ -372,8 +372,8 @@ function touchPadInit(elementID) {
             speed = 0;
         }
 
-        speed = Math.pow(speed, 2);
-        speedMax = Math.pow(speedMax, 2);
+        speed = Math.pow(speed, 3);
+        speedMax = Math.pow(speedMax, 3);
         speed = Math.min(speed, speedMax);
 
         var step = stepMax - speed / speedMax * (stepMax - stepMin);
