@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get save</title>
+</head>
+<body>
+    <script>
+        function dump(n) {
+            document.write(localStorage["baye//data//sango" + n + ".sav"]);
+            document.write("<br>");
+        }
+    </script>
+
+    <div>存档1</div>
+    <div>
+        <script>
+            dump(0);
+            dump(1);
+        </script>
+    </div>
+    <div>存档2</div>
+    <div>
+        <script>
+            dump(2);
+            dump(3);
+        </script>
+    </div>
+    <div>存档3</div>
+    <div>
+        <script>
+            dump(4);
+            dump(5);
+        </script>
+    </div>
+
+</body>
+</html>
