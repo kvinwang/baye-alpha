@@ -104,12 +104,17 @@ function bin2hex (s) {
 }
 
 function loadLibBin(bin) {
+    console.log('bin length:' + bin.length);
+    if (bin.length == 622874) {
+        bin = bin.slice(425984);
+    }
     var data = bin2hex(bin);
     window.localStorage['baye//data/dat.lib'] = data;
     redirect();
 }
 
 function loadLib(files) {
+    window.localStorage['baye/libname'] = "自定义lib";
     loadLibFromFile(files[0]);
 }
 
@@ -228,8 +233,8 @@ function chooseLib(title, path, self_) {
 
     if (path && path.length > 0) {
         ajaxGet(path, function(blob) {
-            loadLibFromFile(blob);
             window.localStorage['baye/libname'] = title;
+            loadLibFromFile(blob);
         });
     } else {
         clearLib();
