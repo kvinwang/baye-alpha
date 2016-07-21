@@ -21531,7 +21531,7 @@ function _ComputerTacticDiplomatism($city) {
        $60 = $59 + $58 | 0;
        $61 = HEAP8[$60 >> 0] | 0;
        _DelPerson($43, $61) | 0;
-       HEAP8[$order >> 0] = 6;
+       HEAP8[$order >> 0] = 0;
        label = 20;
        break L7;
       }
@@ -35191,7 +35191,7 @@ function _GoodsUpDatadate() {
  while (1) {
   $4 = $g;
   $5 = $4 & 255;
-  $6 = ($5 | 0) < 200;
+  $6 = ($5 | 0) < 33;
   if (!$6) {
    label = 7;
    break;
