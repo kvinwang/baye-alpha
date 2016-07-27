@@ -33231,6 +33231,88 @@ function _GamPicShowExS($x, $y, $wid, $hgt, $idx, $pic) {
  return;
 }
 
+function _AddFightOrder($Order, $Fighters) {
+ $Order = $Order | 0;
+ $Fighters = $Fighters | 0;
+ var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0, $25 = 0, $26 = 0, $27 = 0, $28 = 0, $29 = 0, $3 = 0, $30 = 0, $31 = 0, $32 = 0, $33 = 0, $34 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, $clen = 0, $fiptr = 0, $fptr = 0, $i = 0, dest = 0, label = 0, sp = 0, src = 0, stop = 0;
+ label = 0;
+ sp = STACKTOP;
+ STACKTOP = STACKTOP + 32 | 0;
+ $1 = $Order;
+ $2 = $Fighters;
+ $3 = HEAP32[388 >> 2] | 0;
+ $fiptr = $3;
+ $i = 0;
+ while (1) {
+  $4 = $i;
+  $5 = $4 & 255;
+  $6 = ($5 | 0) < 100;
+  if (!$6) {
+   label = 6;
+   break;
+  }
+  $7 = $i;
+  $8 = $7 & 255;
+  $9 = $fiptr;
+  $10 = $9 + $8 | 0;
+  $11 = HEAP8[$10 >> 0] | 0;
+  $12 = $11 << 24 >> 24 != 0;
+  $13 = $i;
+  if (!$12) {
+   label = 4;
+   break;
+  }
+  $33 = $13 + 1 << 24 >> 24;
+  $i = $33;
+ }
+ if ((label | 0) == 4) {
+  $14 = $13 & 255;
+  $15 = $fiptr;
+  $16 = $15 + $14 | 0;
+  HEAP8[$16 >> 0] = 1;
+  $17 = HEAP32[392 >> 2] | 0;
+  $fptr = $17;
+  $clen = 10;
+  $18 = $i;
+  $19 = $18 & 255;
+  $20 = $clen;
+  $21 = $20 & 65535;
+  $22 = Math_imul($21, $19) | 0;
+  $23 = $22 & 65535;
+  $clen = $23;
+  $24 = $clen;
+  $25 = $24 & 65535;
+  $26 = $fptr;
+  $27 = $26 + $25 | 0;
+  $28 = $2;
+  dest = $27;
+  src = $28;
+  stop = dest + 10 | 0;
+  do {
+   HEAP8[dest >> 0] = HEAP8[src >> 0] | 0;
+   dest = dest + 1 | 0;
+   src = src + 1 | 0;
+  } while ((dest | 0) < (stop | 0));
+  $29 = $i;
+  $30 = $1;
+  $31 = $30 + 1 | 0;
+  HEAP8[$31 >> 0] = $29;
+  $32 = $1;
+  _AddOrderEnd($32) | 0;
+  $0 = 1;
+  $34 = $0;
+  STACKTOP = sp;
+  return $34 | 0;
+ } else if ((label | 0) == 6) {
+  _GamMsgBox(3284, 5);
+  $0 = 0;
+  $34 = $0;
+  STACKTOP = sp;
+  return $34 | 0;
+ }
+ return 0 | 0;
+}
+
 function _GamRevCity($cycnt, $tbuf, $pos) {
  $cycnt = $cycnt | 0;
  $tbuf = $tbuf | 0;
@@ -33377,87 +33459,6 @@ function _GetCityPersons($city, $pqueue) {
  $47 = $count;
  STACKTOP = sp;
  return $47 | 0;
-}
-
-function _AddFightOrder($Order, $Fighters) {
- $Order = $Order | 0;
- $Fighters = $Fighters | 0;
- var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0, $25 = 0, $26 = 0, $27 = 0, $28 = 0, $29 = 0, $3 = 0, $30 = 0, $31 = 0, $32 = 0, $33 = 0, $34 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, $clen = 0, $fiptr = 0, $fptr = 0, $i = 0, dest = 0, label = 0, sp = 0, src = 0, stop = 0;
- label = 0;
- sp = STACKTOP;
- STACKTOP = STACKTOP + 32 | 0;
- $1 = $Order;
- $2 = $Fighters;
- $3 = HEAP32[388 >> 2] | 0;
- $fiptr = $3;
- $i = 0;
- while (1) {
-  $4 = $i;
-  $5 = $4 & 255;
-  $6 = ($5 | 0) < 100;
-  if (!$6) {
-   label = 6;
-   break;
-  }
-  $7 = $i;
-  $8 = $7 & 255;
-  $9 = $fiptr;
-  $10 = $9 + $8 | 0;
-  $11 = HEAP8[$10 >> 0] | 0;
-  $12 = $11 << 24 >> 24 != 0;
-  $13 = $i;
-  if (!$12) {
-   label = 4;
-   break;
-  }
-  $33 = $13 + 1 << 24 >> 24;
-  $i = $33;
- }
- if ((label | 0) == 4) {
-  $14 = $13 & 255;
-  $15 = $fiptr;
-  $16 = $15 + $14 | 0;
-  HEAP8[$16 >> 0] = 1;
-  $17 = HEAP32[392 >> 2] | 0;
-  $fptr = $17;
-  $clen = 10;
-  $18 = $i;
-  $19 = $18 & 255;
-  $20 = $clen;
-  $21 = $20 & 65535;
-  $22 = Math_imul($21, $19) | 0;
-  $23 = $22 & 65535;
-  $clen = $23;
-  $24 = $clen;
-  $25 = $24 & 65535;
-  $26 = $fptr;
-  $27 = $26 + $25 | 0;
-  $28 = $2;
-  dest = $27;
-  src = $28;
-  stop = dest + 10 | 0;
-  do {
-   HEAP8[dest >> 0] = HEAP8[src >> 0] | 0;
-   dest = dest + 1 | 0;
-   src = src + 1 | 0;
-  } while ((dest | 0) < (stop | 0));
-  $29 = $i;
-  $30 = $1;
-  $31 = $30 + 1 | 0;
-  HEAP8[$31 >> 0] = $29;
-  $32 = $1;
-  _AddOrderEnd($32) | 0;
-  $0 = 1;
-  $34 = $0;
-  STACKTOP = sp;
-  return $34 | 0;
- } else if ((label | 0) == 6) {
-  $0 = 0;
-  $34 = $0;
-  STACKTOP = sp;
-  return $34 | 0;
- }
- return 0 | 0;
 }
 
 function _FgtResumeMp($idx) {
@@ -36584,6 +36585,66 @@ function _AddOrderHead($Order) {
  return 0 | 0;
 }
 
+function _AddOrderEnd($Order) {
+ $Order = $Order | 0;
+ var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $3 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, $i = 0, $inode = 0, dest = 0, label = 0, sp = 0, src = 0, stop = 0;
+ label = 0;
+ sp = STACKTOP;
+ STACKTOP = STACKTOP + 16 | 0;
+ $1 = $Order;
+ $2 = HEAP32[396 >> 2] | 0;
+ $inode = $2;
+ $i = 70;
+ while (1) {
+  $3 = $i;
+  $4 = $3 & 255;
+  $5 = ($4 | 0) < 100;
+  if (!$5) {
+   label = 6;
+   break;
+  }
+  $6 = $i;
+  $7 = $6 & 255;
+  $8 = $inode;
+  $9 = $8 + ($7 * 12 | 0) | 0;
+  $10 = HEAP8[$9 >> 0] | 0;
+  $11 = $10 & 255;
+  $12 = 255 == ($11 | 0);
+  $13 = $i;
+  if ($12) {
+   label = 4;
+   break;
+  }
+  $18 = $13 + 1 << 24 >> 24;
+  $i = $18;
+ }
+ if ((label | 0) == 4) {
+  $14 = $13 & 255;
+  $15 = $inode;
+  $16 = $15 + ($14 * 12 | 0) | 0;
+  $17 = $1;
+  dest = $16;
+  src = $17;
+  stop = dest + 12 | 0;
+  do {
+   HEAP8[dest >> 0] = HEAP8[src >> 0] | 0;
+   dest = dest + 1 | 0;
+   src = src + 1 | 0;
+  } while ((dest | 0) < (stop | 0));
+  $0 = 0;
+  $19 = $0;
+  STACKTOP = sp;
+  return $19 | 0;
+ } else if ((label | 0) == 6) {
+  _GamMsgBox(3284, 5);
+  $0 = 1;
+  $19 = $0;
+  STACKTOP = sp;
+  return $19 | 0;
+ }
+ return 0 | 0;
+}
+
 function _strerror($e) {
  $e = $e | 0;
  var $$lcssa = 0, $0 = 0, $1 = 0, $10 = 0, $11 = 0, $2 = 0, $3 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, $i$03 = 0, $i$03$lcssa = 0, $i$12 = 0, $s$0$lcssa = 0, $s$01 = 0, $s$1 = 0, label = 0, sp = 0;
@@ -36751,65 +36812,6 @@ function _FgtShowSNum2($sym, $idx, $num) {
  _GamStrShowS($30, $31, $tbuf);
  STACKTOP = sp;
  return;
-}
-
-function _AddOrderEnd($Order) {
- $Order = $Order | 0;
- var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $3 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, $i = 0, $inode = 0, dest = 0, label = 0, sp = 0, src = 0, stop = 0;
- label = 0;
- sp = STACKTOP;
- STACKTOP = STACKTOP + 16 | 0;
- $1 = $Order;
- $2 = HEAP32[396 >> 2] | 0;
- $inode = $2;
- $i = 70;
- while (1) {
-  $3 = $i;
-  $4 = $3 & 255;
-  $5 = ($4 | 0) < 100;
-  if (!$5) {
-   label = 6;
-   break;
-  }
-  $6 = $i;
-  $7 = $6 & 255;
-  $8 = $inode;
-  $9 = $8 + ($7 * 12 | 0) | 0;
-  $10 = HEAP8[$9 >> 0] | 0;
-  $11 = $10 & 255;
-  $12 = 255 == ($11 | 0);
-  $13 = $i;
-  if ($12) {
-   label = 4;
-   break;
-  }
-  $18 = $13 + 1 << 24 >> 24;
-  $i = $18;
- }
- if ((label | 0) == 4) {
-  $14 = $13 & 255;
-  $15 = $inode;
-  $16 = $15 + ($14 * 12 | 0) | 0;
-  $17 = $1;
-  dest = $16;
-  src = $17;
-  stop = dest + 12 | 0;
-  do {
-   HEAP8[dest >> 0] = HEAP8[src >> 0] | 0;
-   dest = dest + 1 | 0;
-   src = src + 1 | 0;
-  } while ((dest | 0) < (stop | 0));
-  $0 = 0;
-  $19 = $0;
-  STACKTOP = sp;
-  return $19 | 0;
- } else if ((label | 0) == 6) {
-  $0 = 1;
-  $19 = $0;
-  STACKTOP = sp;
-  return $19 | 0;
- }
- return 0 | 0;
 }
 
 function _HarvestryFood() {
