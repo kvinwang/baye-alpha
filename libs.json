@@ -2,5 +2,17 @@
     {
         "title": "无痕修复版",
         "path": "libs/whxf.lib"
+    },
+    {
+        "title": "牙刷花 平衡版",
+        "path": "libs/ysh-normal.lib"
+    },
+    {
+        "title": "牙刷花 平衡版+",
+        "path": "libs/ysh-normal30.lib"
+    },
+    {
+        "title": "牙刷花 超难版",
+        "path": "libs/ysh-hard.lib"
     }
 ]
