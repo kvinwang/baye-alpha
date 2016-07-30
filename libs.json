@@ -4,15 +4,15 @@
         "path": "libs/whxf.lib"
     },
     {
-        "title": "牙刷花平衡版 ",
+        "title": "平衡版",
         "path": "libs/ysh-normal.lib"
     },
     {
-        "title": "牙刷花平衡版+",
+        "title": "平衡版 难度适中",
         "path": "libs/ysh-normal30.lib"
     },
     {
-        "title": "牙刷花超难版 ",
+        "title": "超强难度版",
         "path": "libs/ysh-hard.lib"
     }
 ]
