@@ -98,6 +98,7 @@
 
         var libName = getLibName() || "步步高原版";
         if (libName && libName.length > 0) {
+            document.title = document.title + ' - ' + libName;
             $("#tip").html("当前版本: " + libName);
             $("#tip").show();
             setTimeout(function(){
