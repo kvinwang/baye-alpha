@@ -89,6 +89,7 @@
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="tappy.js"></script>
 <script src="lcd.js"></script>
+<script src="baye.js"></script>
 <script>
     (function (){
         touchPadInit("touchpad");
@@ -103,7 +104,7 @@
             $("#tip").show();
             setTimeout(function(){
                 $("#tip").hide(200);
-            }, 6000);
+            }, 3000);
         }
 
         function tap(){
@@ -116,4 +117,3 @@
         $("#lcd-container").each(tap);
     })();
 </script>
-<script src="baye.js"></script>
