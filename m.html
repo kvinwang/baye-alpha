@@ -98,11 +98,11 @@
 
         var libName = getLibName() || "步步高原版";
         if (libName && libName.length > 0) {
-            $("#tip").html(libName + "载入中...");
+            $("#tip").html("当前版本: " + libName);
             $("#tip").show();
             setTimeout(function(){
                 $("#tip").hide(200);
-            }, 2000);
+            }, 6000);
         }
 
         function tap(){
