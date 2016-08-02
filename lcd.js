@@ -162,17 +162,18 @@ function layoutKeyboard() {
             ratio = 30;
         }
         $(".dummy30").css("margin-top", ratio + "%");
-
-        if (layoutType == 1) {
+        $(".keypad").removeAttr("style");
+        if (layoutType == 1 || layoutType == 2) {
             $(".keypad").css("width", keypadWidth);
             $(".keypad").css("position", "absolute");
-            $(".keypad").css("right", 0);
             $(".keypad").css("bottom", 10);
-        } else {
-            $(".keypad").removeAttr("style");
+            if (layoutType == 1) {
+                $(".keypad").css("right", 0);
+            } else {
+                $(".keypad").css("left", 0);
+            }
         }
-
-        if (layoutType == 2) {
+        if (layoutType == 3) {
             $("#keypad1").hide();
             $("#keypad2").show();
         } else {
@@ -182,11 +183,26 @@ function layoutKeyboard() {
     }
 }
 
-function switchLayout() {
-    layoutType += 1;
-    layoutType %= 3;
+function saveKeyboardLayout() {
+    window.localStorage['baye.kb.layout'] = String(layoutType);
+}
+
+function loadKeyboardLayout() {
+    layoutType = parseInt(window.localStorage['baye.kb.layout']);
+    if (!layoutType) {
+        layoutType = 0;
+    }
     layoutKeyboard();
 }
+
+function switchLayout() {
+    layoutType += 1;
+    layoutType %= 4;
+    saveKeyboardLayout();
+    layoutKeyboard();
+}
+
+loadKeyboardLayout();
 
 String.prototype.format = function(args) {
     var result = this;
