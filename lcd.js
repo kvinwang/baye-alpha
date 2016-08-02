@@ -156,23 +156,27 @@ function layoutKeyboard() {
 
     if (h / w > lcdHeight/lcdWidth) {
         var availableHeight = h - w * lcdHeight/lcdWidth;
-        kbWidth = (layoutType == 1) ? keypadWidth : w;
+        var isCompatLayout = (layoutType == 1 || layoutType == 2);
+
+        var kbWidth = isCompatLayout ? keypadWidth : w;
+
         var ratio = availableHeight / 3 / kbWidth * 100;
         if (ratio > 30) {
             ratio = 30;
         }
+
         $(".dummy30").css("margin-top", ratio + "%");
         $(".keypad").removeAttr("style");
-        if (layoutType == 1 || layoutType == 2) {
+
+        if (isCompatLayout) {
             $(".keypad").css("width", keypadWidth);
-            $(".keypad").css("position", "absolute");
-            $(".keypad").css("bottom", 10);
             if (layoutType == 1) {
-                $(".keypad").css("right", 0);
+                $(".keypad").css("float", 'right');
             } else {
-                $(".keypad").css("left", 0);
+                $(".keypad").css("float", 'left');
             }
         }
+
         if (layoutType == 3) {
             $("#keypad1").hide();
             $("#keypad2").show();
