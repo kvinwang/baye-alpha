@@ -1,4 +1,4 @@
-[
+[ 
     {
         "title": "无痕修复版",
         "path": "libs/whxf.lib"
@@ -8,7 +8,7 @@
         "path": "libs/ysh-normal.lib"
     },
     {
-        "title": "平衡版 难度适中",
+        "title": "平衡版-难度适中",
         "path": "libs/ysh-easy.lib"
     },
     {
