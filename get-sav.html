@@ -1,38 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Get save</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>分享存档</title>
+    <link rel="stylesheet" type="text/css" href="baye.css" />
+    <link rel="icon" href="favicon.png">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+    <style>
+        .btn.menu {
+            margin-bottom: 2px;
+        }
+        #result {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="jszip.min.js"></script>
     <script>
+        function getfile(n) {
+            return localStorage["baye//data//sango" + n + ".sav"];
+        }
+
         function dump(n) {
-            document.write(localStorage["baye//data//sango" + n + ".sav"]);
-            document.write("<br>");
+            return getfile(n*2) + '.' + getfile(n*2+1);
+        }
+
+        function upload(n) {
+            var self = $(this);
+            $("#result").html("请求中...");
+            var data = dump(n);
+            var zip = JSZip();
+            zip.file("save.dat", data);
+            zip.generateAsync({type:"binarystring"}).then(function(content) {
+                $("#osize").html('origin:' + data.length);
+                $("#zsize").html('zipped:' + content.length);
+                $.ajax({
+                    url: "http://50r.cn/urls/add.jsonp?url=http://loongw.oschina.io/baye/load.html?sav=" + data.length,
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "www_50r_cn_jsonp_callback",
+                    type: "GET",
+                    success: function(resp) {
+                        $("#result").html("存档地址:" + resp.url);
+                    },
+                    error: function() {
+                        $("#result").html("请求失败");
+                    }
+                });
+            });
         }
     </script>
 
-    <div>存档1</div>
-    <div>
-        <script>
-            dump(0);
-            dump(1);
-        </script>
-    </div>
-    <div>存档2</div>
-    <div>
-        <script>
-            dump(2);
-            dump(3);
-        </script>
-    </div>
-    <div>存档3</div>
-    <div>
-        <script>
-            dump(4);
-            dump(5);
-        </script>
-    </div>
+    <button class="btn menu" type="button" onclick="upload(0)">分享存档1</button>
+    <button class="btn menu" type="button" onclick="upload(1)">分享存档2</button>
+    <button class="btn menu" type="button" onclick="upload(2)">分享存档3</button>
 
+    <div id="result"></div>
+    <div id="osize"></div>
+    <div id="zsize"></div>
 </body>
 </html>
