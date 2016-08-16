@@ -10,8 +10,8 @@
         .btn.menu {
             margin-bottom: 2px;
         }
-        #result {
-            font-size: 20px;
+        #url {
+            font-size: 30px;
         }
     </style>
 </head>
@@ -48,7 +48,8 @@
                 jsonpCallback: "www_50r_cn_jsonp_callback",
                 type: "GET",
                 success: function(resp) {
-                    $("#result").html("存档地址:" + resp.url);
+                    $("#url-title").html("已生成存档" + (n + 1) + "的链接:");
+                    $("#url").html(resp.url);
                 },
                 error: function() {
                     $("#result").html("请求失败");
@@ -61,10 +62,13 @@
     <button class="btn menu" type="button" onclick="upload(1)">分享存档2</button>
     <button class="btn menu" type="button" onclick="upload(2)">分享存档3</button>
 
-    <div id="result"></div>
-    <div id="osize"></div>
-    <div id="zsize"></div>
-    <div id="ssize"></div>
-    <div id="bsize"></div>
+    <div >
+        <div id="url-title"></div>
+        <div id="url"></div>
+        <br>
+        <div id="osize"></div>
+        <div id="zsize"></div>
+        <div id="bsize"></div>
+    </div>
 </body>
 </html>
