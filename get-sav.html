@@ -17,7 +17,8 @@
 </head>
 <body>
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="jszip.min.js"></script>
+    <script src="lzma_worker-min.js"></script>
+    <script src="base64.js"></script>
     <script>
         function getfile(n) {
             return localStorage["baye//data//sango" + n + ".sav"];
@@ -30,25 +31,28 @@
         function upload(n) {
             var self = $(this);
             $("#result").html("请求中...");
+
             var data = dump(n);
-            var zip = JSZip();
-            zip.file("save.dat", data);
-            zip.generateAsync({type:"binarystring"}).then(function(content) {
-                $("#osize").html('origin:' + data.length);
-                $("#zsize").html('zipped:' + content.length);
-                $.ajax({
-                    url: "http://50r.cn/urls/add.jsonp?url=http://loongw.oschina.io/baye/load.html?sav=" + data.length,
-                    dataType: "jsonp",
-                    jsonp: "callback",
-                    jsonpCallback: "www_50r_cn_jsonp_callback",
-                    type: "GET",
-                    success: function(resp) {
-                        $("#result").html("存档地址:" + resp.url);
-                    },
-                    error: function() {
-                        $("#result").html("请求失败");
-                    }
-                });
+            var result = LZMA.compress(data, 9);
+
+            var b64data = base64ArrayBuffer(result);
+
+            $("#osize").html('origin:' + data.length);
+            $("#zsize").html('result:' + result.length);
+            $("#bsize").html('b64data:' + b64data.length);
+
+            $.ajax({
+                url: "http://50r.cn/urls/add.jsonp?url=http://loongw.oschina.io/baye/load.html?sav=" + b64data,
+                dataType: "jsonp",
+                jsonp: "callback",
+                jsonpCallback: "www_50r_cn_jsonp_callback",
+                type: "GET",
+                success: function(resp) {
+                    $("#result").html("存档地址:" + resp.url);
+                },
+                error: function() {
+                    $("#result").html("请求失败");
+                }
             });
         }
     </script>
@@ -60,5 +64,7 @@
     <div id="result"></div>
     <div id="osize"></div>
     <div id="zsize"></div>
+    <div id="ssize"></div>
+    <div id="bsize"></div>
 </body>
 </html>
