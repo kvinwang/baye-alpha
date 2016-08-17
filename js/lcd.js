@@ -455,3 +455,4 @@ function touchPadInit(elementID) {
     element.addEventListener("touchend", touchEnded);
     disablePageScroll();
 }
+
