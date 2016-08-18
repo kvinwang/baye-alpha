@@ -28,8 +28,8 @@
 
     function load(n, hex) {
         var tuple = hex.split(".");
-        localStorage[filename(n*2)] = tuple[0];
-        localStorage[filename(n*2+1)] = tuple[1];
+        localStorage[filename(n*3)] = tuple[0];
+        localStorage[filename(n*3+1)] = tuple[1];
     }
 
     document.write("稍后...");
@@ -40,7 +40,7 @@
     var hex = LZMA.decompress(lzma);
     load(2, hex);
     document.write("<br>");
-    document.write("已载入到存档3...");
+    document.write("已载入到第4个存档位...");
 })();
 </script>
 
