@@ -30,14 +30,21 @@
 
         function upload(n) {
             var self = $(this);
-            $("#result").html("请求中...");
-
             var data = dump(n);
+
+            $("#osize").html('origin:' + data.length);
+
+            if (data.length < 100) {
+                $("#url-title").html("");
+                $("#url").html("该存档为空!");
+                return;
+            }
+
+            $("#result").html("请求中...");
             var result = LZMA.compress(data, 9);
 
             var b64data = Base64.encode(result);
 
-            $("#osize").html('origin:' + data.length);
             $("#zsize").html('result:' + result.length);
             $("#bsize").html('b64data:' + b64data.length);
 
@@ -54,7 +61,8 @@
                     $("#url").html(resp.url);
                 },
                 error: function() {
-                    $("#result").html("请求失败");
+                    $("#url-title").html("");
+                    $("#url").html("请求失败");
                 }
             });
         }
