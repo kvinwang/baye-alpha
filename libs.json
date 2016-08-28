@@ -14,5 +14,9 @@
     {
         "title": "超强难度版",
         "path": "libs/ysh-hard.lib"
+    },
+    {
+        "title": "三国PLUS修正版",
+        "path": "libs/plus.gam-mod.lib"
     }
 ]
