@@ -103,14 +103,37 @@ function bin2hex (s) {
   return o;
 }
 
+function binarray2hex (arr) {
+
+  var i, l, o = "", n;
+
+  for (i = 0, l = arr.length; i < l; i++) {
+    n = arr[i].toString(16)
+    o += n.length < 2 ? "0" + n : n;
+  }
+
+  return o;
+}
+
+function loadHexLib(hexLib) {
+    window.localStorage['baye//data/dat.lib'] = hexLib;
+    redirect();
+}
+
+
 function loadLibBin(bin) {
     console.log('bin length:' + bin.length);
     if (bin.length == 622874) {
         bin = bin.slice(425984);
     }
     var data = bin2hex(bin);
-    window.localStorage['baye//data/dat.lib'] = data;
-    redirect();
+    loadHexLib(data);
+}
+
+function loadLibBinAndName(bin, name) {
+    window.localStorage['baye/libname'] = name;
+    var hex = binarray2hex(bin);
+    loadHexLib(hex);
 }
 
 function loadLib(files) {

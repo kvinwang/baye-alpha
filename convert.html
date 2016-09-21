@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网址转换</title>
+</head>
+<body>
+<script>
+    function convert() {
+        var url = document.getElementById("url-edit").value;
+        url = 'http://loongw.oschina.io/baye/loadlib.html?' + encodeURI(url);
+        document.getElementById("result").innerHTML = '<a href="' + url + '">' + url + '</a>';;
+    }
+</script>
+<input id="url-edit" type="text">
+<button onclick="convert()">转换</button>
+<br>
+<div id="result"></div>
+
+</body>
+</html>
