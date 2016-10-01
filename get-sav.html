@@ -48,7 +48,7 @@
             $("#zsize").html('result:' + result.length);
             $("#bsize").html('b64data:' + b64data.length);
 
-            var loadUrl = "http://loongw.oschina.io/baye/load.html?sav=" + b64data;
+            var loadUrl = "http://bgwp.oschina.io/baye/load.html?sav=" + b64data;
 
             $.ajax({
                 url: "http://50r.cn/urls/add.jsonp?url=" + loadUrl,
@@ -58,7 +58,7 @@
                 type: "GET",
                 success: function(resp) {
                     $("#url-title").html("已生成存档" + (n + 1) + "的链接:");
-                    $("#url").html(resp.url);
+                    $("#url").html('<a href="' + resp.url + '">' + resp.url + '</a>');
                 },
                 error: function() {
                     $("#url-title").html("");
