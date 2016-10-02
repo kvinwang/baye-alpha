@@ -480,3 +480,69 @@ function touchPadInit(elementID) {
     disablePageScroll();
 }
 
+function touchScreenInit(lcdID) {
+    var lcd = document.getElementById(lcdID);
+
+    var activeTouch = null;
+
+    var VT_TOUCH_DOWN = 0
+    var VT_TOUCH_UP = 1
+    var VT_TOUCH_MOVE = 2
+
+    function raiseTouchEvent(key, touch) {
+        var rect = lcd.getBoundingClientRect();
+
+        var webX = touch.clientX - rect.left;
+        var webY = touch.clientY - rect.top;
+
+        var gameX = webX / rect.width * lcdWidth;
+        var gameY = webY / rect.height * lcdHeight;
+
+        _sendTouchEvent(key, gameX, gameY);
+    }
+
+    function resetTouch() {
+        activeTouch = null;
+    }
+
+    function touchBegan(event) {
+        if (activeTouch || event.targetTouches.length < 1) {
+            return;
+        }
+        activeTouch = event.targetTouches[0];
+        raiseTouchEvent(VT_TOUCH_DOWN, activeTouch);
+    }
+
+    function find(touches, touch) {
+         for (var i in touches) {
+            if (touch.identifier == touches[i].identifier) {
+                return touches[i];
+            }
+         }
+         return null;
+    }
+
+    function touchEnded(event) {
+        if (activeTouch) {
+            var touch = find(event.changedTouches, activeTouch);
+            if (!touch) {
+                return;
+            }
+            raiseTouchEvent(VT_TOUCH_UP, touch);
+            resetTouch();
+        }
+    }
+
+    function touchMove(event) {
+        if (activeTouch) {
+            var touch = find(event.changedTouches, activeTouch);
+            if (!touch) {
+                return;
+            }
+            raiseTouchEvent(VT_TOUCH_MOVE, touch);
+        }
+    }
+    lcd.addEventListener("touchstart", touchBegan);
+    lcd.addEventListener("touchmove", touchMove);
+    lcd.addEventListener("touchend", touchEnded);
+}

@@ -94,47 +94,6 @@
 <script src="http://cdn.bootcss.com/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script>
 
-(function (){
-    //touchPadInit("touchpad");
-    // layoutKeyboard();
-
-    // $(window).resize(layoutKeyboard);
-
-    function tap(){
-        var action = $(this).attr("ontap");
-        $(this).bind( "tap", function(){
-            eval(action);
-        });
-    }
-    $("#enterControl, #cancelControl").each(tap);
-    // $("#touchpad").each(tap);
-
-    $("#menuControl").swipe( {
-        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-            switch(direction){
-                case 'up':
-                    sendKey(VK_SEARCH);
-                    break;
-                case 'down':
-                    sendKey(VK_HELP);
-                    break;
-            }
-        },
-        //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold:0
-    });
-    $("#directionControl").each(tap);
-    touchPadInit("directionControl");
- 
-    reloadLCD();
-
-    //判断手机横竖屏状态：
-    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
-        reloadLCD();
-    }, false); 
-
-})();
-
 
 function reloadLCD(){
     if (window.orientation === 180 || window.orientation === 0) {
@@ -165,5 +124,17 @@ function reloadLCD(){
         }); 
     }
 }
+
+
+(function (){
+    touchScreenInit("lcd-container");
+    reloadLCD();
+
+    //判断手机横竖屏状态：
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        reloadLCD();
+    }, false); 
+
+})();
 
 </script>
