@@ -14,41 +14,53 @@
         window.location.href = "index.html";
     })();
 </script>
-<style>
-    .controlPanel{
-        filter: alpha(opacity=80); opacity: 0.8; 
-        font-size:40px;
-        z-index:1000;
-        position:absolute;
-        background:red;
-        color:white;
-        text-align:center;
-    }
-    #directionControl{
-        left:0px; top:0px; width:60%; height:100%;    
-    }
-    #menuControl{
-        right:0px; top:0px; width:40%; height:100%; 
-    }
-    #cancelControl{
-        right:0px; top:0px; width:100%; height:50%; background:white 
-    }
-    #enterControl{
-        right:0px; bottom:0px; width:100%; height:50%; background:black
-    }
-
-</style>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>三国霸业</title>
         <link rel="stylesheet" type="text/css" href="baye.css" />
+        <link rel="stylesheet" type="text/css" href="introjs.min.css" />
         <link rel="icon" href="favicon.png">
-        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-touch-fullscreen" content="yes"/>
+        <meta name="apple-mobile-web-app-title" content="三国霸业">
+        <meta name="full-screen" content="yes"><!-- UC强制全屏 -->
+        <meta name="x5-fullscreen" content="true"><!-- QQ强制全屏 -->
+        <meta name="browsermode" content="application"><!-- UC应用模式 -->
+        <meta name="x5-page-mode" content="app"><!-- QQ应用模式 -->
+        <meta name="msapplication-tap-highlight" content="no"><!-- windows phone 点击无高光 -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon.png"><!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon.png"><!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon.png"><!-- Retina iPad，144x144 像素，可以没有，但推荐有 --><!-- iOS 图标 end -->
         <style>
             body {
                 overflow: hidden;
+                margin:0px;
             }
+            .controlPanel{
+                filter: alpha(opacity=80); opacity: 0.8; 
+                font-size:40px;
+                z-index:1000;
+                position:absolute;
+                color:white;
+                text-align:center;
+            }
+            #directionControl{
+                left:0px; top:0px; width:60%; height:100%;    
+            }
+            #menuControl{
+                right:0px; top:0px; width:40%; height:100%; 
+            }
+            #cancelControl{
+                right:0px; top:0px; width:100%; height:50%; 
+            }
+            #enterControl{
+                right:0px; bottom:0px; width:100%; height:50%; 
+            }
+            .menu {margin-top:2px;}
         </style>
         <script>
             var _hmt = _hmt || [];
@@ -65,66 +77,42 @@
             <div class="dummy"></div>
             <div class="element lcd" id="lcd-container">
                 <canvas class="fill" id="lcd" width="160" height="96">然而你的浏览器并不支持HTML5</canvas>
-                <div class="controlPanel" id="directionControl"> 方向控制区 </div>
-                <div class="controlPanel" id="menuControl"> 菜单控制 
-                    <div class="controlPanel" id="cancelControl" ontap="sendKey(VK_EXIT)">取消</div>
-                    <div class="controlPanel" id="enterControl" ontap="sendKey(VK_ENTER)">确定</div>
+                <div class="controlPanel" id="directionControl" data-step="1" data-intro="上下左右滑动，控制方向"> </div>
+                <div class="controlPanel" id="menuControl" data-step="2" data-intro="下上滑动为“搜索”，上下滑动为“帮助”"> 
+                    <div class="controlPanel" id="cancelControl" ontap="sendKey(VK_EXIT)" data-step="3" data-intro="触击“取消”"></div>
+                    <div class="controlPanel" id="enterControl" ontap="sendKey(VK_ENTER)" data-step="4" data-intro="触击“确定”"></div>
                 </div>
             </div>
         </div>
-        <div id="tip" class="alert alert-success" style="display:none"></div>
-        <div>
-            <div class="keypad" id="keypad1">
-                <div class="container" style="margin-top:2px">
-                    <div class="dummy30"></div>
-                    <div class="element">
-                        <button class="btn fn" type="button" ontap="sendKey(VK_SEARCH)">查找(︽)</button>
-                        <button class="btn nav" type="button" ontap="sendKey(VK_UP)">上</button>
-                        <button class="btn fn" type="button" ontap="sendKey(VK_HELP)">帮助(︾)</button>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="dummy30"></div>
-                    <div class="element">
-                        <button class="btn nav" type="button" ontap="sendKey(VK_LEFT)">左</button>
-                        <button class="btn nav" type="button" ontap="sendKey(VK_DOWN)">下<br>(划一划)</button>
-                        <button class="btn nav" type="button" ontap="sendKey(VK_RIGHT)">右</button>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="dummy30"></div>
-                    <div class="element">
-                        <button class="btn fn" type="button" ontap="sendKey(VK_EXIT)">返回</button>
-                        <button class="btn enter" type="button" ontap="sendKey(VK_ENTER)">输入</button>
-                        <button class="btn s" type="button" ontap="switchLayout()">*</button>
-                    </div>
-                </div>
+        <div class="container" style="margin-top:8px">
+            <button class="btn menu" type="button" ontap="intro()">操作演示</button>
+            <button class="btn menu" type="button" ontap="feedback()">意见反馈</button>
+        </div>
+        <div class="container" style="margin-top:2px;padding:8px">
+            特别说明:<br>
+            <div class="index-tip">
+            1. 完全支持触屏操作.（具体见“操作演示”按钮）<br>
+            2. 横屏进入游戏全屏.（推荐）<br>
+            3. 欢迎反馈创意或建议，下个版本可能就有你的创意.<br>
             </div>
-            <div class="keypad" id="keypad2">
-                <div class="container" style="margin-top:2px">
-                    <button class="btn fn touch" style="width:100%;height:120px" type="button" ontap="sendKey(VK_ENTER)">输入</button>
-                </div>
-                <div class="container" style="margin-top:2px">
-                    <button class="btn fn touch" style="width:100%;height:60px" type="button" ontap="sendKey(VK_EXIT)">返回</button>
-                </div>
-                <div class="container" style="margin-top:2px">
-                    <button class="btn fn touch" style="width:45%;border-right:2px solid white" type="button" ontap="sendKey(VK_SEARCH)">查找</button>
-                    <button class="btn fn touch" style="width:45%;border-right:2px solid white" type="button" ontap="sendKey(VK_HELP)">帮助</button>
-                    <button class="btn s touch" style="width:10%" type="button" ontap="switchLayout()">*</button>
-                </div>
-            </div>
-
         </div>
     </body>
-
 </html>
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="js/tappy.js"></script>
 <script src="js/bridge.js"></script>
 <script src="js/lcd.js"></script>
 <script src="../baye-engine/baye.js"></script>
+<script src="js/intro.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script>
+    function intro(){
+        introJs().start();
+    }
+    function feedback(){
+       window.open('http://tieba.baidu.com/p/4804578931');
+    }
+
     (function (){
         //touchPadInit("touchpad");
         layoutKeyboard();
@@ -150,8 +138,6 @@
         $(".btn").each(tap);
         $("#enterControl, #cancelControl").each(tap);
 
-        touchPadInit("directionControl");
-
         $("#menuControl").swipe( {
             swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
                 switch(direction){
@@ -166,5 +152,7 @@
             //Default is 75px, set to 0 for demo so any distance triggers swipe
             threshold:0
         });
+        touchPadInit("directionControl");
     })();
-</script>
+
+    </script>
