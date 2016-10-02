@@ -150,26 +150,7 @@
         $(".btn").each(tap);
         $("#enterControl, #cancelControl").each(tap);
 
-        $("#directionControl").swipe( {
-            swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                switch(direction){
-                    case 'up':
-                        sendKey(VK_UP);
-                        break;
-                    case 'down':
-                        sendKey(VK_DOWN);
-                        break;
-                    case 'left':
-                        sendKey(VK_LEFT);
-                        break;
-                    case 'right':
-                        sendKey(VK_RIGHT);
-                        break;
-                }
-            },
-            //Default is 75px, set to 0 for demo so any distance triggers swipe
-            threshold:0
-        });
+        touchPadInit("directionControl");
 
         $("#menuControl").swipe( {
             swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
