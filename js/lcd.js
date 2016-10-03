@@ -485,9 +485,9 @@ function touchScreenInit(lcdID) {
 
     var activeTouch = null;
 
-    var VT_TOUCH_DOWN = 0
-    var VT_TOUCH_UP = 1
-    var VT_TOUCH_MOVE = 2
+    var VT_TOUCH_DOWN = 1
+    var VT_TOUCH_UP = 2
+    var VT_TOUCH_MOVE = 3
 
     function raiseTouchEvent(key, touch) {
         var rect = lcd.getBoundingClientRect();
