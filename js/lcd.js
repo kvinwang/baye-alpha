@@ -324,10 +324,11 @@ function loadLibLists(container) {
     });
 }
 
-function redirect() {
+function redirect(page) {
+    var page = page || "m.html";
     if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|Mobile|ARM)/i)){
         var now = new Date().getTime() / 1000;
-        window.location.href = "m.html#" + now.toString();
+        window.location.href = page + "#" + now;
     } else {
         window.location.href = "pc.html";
     }
