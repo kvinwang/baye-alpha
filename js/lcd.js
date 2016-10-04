@@ -545,4 +545,5 @@ function touchScreenInit(lcdID) {
     lcd.addEventListener("touchstart", touchBegan);
     lcd.addEventListener("touchmove", touchMove);
     lcd.addEventListener("touchend", touchEnded);
+    disablePageScroll();
 }
