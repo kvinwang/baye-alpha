@@ -480,6 +480,8 @@ function touchPadInit(elementID) {
     disablePageScroll();
 }
 
+var lcdRotateMode = 0;
+
 function touchScreenInit(lcdID) {
     var lcd = document.getElementById(lcdID);
 
@@ -498,6 +500,15 @@ function touchScreenInit(lcdID) {
 
         var gameX = webX / rect.width * lcdWidth;
         var gameY = webY / rect.height * lcdHeight;
+
+        switch (lcdRotateMode) {
+        case 0:
+            break;
+        case 1:
+            gameX = webY / rect.height * lcdWidth;
+            gameY = (rect.width - webX) / rect.width * lcdHeight;
+            break;
+        }
 
         _sendTouchEvent(key, gameX, gameY);
     }

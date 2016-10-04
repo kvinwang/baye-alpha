@@ -107,8 +107,9 @@ function reloadLCD(){
             'width': height + 'px',
             'transform-origin' : 'left top',
             'transform' : 'rotate(90deg) translateY(-' + width + 'px)',
-        }); 
-    } 
+        });
+        lcdRotateMode = 1;
+    }
     //横屏状态
     if (window.orientation === 90 || window.orientation === -90 ){ 
         var height = window.innerHeight;
@@ -122,12 +123,13 @@ function reloadLCD(){
             '-webkit-transform' : 'rotate(0deg)',
             'transform' : 'rotate(0deg)',
         }); 
+        lcdRotateMode = 0;
     }
 }
 
 
 (function (){
-    touchScreenInit("lcd-container");
+    touchScreenInit("lcd");
     reloadLCD();
 
     //判断手机横竖屏状态：
