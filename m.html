@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" href="baye.css" />
         <link rel="stylesheet" type="text/css" href="introjs.min.css" />
         <link rel="icon" href="favicon.png">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-touch-fullscreen" content="yes"/>
@@ -72,29 +72,16 @@
             })();
         </script>
     </head>
-    <body onkeydown="onKeyDown()" id="touchpad">
+    <body id="touchpad">
         <div class="container" style="">
             <div class="dummy"></div>
             <div class="element lcd" id="lcd-container">
                 <canvas class="fill" id="lcd" width="160" height="96">然而你的浏览器并不支持HTML5</canvas>
-                <div class="controlPanel" id="directionControl" data-step="1" data-intro="上下左右滑动，控制方向"> </div>
+                <div class="controlPanel" id="directionControl" ontap="return" data-step="1" data-intro="上下左右滑动，控制方向"> </div>
                 <div class="controlPanel" id="menuControl" data-step="2" data-intro="下上滑动为“搜索”，上下滑动为“帮助”"> 
                     <div class="controlPanel" id="cancelControl" ontap="sendKey(VK_EXIT)" data-step="3" data-intro="触击“取消”"></div>
                     <div class="controlPanel" id="enterControl" ontap="sendKey(VK_ENTER)" data-step="4" data-intro="触击“确定”"></div>
                 </div>
-            </div>
-        </div>
-        <div class="container" style="margin-top:8px">
-            <button class="btn menu" type="button" ontap="intro()">操作演示</button>
-            <button class="btn menu" type="button" ontap="feedback()">意见反馈</button>
-        </div>
-        <div class="container" style="margin-top:2px;padding:8px">
-            特别说明:<br>
-            <div class="index-tip">
-            1. 完全支持触屏操作.（具体见“操作演示”按钮）<br>
-            2. 横屏进入游戏全屏.（推荐）<br>
-            3. 欢迎反馈创意或建议，下个版本可能就有你的创意.<br>
-            4. 新版界面如遇不适请<a href="##" onclick="redirect('m-old.html')">返回旧版</a>.<br>
             </div>
         </div>
     </body>
@@ -104,56 +91,79 @@
 <script src="js/bridge.js"></script>
 <script src="js/lcd.js?ver=1"></script>
 <script src="../baye-engine/baye.js?ver=1"></script>
-<script src="js/intro.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script>
-    function intro(){
-        introJs().start();
-    }
-    function feedback(){
-       window.open('http://tieba.baidu.com/p/4804578931');
-    }
 
-    (function (){
-        //touchPadInit("touchpad");
-        layoutKeyboard();
+(function (){
+    //touchPadInit("touchpad");
+    // layoutKeyboard();
 
-        $(window).resize(layoutKeyboard);
+    // $(window).resize(layoutKeyboard);
 
-        var libName = getLibName() || "步步高原版";
-        if (libName && libName.length > 0) {
-            document.title = document.title + ' - ' + libName;
-            $("#tip").html("当前版本: " + libName);
-            $("#tip").show();
-            setTimeout(function(){
-                $("#tip").hide(200);
-            }, 3000);
-        }
-
-        function tap(){
-            var action = $(this).attr("ontap");
-            $(this).bind( "tap", function(){
-                eval(action);
-            });
-        }
-        $(".btn").each(tap);
-        $("#enterControl, #cancelControl").each(tap);
-
-        $("#menuControl").swipe( {
-            swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                switch(direction){
-                    case 'up':
-                        sendKey(VK_SEARCH);
-                        break;
-                    case 'down':
-                        sendKey(VK_HELP);
-                        break;
-                }
-            },
-            //Default is 75px, set to 0 for demo so any distance triggers swipe
-            threshold:0
+    function tap(){
+        var action = $(this).attr("ontap");
+        $(this).bind( "tap", function(){
+            eval(action);
         });
-        touchPadInit("directionControl");
-    })();
+    }
+    $("#enterControl, #cancelControl").each(tap);
+    // $("#touchpad").each(tap);
 
-    </script>
+    $("#menuControl").swipe( {
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+            switch(direction){
+                case 'up':
+                    sendKey(VK_SEARCH);
+                    break;
+                case 'down':
+                    sendKey(VK_HELP);
+                    break;
+            }
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold:0
+    });
+    $("#directionControl").each(tap);
+    touchPadInit("directionControl");
+ 
+    reloadLCD();
+
+    //判断手机横竖屏状态：
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        reloadLCD();
+    }, false); 
+
+})();
+
+
+function reloadLCD(){
+    if (window.orientation === 180 || window.orientation === 0) {
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+        console.log(height,width);
+
+        console.log('竖屏状态'); 
+        $("#lcd").css({
+            'height': width + 'px', 
+            'width': height + 'px',
+            'transform-origin' : 'left top',
+            'transform' : 'rotate(90deg) translateY(-' + width + 'px)',
+        }); 
+    } 
+    //横屏状态
+    if (window.orientation === 90 || window.orientation === -90 ){ 
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+        console.log(height,width);
+
+        console.log('横屏状态');
+        $("#lcd").css({
+            'height' : height + 'px',
+            'width' : width + 'px',
+            '-webkit-transform' : 'rotate(0deg)',
+            'transform' : 'rotate(0deg)',
+        }); 
+    }
+}
+
+</script>
