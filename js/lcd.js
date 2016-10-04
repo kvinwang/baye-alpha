@@ -488,6 +488,7 @@ function touchScreenInit(lcdID) {
     var VT_TOUCH_DOWN = 1
     var VT_TOUCH_UP = 2
     var VT_TOUCH_MOVE = 3
+    var VT_TOUCH_CANCEL = 4
 
     function raiseTouchEvent(key, touch) {
         var rect = lcd.getBoundingClientRect();
@@ -542,8 +543,20 @@ function touchScreenInit(lcdID) {
             raiseTouchEvent(VT_TOUCH_MOVE, touch);
         }
     }
+
+    function touchCanceled(event) {
+        if (activeTouch) {
+            var touch = find(event.changedTouches, activeTouch);
+            if (!touch) {
+                return;
+            }
+            raiseTouchEvent(VT_TOUCH_CANCEL, touch);
+            resetTouch();
+        }
+    }
     lcd.addEventListener("touchstart", touchBegan);
     lcd.addEventListener("touchmove", touchMove);
     lcd.addEventListener("touchend", touchEnded);
+    lcd.addEventListener("touchcancel", touchCanceled);
     disablePageScroll();
 }
