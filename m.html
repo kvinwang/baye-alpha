@@ -114,7 +114,9 @@ function reloadLCD(){
     //判断手机横竖屏状态：
     window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
         reloadLCD();
-    }, false); 
+    }, false);
+
+    $(window).resize(reloadLCD);
 
 })();
 
