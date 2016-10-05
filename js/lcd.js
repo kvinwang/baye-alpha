@@ -508,6 +508,10 @@ function touchScreenInit(lcdID) {
             gameX = webY / rect.height * lcdWidth;
             gameY = (rect.width - webX) / rect.width * lcdHeight;
             break;
+        case 2:
+            gameX = (rect.height - webY) / rect.height * lcdWidth;
+            gameY = webX / rect.width * lcdHeight;
+            break;
         }
 
         _sendTouchEvent(key, gameX, gameY);
