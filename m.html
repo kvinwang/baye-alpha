@@ -85,9 +85,9 @@ function reloadLCD(){
             'height': width + 'px', 
             'width': height + 'px',
             'transform-origin' : 'left top',
-            'transform' : 'rotate(90deg) translateY(-' + width + 'px)',
+            'transform' : 'rotate(-90deg) translateX(-' + height + 'px)',
         });
-        lcdRotateMode = 1;
+        lcdRotateMode = 2;
     }
     //横屏状态
     if (window.orientation === 90 || window.orientation === -90 ){ 
