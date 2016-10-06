@@ -325,8 +325,19 @@ function loadLibLists(container) {
 }
 
 function redirect(page) {
-    var page = page || "m.html";
     if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|Mobile|ARM)/i)){
+        var defaultMPage = "m.html";
+        switch (window.localStorage['baye/mpage']) {
+        case '0':
+            defaultMPage = "m.html"
+            break;
+        case '1':
+            defaultMPage = "m-old.html"
+            break;
+        }
+        console.log('page:' + page);
+        console.log('defpage:' + defaultMPage);
+        var page = page || defaultMPage;
         var now = new Date().getTime() / 1000;
         window.location.href = page + "#" + now;
     } else {
