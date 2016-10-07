@@ -1,3 +1,7 @@
+var lcdWidth = 208;
+var lcdHeight = 128;
+var lcdScale = 2;
+
 function getLCD() {
     var canvas = document.getElementById('lcd');
     if (canvas.getContext === undefined) {
@@ -7,32 +11,55 @@ function getLCD() {
     return ctx;
 }
 
-function flushLCDBuffer(buffer, w, h, lineSize) {
+function lcdInit()
+{
+    var canvas = document.getElementById('lcd');
+    canvas.width = lcdWidth * lcdScale;
+    canvas.height = lcdHeight * lcdScale;
+    _setLCDSize(lcdWidth, lcdHeight);
+}
+
+function imagePixel(img, i)
+{
+    img.data[i] = 0;
+    img.data[i+1] = 0;
+    img.data[i+2] = 0;
+    img.data[i+3] = 255;
+}
+
+function imageDot(img, x, y, lineSize)
+{
+    x *= lcdScale;
+    y *= lcdScale;
+    lineSize *= lcdScale;
+
+    for (var x0 = x; x0 < x+lcdScale; x0++)
+        for (var y0 = y; y0 < y+lcdScale; y0++) {
+            var ind = lineSize*y0 + x0;
+            imagePixel(img, ind*4);
+        }
+}
+
+function lcdFlushBuffer(buffer) {
     var scale = 2;
     var lcd = getLCD();
+    var w = lcdWidth;
+    var h = lcdHeight;
+    var lineSize = lcdWidth;
 
-    var img = lcd.createImageData(w, h)
+    var img = lcd.createImageData(lcdWidth*lcdScale, lcdHeight*lcdScale);
 
     for (var y = 0; y < h; y += 1) {
         for (var x = 0; x < w; x += 1) {
             var ind = lineSize*y + x;
             var pixel = getValue(buffer + ind, "i8");
             if (pixel != 0) {
-                var i = ind*4;
-                img.data[i] = 0;
-                img.data[i+1] = 0;
-                img.data[i+2] = 0;
-                img.data[i+3] = 255;
-            } else {
+                imageDot(img, x, y, lineSize);
             }
         }
     }
     lcd.imageSmoothingEnabled = false;
     lcd.putImageData(img, 0, 0);
-}
-
-function lcdFlushBuffer(buffer) {
-    flushLCDBuffer(buffer, 160, 96, 160);
 }
 
 function sendKey(key) {
@@ -168,8 +195,6 @@ if (typeof(Storage) === "undefined") {
 
 
 var layoutType = 0;
-var lcdWidth = 160;
-var lcdHeight = 96;
 var keypadWidth = 250;
 
 
