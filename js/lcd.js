@@ -1,6 +1,6 @@
 var lcdWidth = 208;
 var lcdHeight = 128;
-var lcdScale = 2;
+var lcdScale = 1;
 
 function getLCD() {
     var canvas = document.getElementById('lcd');
