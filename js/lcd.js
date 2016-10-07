@@ -1,6 +1,6 @@
 var lcdWidth = 208;
 var lcdHeight = 128;
-var lcdScale = 1;
+var lcdDotSize = 1;
 
 function getLCD() {
     var canvas = document.getElementById('lcd');
@@ -14,8 +14,8 @@ function getLCD() {
 function lcdInit()
 {
     var canvas = document.getElementById('lcd');
-    canvas.width = lcdWidth * lcdScale;
-    canvas.height = lcdHeight * lcdScale;
+    canvas.width = lcdWidth * lcdDotSize;
+    canvas.height = lcdHeight * lcdDotSize;
     _setLCDSize(lcdWidth, lcdHeight);
 }
 
@@ -29,12 +29,12 @@ function imagePixel(img, i)
 
 function imageDot(img, x, y, lineSize)
 {
-    x *= lcdScale;
-    y *= lcdScale;
-    lineSize *= lcdScale;
+    x *= lcdDotSize;
+    y *= lcdDotSize;
+    lineSize *= lcdDotSize;
 
-    for (var x0 = x; x0 < x+lcdScale; x0++)
-        for (var y0 = y; y0 < y+lcdScale; y0++) {
+    for (var x0 = x; x0 < x+lcdDotSize; x0++)
+        for (var y0 = y; y0 < y+lcdDotSize; y0++) {
             var ind = lineSize*y0 + x0;
             imagePixel(img, ind*4);
         }
@@ -47,7 +47,7 @@ function lcdFlushBuffer(buffer) {
     var h = lcdHeight;
     var lineSize = lcdWidth;
 
-    var img = lcd.createImageData(lcdWidth*lcdScale, lcdHeight*lcdScale);
+    var img = lcd.createImageData(lcdWidth*lcdDotSize, lcdHeight*lcdDotSize);
 
     for (var y = 0; y < h; y += 1) {
         for (var x = 0; x < w; x += 1) {
