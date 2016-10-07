@@ -1,5 +1,5 @@
-var lcdWidth = 208;
-var lcdHeight = 128;
+var lcdWidth = 16*10;
+var lcdHeight = 16*6;
 var lcdDotSize = 1;
 
 function getLCD() {
