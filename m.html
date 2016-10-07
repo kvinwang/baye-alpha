@@ -62,12 +62,12 @@
 
 
 function reloadLCD(){
-    if (window.orientation === 180 || window.orientation === 0) {
-        var height = window.innerHeight;
-        var width = window.innerWidth;
-        console.log(height,width);
+    var height = window.innerHeight;
+    var width = window.innerWidth;
+    console.log(height,width);
 
-        console.log('竖屏状态'); 
+    if (height > width) {
+        console.log('竖屏状态');
         $("#lcd").css({
             'height': width + 'px', 
             'width': height + 'px',
@@ -75,13 +75,7 @@ function reloadLCD(){
             'transform' : 'rotate(-90deg) translateX(-' + height + 'px)',
         });
         lcdRotateMode = 2;
-    }
-    //横屏状态
-    if (window.orientation === 90 || window.orientation === -90 ){ 
-        var height = window.innerHeight;
-        var width = window.innerWidth;
-        console.log(height,width);
-
+    } else {
         console.log('横屏状态');
         $("#lcd").css({
             'height' : height + 'px',
