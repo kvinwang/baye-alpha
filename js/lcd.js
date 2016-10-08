@@ -13,6 +13,10 @@ function getLCD() {
 
 function lcdInit()
 {
+    if(navigator.userAgent.match(/(Android|ARM)/i)){
+        lcdDotSize = 2;
+    }
+
     var canvas = document.getElementById('lcd');
     canvas.width = lcdWidth * lcdDotSize;
     canvas.height = lcdHeight * lcdDotSize;
