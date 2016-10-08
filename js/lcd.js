@@ -17,6 +17,28 @@ function lcdInit()
         lcdDotSize = 2;
     }
 
+    //分辨率
+    switch (window.localStorage["baye/resolution"]) {
+    case '0':
+        lcdWidth = 16*10;
+        lcdHeight = 16*6;
+        break;
+    case '1':
+        lcdWidth = 16*13;
+        lcdHeight = 16*8;
+        break;
+    }
+
+    // 锐化
+    switch (window.localStorage["baye/clearmode"]) {
+    case '0':
+        lcdDotSize = 1;
+        break;
+    case '1':
+        lcdDotSize = 2;
+        break;
+    }
+
     var canvas = document.getElementById('lcd');
     canvas.width = lcdWidth * lcdDotSize;
     canvas.height = lcdHeight * lcdDotSize;

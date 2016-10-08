@@ -24,6 +24,9 @@
             select {
                 font-size: 16px;
             }
+            .config-item {
+                margin-top: 8px;
+            }
         </style>
     </head>
     <body >
@@ -39,23 +42,43 @@
         </div>
         -->
         <div>
-            操作模式:
-            <select name="" id="mode-select">
-                 <option value="0">横屏&触控</option>
-                 <option value="1">竖屏&键盘</option>
-            </select>
-            <script>
+            <div class="config-item">
+                操作模式:
+                <select name="" id="mode-select">
+                    <option value="0">横屏&触控</option>
+                    <option value="1">竖屏&键盘</option>
+                </select>
+            </div>
+            <div class="config-item">
+                分辨率:
+                <select name="" id="resolution-select">
+                    <option value="0">4988</option>
+                    <option value="1">加大</option>
+                </select>
+            </div>
+            <div class="config-item">
+                像素锐化:
+                <select name="" id="clear-select">
+                    <option value="0">禁用</option>
+                    <option value="1">启用</option>
+                </select>
+            </div>
+            <div class="config-item">
+                交流QQ群: 526266208
+            </div>
+        </div>
+        <script>
                 $(function(){
-                    $("#mode-select").val(window.localStorage["baye/mpage"]);
-                    $("#mode-select").change(function () {
-                        window.localStorage["baye/mpage"] = $(this).val();
-                        console.log("changed:" + window.localStorage["baye/mpage"]);
-                    });
+                    function bind(id, key) {
+                        $(id).val(window.localStorage[key] || '0');
+                        $(id).change(function () {
+                            window.localStorage[key] = $(this).val();
+                        });
+                    }
+                    bind("#mode-select", "baye/mpage");
+                    bind("#resolution-select", "baye/resolution");
+                    bind("#clear-select", "baye/clearmode");
                 });
             </script>
-        </div>
-        <div>
-            交流QQ群: 526266208
-        </div>
     </body>
 </html>
