@@ -43,6 +43,11 @@ function lcdInit()
     canvas.width = lcdWidth * lcdDotSize;
     canvas.height = lcdHeight * lcdDotSize;
     _setLCDSize(lcdWidth, lcdHeight);
+
+
+    if (window.localStorage["baye/debug"] == '1') {
+        _bayeSetDebug(1);
+    }
 }
 
 function imagePixel(img, i)
