@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>分享存档</title>
+    <title>传送存档</title>
     <link rel="stylesheet" type="text/css" href="baye.css" />
     <link rel="icon" href="favicon.png">
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
@@ -55,43 +55,47 @@
 
         function upload(n) {
             var self = $(this);
-            var data = dump(n);
-
-            $("#osize").html('origin:' + data.length);
-
-            if (data.length < 100) {
-                $("#url-title").html("");
-                $("#url").html("该存档为空!");
-                return;
-            }
-
-            $("#result").html("请求中...");
-            var result = LZMA.compress(data, 9);
-
-            var b64data = Base64.encode(result);
-
-            $("#zsize").html('result:' + result.length);
-            $("#bsize").html('b64data:' + b64data.length);
-
-            var loadUrl = "http://bgwp.oschina.io/baye/load.html?sav=" + b64data;
             spinner.spin(document.body);
-            $.ajax({
-                url: "http://50r.cn/urls/add.jsonp?url=" + loadUrl,
-                dataType: "jsonp",
-                jsonp: "callback",
-                jsonpCallback: "www_50r_cn_jsonp_callback",
-                type: "GET",
-                success: function(resp) {
-                    spinner.stop();
-                    $("#url-title").html("已生成存档" + (n + 1) + "的链接:");
-                    $("#url").html('<a href="' + resp.url + '">' + resp.url + '</a>');
-                },
-                error: function() {
-                    spinner.stop();
+
+            setTimeout(function(){
+                var data = dump(n);
+
+                $("#osize").html('origin:' + data.length);
+
+                if (data.length < 100) {
                     $("#url-title").html("");
-                    $("#url").html("请求失败");
+                    $("#url").html("该存档为空!");
+                    spinner.stop();
+                    return;
                 }
-            });
+
+                $("#result").html("请求中...");
+                var result = LZMA.compress(data, 9);
+
+                var b64data = Base64.encode(result);
+
+                $("#zsize").html('result:' + result.length);
+                $("#bsize").html('b64data:' + b64data.length);
+
+                var loadUrl = "http://bgwp.oschina.io/baye/load.html?sav=" + b64data;
+                $.ajax({
+                    url: "http://50r.cn/urls/add.jsonp?url=" + loadUrl,
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "www_50r_cn_jsonp_callback",
+                    type: "GET",
+                    success: function(resp) {
+                        spinner.stop();
+                        $("#url-title").html("已生成存档" + (n + 1) + "的链接:");
+                        $("#url").html('<a href="' + resp.url + '">' + resp.url + '</a>');
+                    },
+                    error: function() {
+                        spinner.stop();
+                        $("#url-title").html("");
+                        $("#url").html("请求失败");
+                    }
+                });
+            }, 10);
         }
     </script>
 
