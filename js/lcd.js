@@ -390,6 +390,9 @@ function redirect(page) {
         case '1':
             defaultMPage = "m-old.html"
             break;
+        case '2':
+            defaultMPage = "m-ges.html"
+            break;
         }
         console.log('page:' + page);
         console.log('defpage:' + defaultMPage);
