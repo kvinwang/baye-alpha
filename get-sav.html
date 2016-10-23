@@ -91,8 +91,8 @@
                     },
                     error: function() {
                         spinner.stop();
-                        $("#url-title").html("");
-                        $("#url").html("请求失败");
+                        $("#url-title").html("短网址请求失败,已生成存档" + (n + 1) + "的长网址:");
+                        $("#url").html('<a href="' + loadUrl + '">' + loadUrl + '</a>');
                     }
                 });
             }, 10);
