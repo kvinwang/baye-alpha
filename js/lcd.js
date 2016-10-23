@@ -427,6 +427,26 @@ function touchPadInit(elementID) {
     var previousX = 0;
     var previousY = 0;
 //    var normalBackgroundColor = "#fff";
+    function convertTouch(touch) {
+        switch (lcdRotateMode) {
+        case 0:
+            break;
+        case 1:
+            return {
+                x: touch.screenY,
+                y: window.screen.width-touch.screenX,
+            };
+        case 2:
+            return {
+                x: window.screen.height-touch.screenY,
+                y: touch.screenX,
+            };
+        }
+        return {
+            x: touch.screenX,
+            y: touch.screenY,
+        };
+    }
 
     function raiseKey(key) {
         sendKey(key);
@@ -448,8 +468,9 @@ function touchPadInit(elementID) {
         }
         activeTouch = event.targetTouches[0];
         previousMovingTime = event.timeStamp;
-        previousX = lastX = originX = activeTouch.screenX;
-        previousY = lastY = originY = activeTouch.screenY;
+        var touch = convertTouch(activeTouch);
+        previousX = lastX = originX = touch.x;
+        previousY = lastY = originY = touch.y;
         touchMoved = false;
         // todo: color
     }
@@ -514,8 +535,9 @@ function touchPadInit(elementID) {
                 return;
             }
 
-            var x = newTouch.screenX;
-            var y = newTouch.screenY;
+            var touch = convertTouch(newTouch);
+            var x = touch.x;
+            var y = touch.y;
 
             var dt = event.timeStamp - previousMovingTime;
             previousMovingTime = event.timeStamp;
