@@ -108,10 +108,12 @@
     $("#menuControl").swipe( {
         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
             switch(direction){
+                case 'left':
                 case 'up':
                     sendKey(VK_SEARCH);
                     break;
                 case 'down':
+                case 'right':
                     sendKey(VK_HELP);
                     break;
             }
