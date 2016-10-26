@@ -19,6 +19,7 @@
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/lzma_worker-min.js"></script>
     <script src="js/base64.js"></script>
+    <script src="js/lcd.js"></script>
     <script src="js/spin.min.js"></script>
     <script>
         var opts = {
@@ -103,7 +104,14 @@
     <button class="btn menu" type="button" onclick="upload(1)">导出存档2</button>
     <button class="btn menu" type="button" onclick="upload(2)">导出存档3</button>
 
+    <script>
+        $(function(){
+            var libName = getLibName() || "步步高原版";
+            $("#lib-name").html("当前版本: " + libName);
+        });
+    </script>
     <div >
+        <div id="lib-name"></div>
         <div id="url-title"></div>
         <div id="url"></div>
         <br>
