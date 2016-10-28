@@ -80,23 +80,34 @@
 
                 var libName = getLibName();
                 var loadUrl = "http://bgwp.oschina.io/baye/load.html?sav=" + b64data + '&name=' + libName;
-                $.ajax({
-                    url: "http://50r.cn/urls/add.jsonp?url=" + encodeURIComponent(loadUrl),
-                    dataType: "jsonp",
-                    jsonp: "callback",
-                    jsonpCallback: "www_50r_cn_jsonp_callback",
-                    type: "GET",
-                    success: function(resp) {
-                        spinner.stop();
-                        $("#url-title").html("已生成存档" + (n + 1) + "的链接:");
-                        $("#url").html('<a href="' + resp.url + '">' + resp.url + '</a>');
-                    },
-                    error: function() {
-                        spinner.stop();
-                        $("#url-title").html("短网址请求失败,已生成存档" + (n + 1) + "的长网址:");
-                        $("#url").html('<a href="' + loadUrl + '">' + 长按复制链接 + '</a>');
-                    }
-                });
+
+                function showLongUrl(url, n) {
+                    $("#url-title").html("已生成存档" + (n + 1) + "的长网址:");
+                    $("#url").html('<a href="' + url + '">' + "长按复制链接" + '</a>');
+                }
+
+                if ($("#use-short-url").val() != '1')
+                {
+                    spinner.stop();
+                    showLongUrl(loadUrl, n);
+                } else {
+                    $.ajax({
+                        url: "http://50r.cn/urls/add.jsonp?url=" + encodeURIComponent(loadUrl),
+                        dataType: "jsonp",
+                        jsonp: "callback",
+                        jsonpCallback: "www_50r_cn_jsonp_callback",
+                        type: "GET",
+                        success: function(resp) {
+                            spinner.stop();
+                            $("#url-title").html("已生成存档" + (n + 1) + "的链接:");
+                            $("#url").html('<a href="' + resp.url + '">' + resp.url + '</a>');
+                        },
+                        error: function() {
+                            spinner.stop();
+                            showLongUrl(loadUrl, n);
+                        }
+                    });
+                }
             }, 10);
         }
     </script>
@@ -113,6 +124,13 @@
     </script>
     <div >
         <div id="lib-name"></div>
+        <div class="config-item">
+            使用短网址:
+            <select name="" id="use-short-url">
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
         <div id="url-title"></div>
         <div id="url"></div>
         <br>
