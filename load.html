@@ -32,15 +32,17 @@
         localStorage[filename(n*3+1)] = tuple[1];
     }
 
-    document.write("稍后...");
-
     var data = getParameterByName("sav", window.location.href);
+    var name = getParameterByName("name", window.location.href);
     data = data.replace(/ /g, "+");
     var lzma = Base64.decode(data);
     var hex = LZMA.decompress(lzma);
     load(2, hex);
     document.write("<br>");
-    document.write("已载入到第4个存档位...");
+    document.write("已载入到第4个存档位<br>");
+    if (name && name.length) {
+        document.write("请使用'" + name + "'载入存档");
+    }
 })();
 </script>
 

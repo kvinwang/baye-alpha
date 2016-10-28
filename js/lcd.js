@@ -217,7 +217,7 @@ function clearLib() {
 }
 
 function getLibName() {
-    return window.localStorage['baye/libname'];
+    return window.localStorage['baye/libname'] || "步步高原版";
 }
 
 if (typeof(Storage) === "undefined") {
