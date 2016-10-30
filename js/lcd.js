@@ -396,12 +396,13 @@ function redirect(page) {
         }
         console.log('page:' + page);
         console.log('defpage:' + defaultMPage);
-        var page = page || defaultMPage;
-        var now = new Date().getTime() / 1000;
-        window.location.href = page + "#" + now;
+        page = page || defaultMPage;
     } else {
-        window.location.href = "pc.html";
+        page = "pc.html";
     }
+    var now = new Date().getTime() / 1000;
+    var name = getLibName();
+    window.location.href = page + "?name=" + name + "#" + now;
 }
 
 function goHome() {
