@@ -42,7 +42,7 @@ function lcdInit()
     var canvas = document.getElementById('lcd');
     canvas.width = lcdWidth * lcdDotSize;
     canvas.height = lcdHeight * lcdDotSize;
-    _setLCDSize(lcdWidth, lcdHeight);
+    _bayeSetLcdSize(lcdWidth, lcdHeight);
 
 
     if (window.localStorage["baye/debug"] == '1') {
@@ -94,7 +94,7 @@ function lcdFlushBuffer(buffer) {
 }
 
 function sendKey(key) {
-    _sendKey(key);
+    _bayeSendKey(key);
 }
 
 var 		VK_PGUP =			0x20;
@@ -607,7 +607,7 @@ function touchScreenInit(lcdID) {
             break;
         }
 
-        _sendTouchEvent(key, gameX, gameY);
+        _bayeSendTouchEvent(key, gameX, gameY);
     }
 
     function resetTouch() {
@@ -668,3 +668,24 @@ function touchScreenInit(lcdID) {
     lcd.addEventListener("touchcancel", touchCanceled);
     disablePageScroll();
 }
+
+// --------- Engine callbacks ---------
+
+function bayeFlushLcdBuffer(buffer) {
+    lcdFlushBuffer(buffer);
+}
+
+function bayeExit() {
+    goHome();
+}
+
+function bayeLoadFileContent(filename) {
+    console.log("Loading " + filename);
+    return window.localStorage[filename];
+}
+
+function bayeSaveFileContent(filename, content) {
+    console.log("Saving " + filename);
+    window.localStorage[filename] = content;
+}
+
