@@ -381,6 +381,7 @@ function loadLibLists(container) {
 }
 
 function redirect(page) {
+    var isMobile = false;
     if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|Mobile|ARM)/i)){
         var defaultMPage = "m.html";
         switch (window.localStorage['baye/mpage']) {
@@ -397,12 +398,15 @@ function redirect(page) {
         console.log('page:' + page);
         console.log('defpage:' + defaultMPage);
         page = page || defaultMPage;
+        isMobile = true;
     } else {
         page = "pc.html";
+        isMobile = false;
     }
     var now = new Date().getTime() / 1000;
     var name = getLibName();
-    window.location.href = page + "?name=" + name + "#" + now;
+    var hash = isMobile ? "#" + now : "";
+    window.location.href = page + "?name=" + name + hash;
 }
 
 function goHome() {
