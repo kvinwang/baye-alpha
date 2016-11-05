@@ -9,7 +9,7 @@ import sys
 jsname = sys.argv[1]
 ver = sys.argv[2]
 
-regstr = '({})([0-9]?)'.format(re.escape(jsname + '?ver='))
+regstr = '({})([0-9]+)'.format(re.escape(jsname + '?ver='))
 
 print(regstr)
 regex = re.compile(regstr)
