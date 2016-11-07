@@ -574,6 +574,7 @@ function touchPadInit(elementID) {
     element.addEventListener("touchstart", touchBegan);
     element.addEventListener("touchmove", touchMove);
     element.addEventListener("touchend", touchEnded);
+    element.addEventListener("touchcancel", touchEnded);
     disablePageScroll();
 }
 
