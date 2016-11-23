@@ -95,3 +95,23 @@ function debugPrintAttackRange(data) {
     console.log(text);
 }
 
+function GB(s) {
+    var u8arr = TextEncoder('GBK').encode(s)
+}
+
+function U(s) {
+    var u8arr = TextDecoder('GBK').decode(s)
+}
+
+function bayeAlert(msg) {
+}
+
+function bayeSay(index, msg) {
+}
+
+function bayeGetPersonName(index) {
+}
+
+function bayeGetToolName(index) {
+}
+
