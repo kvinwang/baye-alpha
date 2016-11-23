@@ -14,8 +14,6 @@
             font-size: 30px;
         }
     </style>
-</head>
-<body>
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/lzma_worker-min.js"></script>
     <script src="js/base64.js"></script>
@@ -111,17 +109,19 @@
             }, 10);
         }
     </script>
-
-    <button class="btn menu" type="button" onclick="upload(0)">导出存档1</button>
-    <button class="btn menu" type="button" onclick="upload(1)">导出存档2</button>
-    <button class="btn menu" type="button" onclick="upload(2)">导出存档3</button>
-
     <script>
         $(function(){
             var libName = getLibName();
             $("#lib-name").html("当前版本: " + libName);
         });
     </script>
+</head>
+<body>
+
+    <button class="btn menu" type="button" onclick="upload(0)">导出存档1</button>
+    <button class="btn menu" type="button" onclick="upload(1)">导出存档2</button>
+    <button class="btn menu" type="button" onclick="upload(2)">导出存档3</button>
+
     <div >
         <div id="lib-name"></div>
         <div class="config-item">
