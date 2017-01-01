@@ -3,83 +3,139 @@ var    ValueTypeU8 = 0;
 var    ValueTypeU16 = 1;
 var    ValueTypeU32 = 2;
 var    ValueTypeString = 3;
-var    ValueTypeBinary = 4;
-var    ValueTypeObject = 5;
+var    ValueTypeObject = 4;
+var    ValueTypeArray = 5;
+var    ValueTypeMethod = 6;
 
-function baye_bridge_obj(obj) {
-    var jsObj = {};
-    var count = _object_get_field_count(obj);
+function baye_bridge_value(value) {
+    return baye_bridge_valuedef(_Value_get_def(value), _Value_get_addr(value));
+}
 
-    jsObj._bridged_obj = obj;
-
-    for (var i = 0; i < count; i++) {
-        var field = _object_get_field_by_index(obj, i);
-        var cname = _object_get_field_name(field);
-        var name = UTF8ToString(cname);
-        var value = 0;
-
-        switch (_object_get_field_type(field)) {
-            case ValueTypeU8:
-            case ValueTypeU16:
-            case ValueTypeU32:
-                value = _object_get_field_value(field);
-                break;
-            case ValueTypeString:
-                value = _object_get_field_value(field);
-                value = UTF8ToString(value);
-                break;
-            case ValueTypeBinary:
-                value = _object_get_field_value(field);
-                var size = _object_get_field_size(field);
-                var data = [];
-                for (var n = 0; n < size; n++) {
-                    data[n] = getValue(value + n, 'i8');
+function baye_bridge_description_for_value(jvalue, type) {
+    switch (type) {
+        case ValueTypeU8:
+        case ValueTypeU16:
+        case ValueTypeU32:
+        case ValueTypeString:
+            return {
+                get: function() {
+                    return jvalue.value;
+                },
+                set: function(value) {
+                    jvalue.value = value;
                 }
-                value = data;
-                break;
-            case ValueTypeObject:
-                value = _object_get_field_value(field);
-                value = baye_bridge_obj(value);
-                break;
-        }
-        jsObj[name] = value;
+            };
+            break;
+        case ValueTypeArray:
+            return {
+                get: function() {
+                    return jvalue;
+                },
+                set: function(value) {
+                    for(var i = 0; i < jvalue.length && i < value.length; i++) {
+                        jvalue[i] = value[i]
+                    }
+                }
+            };
+            break;
+        case ValueTypeObject:
+            return {
+                get: function() {
+                    return jvalue;
+                }
+            }
+            break;
+    }
+}
+
+function baye_bridge_valuedef(def, addr) {
+    var jsObj = {
+        _def: def,
+        _addr: addr,
+        length: 10,
+    };
+    var type = _ValueDef_get_type(def);
+
+    switch (type) {
+        case ValueTypeU8:
+            Object.defineProperty(jsObj, 'value', {
+                get: function() {
+                    return _baye_get_u8_value(this._addr);
+                },
+                set: function(value) {
+                    return _baye_set_u8_value(this._addr, value);
+                }
+            });
+            break;
+        case ValueTypeU16:
+            Object.defineProperty(jsObj, 'value', {
+                get: function() {
+                    return _baye_get_u16_value(this._addr);
+                },
+                set: function(value) {
+                    return _baye_set_u16_value(this._addr, value);
+                }
+            });
+            break;
+        case ValueTypeU32:
+            Object.defineProperty(jsObj, 'value', {
+                get: function() {
+                    return _baye_get_u32_value(this._addr);
+                },
+                set: function(value) {
+                    return _baye_set_u32_value(this._addr, value);
+                }
+            });
+            break;
+        case ValueTypeString:
+            Object.defineProperty(jsObj, 'value', {
+                get: function() {
+                    // TODO:
+                    return this._addr;
+                }
+            });
+            break;
+        case ValueTypeObject:
+            return baye_bridge_obj(def, addr);
+        case ValueTypeArray:
+            var length = _ValueDef_get_array_length(def);
+            jsObj.length = length;
+            var subdef = _ValueDef_get_array_subdef(def);
+            var subsize = _ValueDef_get_size(subdef);
+            for (var i = 0; i < length; i++) {
+                var item_value = baye_bridge_valuedef(subdef, addr + subsize * i);
+                var desc = baye_bridge_description_for_value(item_value, _ValueDef_get_type(subdef));
+                Object.defineProperty(jsObj, i, desc);
+            }
+            break;
+        case ValueTypeMethod:
+            return function() {
+            };
     }
     return jsObj;
 }
 
+function baye_bridge_obj(def, addr) {
+    var jsObj = {};
+    var count = _ValueDef_get_field_count(def);
 
-function baye_sync_obj(obj, jsObj) {
-    var count = _object_get_field_count(obj);
+
+    jsObj._def = def;
+    jsObj._addr = addr;
 
     for (var i = 0; i < count; i++) {
-        var field = _object_get_field_by_index(obj, i);
-        var cname = _object_get_field_name(field);
+        var field = _ValueDef_get_field_by_index(def, i);
+        var cname = _Field_get_name(field);
         var name = UTF8ToString(cname);
-        var value = jsObj[name];
+        var field_value_addr = _Field_get_value(field);
+        var value_def = _Value_get_def(field_value_addr);
+        var value_offset = _Value_get_addr(field_value_addr);
+        var field_value = baye_bridge_valuedef(value_def, addr + value_offset);
 
-        switch (_object_get_field_type(field)) {
-            case ValueTypeU8:
-            case ValueTypeU16:
-            case ValueTypeU32:
-                _object_set_field_value(field, value, 0);
-                break;
-            case ValueTypeString:
-                // TODO:
-                break;
-            case ValueTypeBinary:
-                var mem = _object_get_field_value(field);
-                var size = _object_get_field_size(field);
-                for (var n = 0; n < Math.min(size, value.length); n++) {
-                    setValue(mem + n, value[n], 'i8');
-                }
-                break;
-            case ValueTypeObject:
-                var cvalue = _object_get_field_value(field);
-                baye_sync_obj(cvalue, value);
-                break;
-        }
-        jsObj[name] = value;
+        var desc = baye_bridge_description_for_value(field_value, _Field_get_type(field));
+        Object.defineProperty(jsObj, name, desc);
     }
+    return jsObj;
 }
 
 // 调试攻击范围
