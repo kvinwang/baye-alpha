@@ -160,6 +160,21 @@ $(function(){
     baye.getPersonName = bayeWrapFunctionS(_bayeGetPersonName);
     baye.getToolName = bayeWrapFunctionS(_bayeGetToolName);
     baye.getSkillName = bayeWrapFunctionS(_bayeGetSkillName);
+    baye.getCityName = bayeWrapFunctionS(_bayeGetCityName);
+
+    baye.getCustomData = function() {
+        var cstr = _bayeGetCustomData();
+        if (cstr == 0) return null;
+        return UTF8ToString(cstr);
+    }
+
+    baye.setCustomData = function(data) {
+        var length = lengthBytesUTF8(data) + 1;
+        var buffer = Module._malloc(length);
+        stringToUTF8(data, buffer, length);
+        _bayeSetCustomData(buffer);
+        Module._free(buffer);
+    }
 
     baye.printPeople = function () {
         for (var i = 0; i < 250; i++) {
