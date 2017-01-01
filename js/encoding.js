@@ -343,6 +343,332 @@ if (typeof module !== "undefined" && module.exports &&
       "encodings": [
         {
           "labels": [
+            "unicode-1-1-utf-8",
+            "utf-8",
+            "utf8"
+          ],
+          "name": "UTF-8"
+        }
+      ],
+      "heading": "The Encoding"
+    },
+    {
+      "encodings": [
+        {
+          "labels": [
+            "866",
+            "cp866",
+            "csibm866",
+            "ibm866"
+          ],
+          "name": "IBM866"
+        },
+        {
+          "labels": [
+            "csisolatin2",
+            "iso-8859-2",
+            "iso-ir-101",
+            "iso8859-2",
+            "iso88592",
+            "iso_8859-2",
+            "iso_8859-2:1987",
+            "l2",
+            "latin2"
+          ],
+          "name": "ISO-8859-2"
+        },
+        {
+          "labels": [
+            "csisolatin3",
+            "iso-8859-3",
+            "iso-ir-109",
+            "iso8859-3",
+            "iso88593",
+            "iso_8859-3",
+            "iso_8859-3:1988",
+            "l3",
+            "latin3"
+          ],
+          "name": "ISO-8859-3"
+        },
+        {
+          "labels": [
+            "csisolatin4",
+            "iso-8859-4",
+            "iso-ir-110",
+            "iso8859-4",
+            "iso88594",
+            "iso_8859-4",
+            "iso_8859-4:1988",
+            "l4",
+            "latin4"
+          ],
+          "name": "ISO-8859-4"
+        },
+        {
+          "labels": [
+            "csisolatincyrillic",
+            "cyrillic",
+            "iso-8859-5",
+            "iso-ir-144",
+            "iso8859-5",
+            "iso88595",
+            "iso_8859-5",
+            "iso_8859-5:1988"
+          ],
+          "name": "ISO-8859-5"
+        },
+        {
+          "labels": [
+            "arabic",
+            "asmo-708",
+            "csiso88596e",
+            "csiso88596i",
+            "csisolatinarabic",
+            "ecma-114",
+            "iso-8859-6",
+            "iso-8859-6-e",
+            "iso-8859-6-i",
+            "iso-ir-127",
+            "iso8859-6",
+            "iso88596",
+            "iso_8859-6",
+            "iso_8859-6:1987"
+          ],
+          "name": "ISO-8859-6"
+        },
+        {
+          "labels": [
+            "csisolatingreek",
+            "ecma-118",
+            "elot_928",
+            "greek",
+            "greek8",
+            "iso-8859-7",
+            "iso-ir-126",
+            "iso8859-7",
+            "iso88597",
+            "iso_8859-7",
+            "iso_8859-7:1987",
+            "sun_eu_greek"
+          ],
+          "name": "ISO-8859-7"
+        },
+        {
+          "labels": [
+            "csiso88598e",
+            "csisolatinhebrew",
+            "hebrew",
+            "iso-8859-8",
+            "iso-8859-8-e",
+            "iso-ir-138",
+            "iso8859-8",
+            "iso88598",
+            "iso_8859-8",
+            "iso_8859-8:1988",
+            "visual"
+          ],
+          "name": "ISO-8859-8"
+        },
+        {
+          "labels": [
+            "csiso88598i",
+            "iso-8859-8-i",
+            "logical"
+          ],
+          "name": "ISO-8859-8-I"
+        },
+        {
+          "labels": [
+            "csisolatin6",
+            "iso-8859-10",
+            "iso-ir-157",
+            "iso8859-10",
+            "iso885910",
+            "l6",
+            "latin6"
+          ],
+          "name": "ISO-8859-10"
+        },
+        {
+          "labels": [
+            "iso-8859-13",
+            "iso8859-13",
+            "iso885913"
+          ],
+          "name": "ISO-8859-13"
+        },
+        {
+          "labels": [
+            "iso-8859-14",
+            "iso8859-14",
+            "iso885914"
+          ],
+          "name": "ISO-8859-14"
+        },
+        {
+          "labels": [
+            "csisolatin9",
+            "iso-8859-15",
+            "iso8859-15",
+            "iso885915",
+            "iso_8859-15",
+            "l9"
+          ],
+          "name": "ISO-8859-15"
+        },
+        {
+          "labels": [
+            "iso-8859-16"
+          ],
+          "name": "ISO-8859-16"
+        },
+        {
+          "labels": [
+            "cskoi8r",
+            "koi",
+            "koi8",
+            "koi8-r",
+            "koi8_r"
+          ],
+          "name": "KOI8-R"
+        },
+        {
+          "labels": [
+            "koi8-ru",
+            "koi8-u"
+          ],
+          "name": "KOI8-U"
+        },
+        {
+          "labels": [
+            "csmacintosh",
+            "mac",
+            "macintosh",
+            "x-mac-roman"
+          ],
+          "name": "macintosh"
+        },
+        {
+          "labels": [
+            "dos-874",
+            "iso-8859-11",
+            "iso8859-11",
+            "iso885911",
+            "tis-620",
+            "windows-874"
+          ],
+          "name": "windows-874"
+        },
+        {
+          "labels": [
+            "cp1250",
+            "windows-1250",
+            "x-cp1250"
+          ],
+          "name": "windows-1250"
+        },
+        {
+          "labels": [
+            "cp1251",
+            "windows-1251",
+            "x-cp1251"
+          ],
+          "name": "windows-1251"
+        },
+        {
+          "labels": [
+            "ansi_x3.4-1968",
+            "ascii",
+            "cp1252",
+            "cp819",
+            "csisolatin1",
+            "ibm819",
+            "iso-8859-1",
+            "iso-ir-100",
+            "iso8859-1",
+            "iso88591",
+            "iso_8859-1",
+            "iso_8859-1:1987",
+            "l1",
+            "latin1",
+            "us-ascii",
+            "windows-1252",
+            "x-cp1252"
+          ],
+          "name": "windows-1252"
+        },
+        {
+          "labels": [
+            "cp1253",
+            "windows-1253",
+            "x-cp1253"
+          ],
+          "name": "windows-1253"
+        },
+        {
+          "labels": [
+            "cp1254",
+            "csisolatin5",
+            "iso-8859-9",
+            "iso-ir-148",
+            "iso8859-9",
+            "iso88599",
+            "iso_8859-9",
+            "iso_8859-9:1989",
+            "l5",
+            "latin5",
+            "windows-1254",
+            "x-cp1254"
+          ],
+          "name": "windows-1254"
+        },
+        {
+          "labels": [
+            "cp1255",
+            "windows-1255",
+            "x-cp1255"
+          ],
+          "name": "windows-1255"
+        },
+        {
+          "labels": [
+            "cp1256",
+            "windows-1256",
+            "x-cp1256"
+          ],
+          "name": "windows-1256"
+        },
+        {
+          "labels": [
+            "cp1257",
+            "windows-1257",
+            "x-cp1257"
+          ],
+          "name": "windows-1257"
+        },
+        {
+          "labels": [
+            "cp1258",
+            "windows-1258",
+            "x-cp1258"
+          ],
+          "name": "windows-1258"
+        },
+        {
+          "labels": [
+            "x-mac-cyrillic",
+            "x-mac-ukrainian"
+          ],
+          "name": "x-mac-cyrillic"
+        }
+      ],
+      "heading": "Legacy single-byte encodings"
+    },
+    {
+      "encodings": [
+        {
+          "labels": [
             "chinese",
             "csgb2312",
             "csiso58gb231280",
@@ -363,6 +689,108 @@ if (typeof module !== "undefined" && module.exports &&
         }
       ],
       "heading": "Legacy multi-byte Chinese (simplified) encodings"
+    },
+    {
+      "encodings": [
+        {
+          "labels": [
+            "big5",
+            "big5-hkscs",
+            "cn-big5",
+            "csbig5",
+            "x-x-big5"
+          ],
+          "name": "Big5"
+        }
+      ],
+      "heading": "Legacy multi-byte Chinese (traditional) encodings"
+    },
+    {
+      "encodings": [
+        {
+          "labels": [
+            "cseucpkdfmtjapanese",
+            "euc-jp",
+            "x-euc-jp"
+          ],
+          "name": "EUC-JP"
+        },
+        {
+          "labels": [
+            "csiso2022jp",
+            "iso-2022-jp"
+          ],
+          "name": "ISO-2022-JP"
+        },
+        {
+          "labels": [
+            "csshiftjis",
+            "ms932",
+            "ms_kanji",
+            "shift-jis",
+            "shift_jis",
+            "sjis",
+            "windows-31j",
+            "x-sjis"
+          ],
+          "name": "Shift_JIS"
+        }
+      ],
+      "heading": "Legacy multi-byte Japanese encodings"
+    },
+    {
+      "encodings": [
+        {
+          "labels": [
+            "cseuckr",
+            "csksc56011987",
+            "euc-kr",
+            "iso-ir-149",
+            "korean",
+            "ks_c_5601-1987",
+            "ks_c_5601-1989",
+            "ksc5601",
+            "ksc_5601",
+            "windows-949"
+          ],
+          "name": "EUC-KR"
+        }
+      ],
+      "heading": "Legacy multi-byte Korean encodings"
+    },
+    {
+      "encodings": [
+        {
+          "labels": [
+            "csiso2022kr",
+            "hz-gb-2312",
+            "iso-2022-cn",
+            "iso-2022-cn-ext",
+            "iso-2022-kr"
+          ],
+          "name": "replacement"
+        },
+        {
+          "labels": [
+            "utf-16be"
+          ],
+          "name": "UTF-16BE"
+        },
+        {
+          "labels": [
+            "utf-16",
+            "utf-16le"
+          ],
+          "name": "UTF-16LE"
+        },
+        {
+          "labels": [
+            "x-user-defined"
+          ],
+          "name": "x-user-defined"
+        }
+      ],
+      "heading": "Legacy miscellaneous encodings"
     }
   ];
 
@@ -899,6 +1327,224 @@ if (typeof module !== "undefined" && module.exports &&
   // 9. The encoding
   //
 
+  // 9.1 utf-8
+
+  // 9.1.1 utf-8 decoder
+  /**
+   * @constructor
+   * @implements {Decoder}
+   * @param {{fatal: boolean}} options
+   */
+  function UTF8Decoder(options) {
+    var fatal = options.fatal;
+
+    // utf-8's decoder's has an associated utf-8 code point, utf-8
+    // bytes seen, and utf-8 bytes needed (all initially 0), a utf-8
+    // lower boundary (initially 0x80), and a utf-8 upper boundary
+    // (initially 0xBF).
+    var /** @type {number} */ utf8_code_point = 0,
+        /** @type {number} */ utf8_bytes_seen = 0,
+        /** @type {number} */ utf8_bytes_needed = 0,
+        /** @type {number} */ utf8_lower_boundary = 0x80,
+        /** @type {number} */ utf8_upper_boundary = 0xBF;
+
+    /**
+     * @param {Stream} stream The stream of bytes being decoded.
+     * @param {number} bite The next byte read from the stream.
+     * @return {?(number|!Array.<number>)} The next code point(s)
+     *     decoded, or null if not enough data exists in the input
+     *     stream to decode a complete code point.
+     */
+    this.handler = function(stream, bite) {
+      // 1. If byte is end-of-stream and utf-8 bytes needed is not 0,
+      // set utf-8 bytes needed to 0 and return error.
+      if (bite === end_of_stream && utf8_bytes_needed !== 0) {
+        utf8_bytes_needed = 0;
+        return decoderError(fatal);
+      }
+
+      // 2. If byte is end-of-stream, return finished.
+      if (bite === end_of_stream)
+        return finished;
+
+      // 3. If utf-8 bytes needed is 0, based on byte:
+      if (utf8_bytes_needed === 0) {
+
+        // 0x00 to 0x7F
+        if (inRange(bite, 0x00, 0x7F)) {
+          // Return a code point whose value is byte.
+          return bite;
+        }
+
+        // 0xC2 to 0xDF
+        else if (inRange(bite, 0xC2, 0xDF)) {
+          // 1. Set utf-8 bytes needed to 1.
+          utf8_bytes_needed = 1;
+
+          // 2. Set UTF-8 code point to byte & 0x1F.
+          utf8_code_point = bite & 0x1F;
+        }
+
+        // 0xE0 to 0xEF
+        else if (inRange(bite, 0xE0, 0xEF)) {
+          // 1. If byte is 0xE0, set utf-8 lower boundary to 0xA0.
+          if (bite === 0xE0)
+            utf8_lower_boundary = 0xA0;
+          // 2. If byte is 0xED, set utf-8 upper boundary to 0x9F.
+          if (bite === 0xED)
+            utf8_upper_boundary = 0x9F;
+          // 3. Set utf-8 bytes needed to 2.
+          utf8_bytes_needed = 2;
+          // 4. Set UTF-8 code point to byte & 0xF.
+          utf8_code_point = bite & 0xF;
+        }
+
+        // 0xF0 to 0xF4
+        else if (inRange(bite, 0xF0, 0xF4)) {
+          // 1. If byte is 0xF0, set utf-8 lower boundary to 0x90.
+          if (bite === 0xF0)
+            utf8_lower_boundary = 0x90;
+          // 2. If byte is 0xF4, set utf-8 upper boundary to 0x8F.
+          if (bite === 0xF4)
+            utf8_upper_boundary = 0x8F;
+          // 3. Set utf-8 bytes needed to 3.
+          utf8_bytes_needed = 3;
+          // 4. Set UTF-8 code point to byte & 0x7.
+          utf8_code_point = bite & 0x7;
+        }
+
+        // Otherwise
+        else {
+          // Return error.
+          return decoderError(fatal);
+        }
+
+        // Return continue.
+        return null;
+      }
+
+      // 4. If byte is not in the range utf-8 lower boundary to utf-8
+      // upper boundary, inclusive, run these substeps:
+      if (!inRange(bite, utf8_lower_boundary, utf8_upper_boundary)) {
+
+        // 1. Set utf-8 code point, utf-8 bytes needed, and utf-8
+        // bytes seen to 0, set utf-8 lower boundary to 0x80, and set
+        // utf-8 upper boundary to 0xBF.
+        utf8_code_point = utf8_bytes_needed = utf8_bytes_seen = 0;
+        utf8_lower_boundary = 0x80;
+        utf8_upper_boundary = 0xBF;
+
+        // 2. Prepend byte to stream.
+        stream.prepend(bite);
+
+        // 3. Return error.
+        return decoderError(fatal);
+      }
+
+      // 5. Set utf-8 lower boundary to 0x80 and utf-8 upper boundary
+      // to 0xBF.
+      utf8_lower_boundary = 0x80;
+      utf8_upper_boundary = 0xBF;
+
+      // 6. Set UTF-8 code point to (UTF-8 code point << 6) | (byte &
+      // 0x3F)
+      utf8_code_point = (utf8_code_point << 6) | (bite & 0x3F);
+
+      // 7. Increase utf-8 bytes seen by one.
+      utf8_bytes_seen += 1;
+
+      // 8. If utf-8 bytes seen is not equal to utf-8 bytes needed,
+      // continue.
+      if (utf8_bytes_seen !== utf8_bytes_needed)
+        return null;
+
+      // 9. Let code point be utf-8 code point.
+      var code_point = utf8_code_point;
+
+      // 10. Set utf-8 code point, utf-8 bytes needed, and utf-8 bytes
+      // seen to 0.
+      utf8_code_point = utf8_bytes_needed = utf8_bytes_seen = 0;
+
+      // 11. Return a code point whose value is code point.
+      return code_point;
+    };
+  }
+
+  // 9.1.2 utf-8 encoder
+  /**
+   * @constructor
+   * @implements {Encoder}
+   * @param {{fatal: boolean}} options
+   */
+  function UTF8Encoder(options) {
+    var fatal = options.fatal;
+    /**
+     * @param {Stream} stream Input stream.
+     * @param {number} code_point Next code point read from the stream.
+     * @return {(number|!Array.<number>)} Byte(s) to emit.
+     */
+    this.handler = function(stream, code_point) {
+      // 1. If code point is end-of-stream, return finished.
+      if (code_point === end_of_stream)
+        return finished;
+
+      // 2. If code point is an ASCII code point, return a byte whose
+      // value is code point.
+      if (isASCIICodePoint(code_point))
+        return code_point;
+
+      // 3. Set count and offset based on the range code point is in:
+      var count, offset;
+      // U+0080 to U+07FF, inclusive:
+      if (inRange(code_point, 0x0080, 0x07FF)) {
+        // 1 and 0xC0
+        count = 1;
+        offset = 0xC0;
+      }
+      // U+0800 to U+FFFF, inclusive:
+      else if (inRange(code_point, 0x0800, 0xFFFF)) {
+        // 2 and 0xE0
+        count = 2;
+        offset = 0xE0;
+      }
+      // U+10000 to U+10FFFF, inclusive:
+      else if (inRange(code_point, 0x10000, 0x10FFFF)) {
+        // 3 and 0xF0
+        count = 3;
+        offset = 0xF0;
+      }
+
+      // 4. Let bytes be a byte sequence whose first byte is (code
+      // point >> (6 × count)) + offset.
+      var bytes = [(code_point >> (6 * count)) + offset];
+
+      // 5. Run these substeps while count is greater than 0:
+      while (count > 0) {
+
+        // 1. Set temp to code point >> (6 × (count − 1)).
+        var temp = code_point >> (6 * (count - 1));
+
+        // 2. Append to bytes 0x80 | (temp & 0x3F).
+        bytes.push(0x80 | (temp & 0x3F));
+
+        // 3. Decrease count by one.
+        count -= 1;
+      }
+
+      // 6. Return bytes bytes, in order.
+      return bytes;
+    };
+  }
+
+  /** @param {{fatal: boolean}} options */
+  encoders['UTF-8'] = function(options) {
+    return new UTF8Encoder(options);
+  };
+  /** @param {{fatal: boolean}} options */
+  decoders['UTF-8'] = function(options) {
+    return new UTF8Decoder(options);
+  };
+
   //
   // 10. Legacy single-byte encodings
   //
@@ -1276,6 +1922,1115 @@ if (typeof module !== "undefined" && module.exports &&
   decoders['gb18030'] = function(options) {
     return new GB18030Decoder(options);
   };
+
+
+  //
+  // 12. Legacy multi-byte Chinese (traditional) encodings
+  //
+
+  // 12.1 Big5
+
+  // 12.1.1 Big5 decoder
+  /**
+   * @constructor
+   * @implements {Decoder}
+   * @param {{fatal: boolean}} options
+   */
+  function Big5Decoder(options) {
+    var fatal = options.fatal;
+    // Big5's decoder has an associated Big5 lead (initially 0x00).
+    var /** @type {number} */ Big5_lead = 0x00;
+
+    /**
+     * @param {Stream} stream The stream of bytes being decoded.
+     * @param {number} bite The next byte read from the stream.
+     * @return {?(number|!Array.<number>)} The next code point(s)
+     *     decoded, or null if not enough data exists in the input
+     *     stream to decode a complete code point.
+     */
+    this.handler = function(stream, bite) {
+      // 1. If byte is end-of-stream and Big5 lead is not 0x00, set
+      // Big5 lead to 0x00 and return error.
+      if (bite === end_of_stream && Big5_lead !== 0x00) {
+        Big5_lead = 0x00;
+        return decoderError(fatal);
+      }
+
+      // 2. If byte is end-of-stream and Big5 lead is 0x00, return
+      // finished.
+      if (bite === end_of_stream && Big5_lead === 0x00)
+        return finished;
+
+      // 3. If Big5 lead is not 0x00, let lead be Big5 lead, let
+      // pointer be null, set Big5 lead to 0x00, and then run these
+      // substeps:
+      if (Big5_lead !== 0x00) {
+        var lead = Big5_lead;
+        var pointer = null;
+        Big5_lead = 0x00;
+
+        // 1. Let offset be 0x40 if byte is less than 0x7F and 0x62
+        // otherwise.
+        var offset = bite < 0x7F ? 0x40 : 0x62;
+
+        // 2. If byte is in the range 0x40 to 0x7E, inclusive, or 0xA1
+        // to 0xFE, inclusive, set pointer to (lead − 0x81) × 157 +
+        // (byte − offset).
+        if (inRange(bite, 0x40, 0x7E) || inRange(bite, 0xA1, 0xFE))
+          pointer = (lead - 0x81) * 157 + (bite - offset);
+
+        // 3. If there is a row in the table below whose first column
+        // is pointer, return the two code points listed in its second
+        // column
+        // Pointer | Code points
+        // --------+--------------
+        // 1133    | U+00CA U+0304
+        // 1135    | U+00CA U+030C
+        // 1164    | U+00EA U+0304
+        // 1166    | U+00EA U+030C
+        switch (pointer) {
+          case 1133: return [0x00CA, 0x0304];
+          case 1135: return [0x00CA, 0x030C];
+          case 1164: return [0x00EA, 0x0304];
+          case 1166: return [0x00EA, 0x030C];
+        }
+
+        // 4. Let code point be null if pointer is null and the index
+        // code point for pointer in index Big5 otherwise.
+        var code_point = (pointer === null) ? null :
+            indexCodePointFor(pointer, index('big5'));
+
+        // 5. If code point is null and byte is an ASCII byte, prepend
+        // byte to stream.
+        if (code_point === null && isASCIIByte(bite))
+          stream.prepend(bite);
+
+        // 6. If code point is null, return error.
+        if (code_point === null)
+          return decoderError(fatal);
+
+        // 7. Return a code point whose value is code point.
+        return code_point;
+      }
+
+      // 4. If byte is an ASCII byte, return a code point whose value
+      // is byte.
+      if (isASCIIByte(bite))
+        return bite;
+
+      // 5. If byte is in the range 0x81 to 0xFE, inclusive, set Big5
+      // lead to byte and return continue.
+      if (inRange(bite, 0x81, 0xFE)) {
+        Big5_lead = bite;
+        return null;
+      }
+
+      // 6. Return error.
+      return decoderError(fatal);
+    };
+  }
+
+  // 12.1.2 Big5 encoder
+  /**
+   * @constructor
+   * @implements {Encoder}
+   * @param {{fatal: boolean}} options
+   */
+  function Big5Encoder(options) {
+    var fatal = options.fatal;
+    /**
+     * @param {Stream} stream Input stream.
+     * @param {number} code_point Next code point read from the stream.
+     * @return {(number|!Array.<number>)} Byte(s) to emit.
+     */
+    this.handler = function(stream, code_point) {
+      // 1. If code point is end-of-stream, return finished.
+      if (code_point === end_of_stream)
+        return finished;
+
+      // 2. If code point is an ASCII code point, return a byte whose
+      // value is code point.
+      if (isASCIICodePoint(code_point))
+        return code_point;
+
+      // 3. Let pointer be the index Big5 pointer for code point.
+      var pointer = indexBig5PointerFor(code_point);
+
+      // 4. If pointer is null, return error with code point.
+      if (pointer === null)
+        return encoderError(code_point);
+
+      // 5. Let lead be floor(pointer / 157) + 0x81.
+      var lead = floor(pointer / 157) + 0x81;
+
+      // 6. If lead is less than 0xA1, return error with code point.
+      if (lead < 0xA1)
+        return encoderError(code_point);
+
+      // 7. Let trail be pointer % 157.
+      var trail = pointer % 157;
+
+      // 8. Let offset be 0x40 if trail is less than 0x3F and 0x62
+      // otherwise.
+      var offset = trail < 0x3F ? 0x40 : 0x62;
+
+      // Return two bytes whose values are lead and trail + offset.
+      return [lead, trail + offset];
+    };
+  }
+
+  /** @param {{fatal: boolean}} options */
+  encoders['Big5'] = function(options) {
+    return new Big5Encoder(options);
+  };
+  /** @param {{fatal: boolean}} options */
+  decoders['Big5'] = function(options) {
+    return new Big5Decoder(options);
+  };
+
+
+  //
+  // 13. Legacy multi-byte Japanese encodings
+  //
+
+  // 13.1 euc-jp
+
+  // 13.1.1 euc-jp decoder
+  /**
+   * @constructor
+   * @implements {Decoder}
+   * @param {{fatal: boolean}} options
+   */
+  function EUCJPDecoder(options) {
+    var fatal = options.fatal;
+
+    // euc-jp's decoder has an associated euc-jp jis0212 flag
+    // (initially unset) and euc-jp lead (initially 0x00).
+    var /** @type {boolean} */ eucjp_jis0212_flag = false,
+        /** @type {number} */ eucjp_lead = 0x00;
+
+    /**
+     * @param {Stream} stream The stream of bytes being decoded.
+     * @param {number} bite The next byte read from the stream.
+     * @return {?(number|!Array.<number>)} The next code point(s)
+     *     decoded, or null if not enough data exists in the input
+     *     stream to decode a complete code point.
+     */
+    this.handler = function(stream, bite) {
+      // 1. If byte is end-of-stream and euc-jp lead is not 0x00, set
+      // euc-jp lead to 0x00, and return error.
+      if (bite === end_of_stream && eucjp_lead !== 0x00) {
+        eucjp_lead = 0x00;
+        return decoderError(fatal);
+      }
+
+      // 2. If byte is end-of-stream and euc-jp lead is 0x00, return
+      // finished.
+      if (bite === end_of_stream && eucjp_lead === 0x00)
+        return finished;
+
+      // 3. If euc-jp lead is 0x8E and byte is in the range 0xA1 to
+      // 0xDF, inclusive, set euc-jp lead to 0x00 and return a code
+      // point whose value is 0xFF61 − 0xA1 + byte.
+      if (eucjp_lead === 0x8E && inRange(bite, 0xA1, 0xDF)) {
+        eucjp_lead = 0x00;
+        return 0xFF61 - 0xA1 + bite;
+      }
+
+      // 4. If euc-jp lead is 0x8F and byte is in the range 0xA1 to
+      // 0xFE, inclusive, set the euc-jp jis0212 flag, set euc-jp lead
+      // to byte, and return continue.
+      if (eucjp_lead === 0x8F && inRange(bite, 0xA1, 0xFE)) {
+        eucjp_jis0212_flag = true;
+        eucjp_lead = bite;
+        return null;
+      }
+
+      // 5. If euc-jp lead is not 0x00, let lead be euc-jp lead, set
+      // euc-jp lead to 0x00, and run these substeps:
+      if (eucjp_lead !== 0x00) {
+        var lead = eucjp_lead;
+        eucjp_lead = 0x00;
+
+        // 1. Let code point be null.
+        var code_point = null;
+
+        // 2. If lead and byte are both in the range 0xA1 to 0xFE,
+        // inclusive, set code point to the index code point for (lead
+        // − 0xA1) × 94 + byte − 0xA1 in index jis0208 if the euc-jp
+        // jis0212 flag is unset and in index jis0212 otherwise.
+        if (inRange(lead, 0xA1, 0xFE) && inRange(bite, 0xA1, 0xFE)) {
+          code_point = indexCodePointFor(
+            (lead - 0xA1) * 94 + (bite - 0xA1),
+            index(!eucjp_jis0212_flag ? 'jis0208' : 'jis0212'));
+        }
+
+        // 3. Unset the euc-jp jis0212 flag.
+        eucjp_jis0212_flag = false;
+
+        // 4. If byte is not in the range 0xA1 to 0xFE, inclusive,
+        // prepend byte to stream.
+        if (!inRange(bite, 0xA1, 0xFE))
+          stream.prepend(bite);
+
+        // 5. If code point is null, return error.
+        if (code_point === null)
+          return decoderError(fatal);
+
+        // 6. Return a code point whose value is code point.
+        return code_point;
+      }
+
+      // 6. If byte is an ASCII byte, return a code point whose value
+      // is byte.
+      if (isASCIIByte(bite))
+        return bite;
+
+      // 7. If byte is 0x8E, 0x8F, or in the range 0xA1 to 0xFE,
+      // inclusive, set euc-jp lead to byte and return continue.
+      if (bite === 0x8E || bite === 0x8F || inRange(bite, 0xA1, 0xFE)) {
+        eucjp_lead = bite;
+        return null;
+      }
+
+      // 8. Return error.
+      return decoderError(fatal);
+    };
+  }
+
+  // 13.1.2 euc-jp encoder
+  /**
+   * @constructor
+   * @implements {Encoder}
+   * @param {{fatal: boolean}} options
+   */
+  function EUCJPEncoder(options) {
+    var fatal = options.fatal;
+    /**
+     * @param {Stream} stream Input stream.
+     * @param {number} code_point Next code point read from the stream.
+     * @return {(number|!Array.<number>)} Byte(s) to emit.
+     */
+    this.handler = function(stream, code_point) {
+      // 1. If code point is end-of-stream, return finished.
+      if (code_point === end_of_stream)
+        return finished;
+
+      // 2. If code point is an ASCII code point, return a byte whose
+      // value is code point.
+      if (isASCIICodePoint(code_point))
+        return code_point;
+
+      // 3. If code point is U+00A5, return byte 0x5C.
+      if (code_point === 0x00A5)
+        return 0x5C;
+
+      // 4. If code point is U+203E, return byte 0x7E.
+      if (code_point === 0x203E)
+        return 0x7E;
+
+      // 5. If code point is in the range U+FF61 to U+FF9F, inclusive,
+      // return two bytes whose values are 0x8E and code point −
+      // 0xFF61 + 0xA1.
+      if (inRange(code_point, 0xFF61, 0xFF9F))
+        return [0x8E, code_point - 0xFF61 + 0xA1];
+
+      // 6. If code point is U+2212, set it to U+FF0D.
+      if (code_point === 0x2212)
+        code_point = 0xFF0D;
+
+      // 7. Let pointer be the index pointer for code point in index
+      // jis0208.
+      var pointer = indexPointerFor(code_point, index('jis0208'));
+
+      // 8. If pointer is null, return error with code point.
+      if (pointer === null)
+        return encoderError(code_point);
+
+      // 9. Let lead be floor(pointer / 94) + 0xA1.
+      var lead = floor(pointer / 94) + 0xA1;
+
+      // 10. Let trail be pointer % 94 + 0xA1.
+      var trail = pointer % 94 + 0xA1;
+
+      // 11. Return two bytes whose values are lead and trail.
+      return [lead, trail];
+    };
+  }
+
+  /** @param {{fatal: boolean}} options */
+  encoders['EUC-JP'] = function(options) {
+    return new EUCJPEncoder(options);
+  };
+  /** @param {{fatal: boolean}} options */
+  decoders['EUC-JP'] = function(options) {
+    return new EUCJPDecoder(options);
+  };
+
+  // 13.2 iso-2022-jp
+
+  // 13.2.1 iso-2022-jp decoder
+  /**
+   * @constructor
+   * @implements {Decoder}
+   * @param {{fatal: boolean}} options
+   */
+  function ISO2022JPDecoder(options) {
+    var fatal = options.fatal;
+    /** @enum */
+    var states = {
+      ASCII: 0,
+      Roman: 1,
+      Katakana: 2,
+      LeadByte: 3,
+      TrailByte: 4,
+      EscapeStart: 5,
+      Escape: 6
+    };
+    // iso-2022-jp's decoder has an associated iso-2022-jp decoder
+    // state (initially ASCII), iso-2022-jp decoder output state
+    // (initially ASCII), iso-2022-jp lead (initially 0x00), and
+    // iso-2022-jp output flag (initially unset).
+    var /** @type {number} */ iso2022jp_decoder_state = states.ASCII,
+        /** @type {number} */ iso2022jp_decoder_output_state = states.ASCII,
+        /** @type {number} */ iso2022jp_lead = 0x00,
+        /** @type {boolean} */ iso2022jp_output_flag = false;
+    /**
+     * @param {Stream} stream The stream of bytes being decoded.
+     * @param {number} bite The next byte read from the stream.
+     * @return {?(number|!Array.<number>)} The next code point(s)
+     *     decoded, or null if not enough data exists in the input
+     *     stream to decode a complete code point.
+     */
+    this.handler = function(stream, bite) {
+      // switching on iso-2022-jp decoder state:
+      switch (iso2022jp_decoder_state) {
+      default:
+      case states.ASCII:
+        // ASCII
+        // Based on byte:
+
+        // 0x1B
+        if (bite === 0x1B) {
+          // Set iso-2022-jp decoder state to escape start and return
+          // continue.
+          iso2022jp_decoder_state = states.EscapeStart;
+          return null;
+        }
+
+        // 0x00 to 0x7F, excluding 0x0E, 0x0F, and 0x1B
+        if (inRange(bite, 0x00, 0x7F) && bite !== 0x0E
+            && bite !== 0x0F && bite !== 0x1B) {
+          // Unset the iso-2022-jp output flag and return a code point
+          // whose value is byte.
+          iso2022jp_output_flag = false;
+          return bite;
+        }
+
+        // end-of-stream
+        if (bite === end_of_stream) {
+          // Return finished.
+          return finished;
+        }
+
+        // Otherwise
+        // Unset the iso-2022-jp output flag and return error.
+        iso2022jp_output_flag = false;
+        return decoderError(fatal);
+
+      case states.Roman:
+        // Roman
+        // Based on byte:
+
+        // 0x1B
+        if (bite === 0x1B) {
+          // Set iso-2022-jp decoder state to escape start and return
+          // continue.
+          iso2022jp_decoder_state = states.EscapeStart;
+          return null;
+        }
+
+        // 0x5C
+        if (bite === 0x5C) {
+          // Unset the iso-2022-jp output flag and return code point
+          // U+00A5.
+          iso2022jp_output_flag = false;
+          return 0x00A5;
+        }
+
+        // 0x7E
+        if (bite === 0x7E) {
+          // Unset the iso-2022-jp output flag and return code point
+          // U+203E.
+          iso2022jp_output_flag = false;
+          return 0x203E;
+        }
+
+        // 0x00 to 0x7F, excluding 0x0E, 0x0F, 0x1B, 0x5C, and 0x7E
+        if (inRange(bite, 0x00, 0x7F) && bite !== 0x0E && bite !== 0x0F
+            && bite !== 0x1B && bite !== 0x5C && bite !== 0x7E) {
+          // Unset the iso-2022-jp output flag and return a code point
+          // whose value is byte.
+          iso2022jp_output_flag = false;
+          return bite;
+        }
+
+        // end-of-stream
+        if (bite === end_of_stream) {
+          // Return finished.
+          return finished;
+        }
+
+        // Otherwise
+        // Unset the iso-2022-jp output flag and return error.
+        iso2022jp_output_flag = false;
+        return decoderError(fatal);
+
+      case states.Katakana:
+        // Katakana
+        // Based on byte:
+
+        // 0x1B
+        if (bite === 0x1B) {
+          // Set iso-2022-jp decoder state to escape start and return
+          // continue.
+          iso2022jp_decoder_state = states.EscapeStart;
+          return null;
+        }
+
+        // 0x21 to 0x5F
+        if (inRange(bite, 0x21, 0x5F)) {
+          // Unset the iso-2022-jp output flag and return a code point
+          // whose value is 0xFF61 − 0x21 + byte.
+          iso2022jp_output_flag = false;
+          return 0xFF61 - 0x21 + bite;
+        }
+
+        // end-of-stream
+        if (bite === end_of_stream) {
+          // Return finished.
+          return finished;
+        }
+
+        // Otherwise
+        // Unset the iso-2022-jp output flag and return error.
+        iso2022jp_output_flag = false;
+        return decoderError(fatal);
+
+      case states.LeadByte:
+        // Lead byte
+        // Based on byte:
+
+        // 0x1B
+        if (bite === 0x1B) {
+          // Set iso-2022-jp decoder state to escape start and return
+          // continue.
+          iso2022jp_decoder_state = states.EscapeStart;
+          return null;
+        }
+
+        // 0x21 to 0x7E
+        if (inRange(bite, 0x21, 0x7E)) {
+          // Unset the iso-2022-jp output flag, set iso-2022-jp lead
+          // to byte, iso-2022-jp decoder state to trail byte, and
+          // return continue.
+          iso2022jp_output_flag = false;
+          iso2022jp_lead = bite;
+          iso2022jp_decoder_state = states.TrailByte;
+          return null;
+        }
+
+        // end-of-stream
+        if (bite === end_of_stream) {
+          // Return finished.
+          return finished;
+        }
+
+        // Otherwise
+        // Unset the iso-2022-jp output flag and return error.
+        iso2022jp_output_flag = false;
+        return decoderError(fatal);
+
+      case states.TrailByte:
+        // Trail byte
+        // Based on byte:
+
+        // 0x1B
+        if (bite === 0x1B) {
+          // Set iso-2022-jp decoder state to escape start and return
+          // continue.
+          iso2022jp_decoder_state = states.EscapeStart;
+          return decoderError(fatal);
+        }
+
+        // 0x21 to 0x7E
+        if (inRange(bite, 0x21, 0x7E)) {
+          // 1. Set the iso-2022-jp decoder state to lead byte.
+          iso2022jp_decoder_state = states.LeadByte;
+
+          // 2. Let pointer be (iso-2022-jp lead − 0x21) × 94 + byte − 0x21.
+          var pointer = (iso2022jp_lead - 0x21) * 94 + bite - 0x21;
+
+          // 3. Let code point be the index code point for pointer in
+          // index jis0208.
+          var code_point = indexCodePointFor(pointer, index('jis0208'));
+
+          // 4. If code point is null, return error.
+          if (code_point === null)
+            return decoderError(fatal);
+
+          // 5. Return a code point whose value is code point.
+          return code_point;
+        }
+
+        // end-of-stream
+        if (bite === end_of_stream) {
+          // Set the iso-2022-jp decoder state to lead byte, prepend
+          // byte to stream, and return error.
+          iso2022jp_decoder_state = states.LeadByte;
+          stream.prepend(bite);
+          return decoderError(fatal);
+        }
+
+        // Otherwise
+        // Set iso-2022-jp decoder state to lead byte and return
+        // error.
+        iso2022jp_decoder_state = states.LeadByte;
+        return decoderError(fatal);
+
+      case states.EscapeStart:
+        // Escape start
+
+        // 1. If byte is either 0x24 or 0x28, set iso-2022-jp lead to
+        // byte, iso-2022-jp decoder state to escape, and return
+        // continue.
+        if (bite === 0x24 || bite === 0x28) {
+          iso2022jp_lead = bite;
+          iso2022jp_decoder_state = states.Escape;
+          return null;
+        }
+
+        // 2. Prepend byte to stream.
+        stream.prepend(bite);
+
+        // 3. Unset the iso-2022-jp output flag, set iso-2022-jp
+        // decoder state to iso-2022-jp decoder output state, and
+        // return error.
+        iso2022jp_output_flag = false;
+        iso2022jp_decoder_state = iso2022jp_decoder_output_state;
+        return decoderError(fatal);
+
+      case states.Escape:
+        // Escape
+
+        // 1. Let lead be iso-2022-jp lead and set iso-2022-jp lead to
+        // 0x00.
+        var lead = iso2022jp_lead;
+        iso2022jp_lead = 0x00;
+
+        // 2. Let state be null.
+        var state = null;
+
+        // 3. If lead is 0x28 and byte is 0x42, set state to ASCII.
+        if (lead === 0x28 && bite === 0x42)
+          state = states.ASCII;
+
+        // 4. If lead is 0x28 and byte is 0x4A, set state to Roman.
+        if (lead === 0x28 && bite === 0x4A)
+          state = states.Roman;
+
+        // 5. If lead is 0x28 and byte is 0x49, set state to Katakana.
+        if (lead === 0x28 && bite === 0x49)
+          state = states.Katakana;
+
+        // 6. If lead is 0x24 and byte is either 0x40 or 0x42, set
+        // state to lead byte.
+        if (lead === 0x24 && (bite === 0x40 || bite === 0x42))
+          state = states.LeadByte;
+
+        // 7. If state is non-null, run these substeps:
+        if (state !== null) {
+          // 1. Set iso-2022-jp decoder state and iso-2022-jp decoder
+          // output state to states.
+          iso2022jp_decoder_state = iso2022jp_decoder_state = state;
+
+          // 2. Let output flag be the iso-2022-jp output flag.
+          var output_flag = iso2022jp_output_flag;
+
+          // 3. Set the iso-2022-jp output flag.
+          iso2022jp_output_flag = true;
+
+          // 4. Return continue, if output flag is unset, and error
+          // otherwise.
+          return !output_flag ? null : decoderError(fatal);
+        }
+
+        // 8. Prepend lead and byte to stream.
+        stream.prepend([lead, bite]);
+
+        // 9. Unset the iso-2022-jp output flag, set iso-2022-jp
+        // decoder state to iso-2022-jp decoder output state and
+        // return error.
+        iso2022jp_output_flag = false;
+        iso2022jp_decoder_state = iso2022jp_decoder_output_state;
+        return decoderError(fatal);
+      }
+    };
+  }
+
+  // 13.2.2 iso-2022-jp encoder
+  /**
+   * @constructor
+   * @implements {Encoder}
+   * @param {{fatal: boolean}} options
+   */
+  function ISO2022JPEncoder(options) {
+    var fatal = options.fatal;
+    // iso-2022-jp's encoder has an associated iso-2022-jp encoder
+    // state which is one of ASCII, Roman, and jis0208 (initially
+    // ASCII).
+    /** @enum */
+    var states = {
+      ASCII: 0,
+      Roman: 1,
+      jis0208: 2
+    };
+    var /** @type {number} */ iso2022jp_state = states.ASCII;
+    /**
+     * @param {Stream} stream Input stream.
+     * @param {number} code_point Next code point read from the stream.
+     * @return {(number|!Array.<number>)} Byte(s) to emit.
+     */
+    this.handler = function(stream, code_point) {
+      // 1. If code point is end-of-stream and iso-2022-jp encoder
+      // state is not ASCII, prepend code point to stream, set
+      // iso-2022-jp encoder state to ASCII, and return three bytes
+      // 0x1B 0x28 0x42.
+      if (code_point === end_of_stream &&
+          iso2022jp_state !== states.ASCII) {
+        stream.prepend(code_point);
+        iso2022jp_state = states.ASCII;
+        return [0x1B, 0x28, 0x42];
+      }
+
+      // 2. If code point is end-of-stream and iso-2022-jp encoder
+      // state is ASCII, return finished.
+      if (code_point === end_of_stream && iso2022jp_state === states.ASCII)
+        return finished;
+
+      // 3. If ISO-2022-JP encoder state is ASCII or Roman, and code
+      // point is U+000E, U+000F, or U+001B, return error with U+FFFD.
+      if ((iso2022jp_state === states.ASCII ||
+           iso2022jp_state === states.Roman) &&
+          (code_point === 0x000E || code_point === 0x000F ||
+           code_point === 0x001B)) {
+        return encoderError(0xFFFD);
+      }
+
+      // 4. If iso-2022-jp encoder state is ASCII and code point is an
+      // ASCII code point, return a byte whose value is code point.
+      if (iso2022jp_state === states.ASCII &&
+          isASCIICodePoint(code_point))
+        return code_point;
+
+      // 5. If iso-2022-jp encoder state is Roman and code point is an
+      // ASCII code point, excluding U+005C and U+007E, or is U+00A5
+      // or U+203E, run these substeps:
+      if (iso2022jp_state === states.Roman &&
+          ((isASCIICodePoint(code_point) &&
+           code_point !== 0x005C && code_point !== 0x007E) ||
+          (code_point == 0x00A5 || code_point == 0x203E))) {
+
+        // 1. If code point is an ASCII code point, return a byte
+        // whose value is code point.
+        if (isASCIICodePoint(code_point))
+          return code_point;
+
+        // 2. If code point is U+00A5, return byte 0x5C.
+        if (code_point === 0x00A5)
+          return 0x5C;
+
+        // 3. If code point is U+203E, return byte 0x7E.
+        if (code_point === 0x203E)
+          return 0x7E;
+      }
+
+      // 6. If code point is an ASCII code point, and iso-2022-jp
+      // encoder state is not ASCII, prepend code point to stream, set
+      // iso-2022-jp encoder state to ASCII, and return three bytes
+      // 0x1B 0x28 0x42.
+      if (isASCIICodePoint(code_point) &&
+          iso2022jp_state !== states.ASCII) {
+        stream.prepend(code_point);
+        iso2022jp_state = states.ASCII;
+        return [0x1B, 0x28, 0x42];
+      }
+
+      // 7. If code point is either U+00A5 or U+203E, and iso-2022-jp
+      // encoder state is not Roman, prepend code point to stream, set
+      // iso-2022-jp encoder state to Roman, and return three bytes
+      // 0x1B 0x28 0x4A.
+      if ((code_point === 0x00A5 || code_point === 0x203E) &&
+          iso2022jp_state !== states.Roman) {
+        stream.prepend(code_point);
+        iso2022jp_state = states.Roman;
+        return [0x1B, 0x28, 0x4A];
+      }
+
+      // 8. If code point is U+2212, set it to U+FF0D.
+      if (code_point === 0x2212)
+        code_point = 0xFF0D;
+
+      // 9. Let pointer be the index pointer for code point in index
+      // jis0208.
+      var pointer = indexPointerFor(code_point, index('jis0208'));
+
+      // 10. If pointer is null, return error with code point.
+      if (pointer === null)
+        return encoderError(code_point);
+
+      // 11. If iso-2022-jp encoder state is not jis0208, prepend code
+      // point to stream, set iso-2022-jp encoder state to jis0208,
+      // and return three bytes 0x1B 0x24 0x42.
+      if (iso2022jp_state !== states.jis0208) {
+        stream.prepend(code_point);
+        iso2022jp_state = states.jis0208;
+        return [0x1B, 0x24, 0x42];
+      }
+
+      // 12. Let lead be floor(pointer / 94) + 0x21.
+      var lead = floor(pointer / 94) + 0x21;
+
+      // 13. Let trail be pointer % 94 + 0x21.
+      var trail = pointer % 94 + 0x21;
+
+      // 14. Return two bytes whose values are lead and trail.
+      return [lead, trail];
+    };
+  }
+
+  /** @param {{fatal: boolean}} options */
+  encoders['ISO-2022-JP'] = function(options) {
+    return new ISO2022JPEncoder(options);
+  };
+  /** @param {{fatal: boolean}} options */
+  decoders['ISO-2022-JP'] = function(options) {
+    return new ISO2022JPDecoder(options);
+  };
+
+  // 13.3 Shift_JIS
+
+  // 13.3.1 Shift_JIS decoder
+  /**
+   * @constructor
+   * @implements {Decoder}
+   * @param {{fatal: boolean}} options
+   */
+  function ShiftJISDecoder(options) {
+    var fatal = options.fatal;
+    // Shift_JIS's decoder has an associated Shift_JIS lead (initially
+    // 0x00).
+    var /** @type {number} */ Shift_JIS_lead = 0x00;
+    /**
+     * @param {Stream} stream The stream of bytes being decoded.
+     * @param {number} bite The next byte read from the stream.
+     * @return {?(number|!Array.<number>)} The next code point(s)
+     *     decoded, or null if not enough data exists in the input
+     *     stream to decode a complete code point.
+     */
+    this.handler = function(stream, bite) {
+      // 1. If byte is end-of-stream and Shift_JIS lead is not 0x00,
+      // set Shift_JIS lead to 0x00 and return error.
+      if (bite === end_of_stream && Shift_JIS_lead !== 0x00) {
+        Shift_JIS_lead = 0x00;
+        return decoderError(fatal);
+      }
+
+      // 2. If byte is end-of-stream and Shift_JIS lead is 0x00,
+      // return finished.
+      if (bite === end_of_stream && Shift_JIS_lead === 0x00)
+        return finished;
+
+      // 3. If Shift_JIS lead is not 0x00, let lead be Shift_JIS lead,
+      // let pointer be null, set Shift_JIS lead to 0x00, and then run
+      // these substeps:
+      if (Shift_JIS_lead !== 0x00) {
+        var lead = Shift_JIS_lead;
+        var pointer = null;
+        Shift_JIS_lead = 0x00;
+
+        // 1. Let offset be 0x40, if byte is less than 0x7F, and 0x41
+        // otherwise.
+        var offset = (bite < 0x7F) ? 0x40 : 0x41;
+
+        // 2. Let lead offset be 0x81, if lead is less than 0xA0, and
+        // 0xC1 otherwise.
+        var lead_offset = (lead < 0xA0) ? 0x81 : 0xC1;
+
+        // 3. If byte is in the range 0x40 to 0x7E, inclusive, or 0x80
+        // to 0xFC, inclusive, set pointer to (lead − lead offset) ×
+        // 188 + byte − offset.
+        if (inRange(bite, 0x40, 0x7E) || inRange(bite, 0x80, 0xFC))
+          pointer = (lead - lead_offset) * 188 + bite - offset;
+
+        // 4. If pointer is in the range 8836 to 10715, inclusive,
+        // return a code point whose value is 0xE000 − 8836 + pointer.
+        if (inRange(pointer, 8836, 10715))
+          return 0xE000 - 8836 + pointer;
+
+        // 5. Let code point be null, if pointer is null, and the
+        // index code point for pointer in index jis0208 otherwise.
+        var code_point = (pointer === null) ? null :
+              indexCodePointFor(pointer, index('jis0208'));
+
+        // 6. If code point is null and byte is an ASCII byte, prepend
+        // byte to stream.
+        if (code_point === null && isASCIIByte(bite))
+          stream.prepend(bite);
+
+        // 7. If code point is null, return error.
+        if (code_point === null)
+          return decoderError(fatal);
+
+        // 8. Return a code point whose value is code point.
+        return code_point;
+      }
+
+      // 4. If byte is an ASCII byte or 0x80, return a code point
+      // whose value is byte.
+      if (isASCIIByte(bite) || bite === 0x80)
+        return bite;
+
+      // 5. If byte is in the range 0xA1 to 0xDF, inclusive, return a
+      // code point whose value is 0xFF61 − 0xA1 + byte.
+      if (inRange(bite, 0xA1, 0xDF))
+        return 0xFF61 - 0xA1 + bite;
+
+      // 6. If byte is in the range 0x81 to 0x9F, inclusive, or 0xE0
+      // to 0xFC, inclusive, set Shift_JIS lead to byte and return
+      // continue.
+      if (inRange(bite, 0x81, 0x9F) || inRange(bite, 0xE0, 0xFC)) {
+        Shift_JIS_lead = bite;
+        return null;
+      }
+
+      // 7. Return error.
+      return decoderError(fatal);
+    };
+  }
+
+  // 13.3.2 Shift_JIS encoder
+  /**
+   * @constructor
+   * @implements {Encoder}
+   * @param {{fatal: boolean}} options
+   */
+  function ShiftJISEncoder(options) {
+    var fatal = options.fatal;
+    /**
+     * @param {Stream} stream Input stream.
+     * @param {number} code_point Next code point read from the stream.
+     * @return {(number|!Array.<number>)} Byte(s) to emit.
+     */
+    this.handler = function(stream, code_point) {
+      // 1. If code point is end-of-stream, return finished.
+      if (code_point === end_of_stream)
+        return finished;
+
+      // 2. If code point is an ASCII code point or U+0080, return a
+      // byte whose value is code point.
+      if (isASCIICodePoint(code_point) || code_point === 0x0080)
+        return code_point;
+
+      // 3. If code point is U+00A5, return byte 0x5C.
+      if (code_point === 0x00A5)
+        return 0x5C;
+
+      // 4. If code point is U+203E, return byte 0x7E.
+      if (code_point === 0x203E)
+        return 0x7E;
+
+      // 5. If code point is in the range U+FF61 to U+FF9F, inclusive,
+      // return a byte whose value is code point − 0xFF61 + 0xA1.
+      if (inRange(code_point, 0xFF61, 0xFF9F))
+        return code_point - 0xFF61 + 0xA1;
+
+      // 6. If code point is U+2212, set it to U+FF0D.
+      if (code_point === 0x2212)
+        code_point = 0xFF0D;
+
+      // 7. Let pointer be the index Shift_JIS pointer for code point.
+      var pointer = indexShiftJISPointerFor(code_point);
+
+      // 8. If pointer is null, return error with code point.
+      if (pointer === null)
+        return encoderError(code_point);
+
+      // 9. Let lead be floor(pointer / 188).
+      var lead = floor(pointer / 188);
+
+      // 10. Let lead offset be 0x81, if lead is less than 0x1F, and
+      // 0xC1 otherwise.
+      var lead_offset = (lead < 0x1F) ? 0x81 : 0xC1;
+
+      // 11. Let trail be pointer % 188.
+      var trail = pointer % 188;
+
+      // 12. Let offset be 0x40, if trail is less than 0x3F, and 0x41
+      // otherwise.
+      var offset = (trail < 0x3F) ? 0x40 : 0x41;
+
+      // 13. Return two bytes whose values are lead + lead offset and
+      // trail + offset.
+      return [lead + lead_offset, trail + offset];
+    };
+  }
+
+  /** @param {{fatal: boolean}} options */
+  encoders['Shift_JIS'] = function(options) {
+    return new ShiftJISEncoder(options);
+  };
+  /** @param {{fatal: boolean}} options */
+  decoders['Shift_JIS'] = function(options) {
+    return new ShiftJISDecoder(options);
+  };
+
+  //
+  // 14. Legacy multi-byte Korean encodings
+  //
+
+  // 14.1 euc-kr
+
+  // 14.1.1 euc-kr decoder
+  /**
+   * @constructor
+   * @implements {Decoder}
+   * @param {{fatal: boolean}} options
+   */
+  function EUCKRDecoder(options) {
+    var fatal = options.fatal;
+
+    // euc-kr's decoder has an associated euc-kr lead (initially 0x00).
+    var /** @type {number} */ euckr_lead = 0x00;
+    /**
+     * @param {Stream} stream The stream of bytes being decoded.
+     * @param {number} bite The next byte read from the stream.
+     * @return {?(number|!Array.<number>)} The next code point(s)
+     *     decoded, or null if not enough data exists in the input
+     *     stream to decode a complete code point.
+     */
+    this.handler = function(stream, bite) {
+      // 1. If byte is end-of-stream and euc-kr lead is not 0x00, set
+      // euc-kr lead to 0x00 and return error.
+      if (bite === end_of_stream && euckr_lead !== 0) {
+        euckr_lead = 0x00;
+        return decoderError(fatal);
+      }
+
+      // 2. If byte is end-of-stream and euc-kr lead is 0x00, return
+      // finished.
+      if (bite === end_of_stream && euckr_lead === 0)
+        return finished;
+
+      // 3. If euc-kr lead is not 0x00, let lead be euc-kr lead, let
+      // pointer be null, set euc-kr lead to 0x00, and then run these
+      // substeps:
+      if (euckr_lead !== 0x00) {
+        var lead = euckr_lead;
+        var pointer = null;
+        euckr_lead = 0x00;
+
+        // 1. If byte is in the range 0x41 to 0xFE, inclusive, set
+        // pointer to (lead − 0x81) × 190 + (byte − 0x41).
+        if (inRange(bite, 0x41, 0xFE))
+          pointer = (lead - 0x81) * 190 + (bite - 0x41);
+
+        // 2. Let code point be null, if pointer is null, and the
+        // index code point for pointer in index euc-kr otherwise.
+        var code_point = (pointer === null)
+              ? null : indexCodePointFor(pointer, index('euc-kr'));
+
+        // 3. If code point is null and byte is an ASCII byte, prepend
+        // byte to stream.
+        if (pointer === null && isASCIIByte(bite))
+          stream.prepend(bite);
+
+        // 4. If code point is null, return error.
+        if (code_point === null)
+          return decoderError(fatal);
+
+        // 5. Return a code point whose value is code point.
+        return code_point;
+      }
+
+      // 4. If byte is an ASCII byte, return a code point whose value
+      // is byte.
+      if (isASCIIByte(bite))
+        return bite;
+
+      // 5. If byte is in the range 0x81 to 0xFE, inclusive, set
+      // euc-kr lead to byte and return continue.
+      if (inRange(bite, 0x81, 0xFE)) {
+        euckr_lead = bite;
+        return null;
+      }
+
+      // 6. Return error.
+      return decoderError(fatal);
+    };
+  }
+
+  // 14.1.2 euc-kr encoder
+  /**
+   * @constructor
+   * @implements {Encoder}
+   * @param {{fatal: boolean}} options
+   */
+  function EUCKREncoder(options) {
+    var fatal = options.fatal;
+    /**
+     * @param {Stream} stream Input stream.
+     * @param {number} code_point Next code point read from the stream.
+     * @return {(number|!Array.<number>)} Byte(s) to emit.
+     */
+    this.handler = function(stream, code_point) {
+      // 1. If code point is end-of-stream, return finished.
+      if (code_point === end_of_stream)
+        return finished;
+
+      // 2. If code point is an ASCII code point, return a byte whose
+      // value is code point.
+      if (isASCIICodePoint(code_point))
+        return code_point;
+
+      // 3. Let pointer be the index pointer for code point in index
+      // euc-kr.
+      var pointer = indexPointerFor(code_point, index('euc-kr'));
+
+      // 4. If pointer is null, return error with code point.
+      if (pointer === null)
+        return encoderError(code_point);
+
+      // 5. Let lead be floor(pointer / 190) + 0x81.
+      var lead = floor(pointer / 190) + 0x81;
+
+      // 6. Let trail be pointer % 190 + 0x41.
+      var trail = (pointer % 190) + 0x41;
+
+      // 7. Return two bytes whose values are lead and trail.
+      return [lead, trail];
+    };
+  }
+
+  /** @param {{fatal: boolean}} options */
+  encoders['EUC-KR'] = function(options) {
+    return new EUCKREncoder(options);
+  };
+  /** @param {{fatal: boolean}} options */
+  decoders['EUC-KR'] = function(options) {
+    return new EUCKRDecoder(options);
+  };
+
 
   //
   // 15. Legacy miscellaneous encodings

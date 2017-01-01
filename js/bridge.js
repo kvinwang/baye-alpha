@@ -138,36 +138,43 @@ function baye_bridge_obj(def, addr) {
     return jsObj;
 }
 
-// 调试攻击范围
-function debugPrintAttackRange(data) {
-    var linesize = 15;
-    var text = "";
-    for (var i = 0; i < linesize; i++) {
-        for (var j = 0; j < linesize; j++) {
-            text += data[i*linesize + j] ? "*" : ".";
+function bayeU8Array(caddr, length) {
+    return Module.HEAPU8.subarray(caddr, caddr+length);
+}
+
+function bayeWrapFunctionS(innerf) {
+    return function() {
+        var addr = innerf.apply(this, arguments);
+        if (addr != 0) {
+            return new TextDecoder('GBK').decode(bayeU8Array(addr, _bayeStrLen(addr)));
         }
-        text += "\n";
+        return null;
+    };
+}
+
+$(function(){
+    if (window.baye === undefined) {
+        window.baye = {};
     }
-    console.log(text);
-}
 
-function GB(s) {
-    var u8arr = TextEncoder('GBK').encode(s)
-}
+    baye.getPersonName = bayeWrapFunctionS(_bayeGetPersonName);
+    baye.getToolName = bayeWrapFunctionS(_bayeGetToolName);
+    baye.getSkillName = bayeWrapFunctionS(_bayeGetSkillName);
 
-function U(s) {
-    var u8arr = TextDecoder('GBK').decode(s)
-}
+    baye.printPeople = function () {
+        for (var i = 0; i < 250; i++) {
+            var p = baye.data.g_Persons[i];
+            if (p.Level > 0) {
+                console.log('index:' + i + ' name:' + baye.getPersonName(i) + ' 归属:' + p.Belong);
+            }
+        }
+    };
 
-function bayeAlert(msg) {
-}
+    baye.alert = function(msg, then){
+    };
 
-function bayeSay(index, msg) {
-}
+    baye.say = function(personIndex, msg, then){
+    };
 
-function bayeGetPersonName(index) {
-}
-
-function bayeGetToolName(index) {
-}
+});
 
