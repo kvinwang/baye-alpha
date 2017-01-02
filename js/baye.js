@@ -39466,6 +39466,18 @@ function _DelOrder($0) {
  return 1;
 }
 
+function _bind_get_global() {
+ var $0 = 0, $1 = 0, label = 0, sp = 0;
+ label = 0;
+ sp = STACKTOP;
+ $0 = HEAP32[92710] | 0;
+ $1 = ($0 | 0) == (0 | 0);
+ if ($1) {
+  _global_var_init();
+ }
+ return 370840 | 0;
+}
+
 function _gam_srand($0) {
  $0 = $0 | 0;
  var $1 = 0, $2 = 0, label = 0, sp = 0;
@@ -39899,13 +39911,6 @@ function ___lockfile($0) {
  label = 0;
  sp = STACKTOP;
  return 0;
-}
-
-function _bind_get_global() {
- var label = 0, sp = 0;
- label = 0;
- sp = STACKTOP;
- return 370840 | 0;
 }
 
 function _FlashInit() {
