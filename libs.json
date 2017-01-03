@@ -4,16 +4,16 @@
         "path": "libs/whxf.lib"
     },
     {
-        "title": "平衡版",
-        "path": "libs/ysh-normal1.4B.lib"
+        "title": "平衡版1.5",
+        "path": "libs/ysh-normal1.5B2.lib"
     },
     {
         "title": "平衡版-难度适中",
-        "path": "libs/ysh-easy1.4B.lib"
+        "path": "libs/ysh-easy1.5B2.lib"
     },
     {
-        "title": "超强难度版",
-        "path": "libs/ysh-hard1.4B.lib"
+        "title": "超强难度版1.5",
+        "path": "libs/ysh-hard1.5B2.lib"
     },
     {
         "title": "三国PLUS修正版",
