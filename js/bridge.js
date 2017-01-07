@@ -7,6 +7,28 @@ var    ValueTypeObject = 4;
 var    ValueTypeArray = 5;
 var    ValueTypeMethod = 6;
 
+function BayeObject() {
+}
+
+BayeObject.prototype.toString = function() {
+    switch (this._type) {
+    case ValueTypeU8:
+        return 'U8(' + this.value + ')';
+    case ValueTypeU16:
+        return 'U16(' + this.value + ')';
+    case ValueTypeU32:
+        return 'U32(' + this.value + ')';
+    case ValueTypeString:
+        return 'String("' + this.value + '")';
+    case ValueTypeObject:
+        return 'Object';
+    case ValueTypeArray:
+        return 'Array[' + this.length + ']';
+    case ValueTypeMethod:
+        return 'Method';
+    }
+};
+
 function baye_bridge_value(value) {
     return baye_bridge_valuedef(_Value_get_def(value), _Value_get_addr(value));
 }
@@ -48,17 +70,20 @@ function baye_bridge_description_for_value(jvalue, type) {
     }
 }
 
+function defineProperty(obj, p, desc) {
+    Object.defineProperty(obj, p, desc);
+}
+
 function baye_bridge_valuedef(def, addr) {
-    var jsObj = {
-        _def: def,
-        _addr: addr,
-        length: 10,
-    };
     var type = _ValueDef_get_type(def);
+    var jsObj = new BayeObject();
+    jsObj._def = def;
+    jsObj._addr = addr;
+    jsObj._type = type;
 
     switch (type) {
         case ValueTypeU8:
-            Object.defineProperty(jsObj, 'value', {
+            defineProperty(jsObj, 'value', {
                 get: function() {
                     return _baye_get_u8_value(this._addr);
                 },
@@ -68,7 +93,7 @@ function baye_bridge_valuedef(def, addr) {
             });
             break;
         case ValueTypeU16:
-            Object.defineProperty(jsObj, 'value', {
+            defineProperty(jsObj, 'value', {
                 get: function() {
                     return _baye_get_u16_value(this._addr);
                 },
@@ -78,7 +103,7 @@ function baye_bridge_valuedef(def, addr) {
             });
             break;
         case ValueTypeU32:
-            Object.defineProperty(jsObj, 'value', {
+            defineProperty(jsObj, 'value', {
                 get: function() {
                     return _baye_get_u32_value(this._addr);
                 },
@@ -88,7 +113,7 @@ function baye_bridge_valuedef(def, addr) {
             });
             break;
         case ValueTypeString:
-            Object.defineProperty(jsObj, 'value', {
+            defineProperty(jsObj, 'value', {
                 get: function() {
                     // TODO:
                     return this._addr;
@@ -105,7 +130,7 @@ function baye_bridge_valuedef(def, addr) {
             for (var i = 0; i < length; i++) {
                 var item_value = baye_bridge_valuedef(subdef, addr + subsize * i);
                 var desc = baye_bridge_description_for_value(item_value, _ValueDef_get_type(subdef));
-                Object.defineProperty(jsObj, i, desc);
+                defineProperty(jsObj, i, desc);
             }
             break;
         case ValueTypeMethod:
@@ -133,7 +158,7 @@ function baye_bridge_obj(def, addr) {
         var field_value = baye_bridge_valuedef(value_def, addr + value_offset);
 
         var desc = baye_bridge_description_for_value(field_value, _Field_get_type(field));
-        Object.defineProperty(jsObj, name, desc);
+        defineProperty(jsObj, name, desc);
     }
     return jsObj;
 }
@@ -156,6 +181,7 @@ $(function(){
     if (window.baye === undefined) {
         window.baye = {};
     }
+    baye.debug = {};
 
     baye.getPersonName = bayeWrapFunctionS(_bayeGetPersonName);
     baye.getToolName = bayeWrapFunctionS(_bayeGetToolName);
@@ -191,5 +217,39 @@ $(function(){
     baye.say = function(personIndex, msg, then){
     };
 
+
+
+    baye.getPersonByName = function(name) {
+        var all = baye.data.g_Persons;
+        for (var i = 0; i < all.length; i++) {
+            if (baye.getPersonName(i) == name) {
+                return all[i];
+            }
+        }
+    };
+
+    baye.getCityByName = function(name) {
+        var all = baye.data.g_Cities;
+        for (var i = 0; i < all.length; i++) {
+            if (baye.getCityName(i) == name) {
+                return all[i];
+            }
+        }
+    };
+
+    baye.getFighterIndexByName = function(name) {
+        var all = baye.data.g_FgtParam.GenArray;
+        for (var i = 0; i < all.length; i++) {
+            var index = all[i] - 1;
+            if (index >= 0 && baye.getPersonName(index) == name) {
+                return i;
+            }
+        }
+    };
+
+    baye.getFighterPositionByName = function(name) {
+        var idx = baye.getFighterIndexByName(name);
+        return baye.data.g_GenPos[idx];
+    };
 });
 
