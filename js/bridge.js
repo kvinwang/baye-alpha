@@ -258,12 +258,18 @@ $(function(){
     };
 
     baye.alert = function(msg, then){
+        baye.data.g_asyncActionID = 1;
+        baye.data.g_asyncActionParams[0] = 3;
+        baye.data.g_asyncActionStringParam = msg;
+        baye.callback = then;
     };
 
     baye.say = function(personIndex, msg, then){
+        baye.data.g_asyncActionID = 2;
+        baye.data.g_asyncActionParams[0] = personIndex;
+        baye.data.g_asyncActionStringParam = msg;
+        baye.callback = then;
     };
-
-
 
     baye.getPersonByName = function(name) {
         var all = baye.data.g_Persons;
