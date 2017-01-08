@@ -6,6 +6,10 @@ var    ValueTypeString = 3;
 var    ValueTypeObject = 4;
 var    ValueTypeArray = 5;
 var    ValueTypeMethod = 6;
+var    ValueTypeGBKBuffer = 7;
+
+var gbkDecoder = new TextDecoder('GBK');
+var gbkEncoder = new TextEncoder('GBK', { NONSTANDARD_allowLegacyEncoding: true });
 
 function BayeObject() {
 }
@@ -24,6 +28,8 @@ BayeObject.prototype.toString = function() {
         return 'Object';
     case ValueTypeArray:
         return 'Array[' + this.length + ']';
+    case ValueTypeGBKBuffer:
+        return 'GBKBuffer[' + this.length + ']';
     case ValueTypeMethod:
         return 'Method';
     }
@@ -59,6 +65,22 @@ function baye_bridge_description_for_value(jvalue, type) {
                     for(var i = 0; i < length && i < value.length; i++) {
                         jv[i] = value[i]
                     }
+                }
+            };
+            break;
+        case ValueTypeGBKBuffer:
+            return {
+                get: function() {
+                    return gbkDecoder.decode(jvalue.value);
+                },
+                set: function(value) {
+                    var jv = jvalue.value;
+                    var arr = gbkEncoder.encode(value);
+                    var length = Math.min(jv.length - 1, arr.length);
+                    for(var i = 0; i < length; i++) {
+                        jv[i] = arr[i]
+                    }
+                    jv[length] = 0;
                 }
             };
             break;
@@ -141,6 +163,7 @@ function baye_bridge_valuedef(def, addr) {
         case ValueTypeObject:
             return baye_bridge_obj(def, addr);
         case ValueTypeArray:
+        case ValueTypeGBKBuffer:
             var length = _ValueDef_get_array_length(def);
             jsObj.length = length;
             var subdef = _ValueDef_get_array_subdef(def);
