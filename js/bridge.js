@@ -41,21 +41,23 @@ function baye_bridge_description_for_value(jvalue, type) {
         case ValueTypeString:
             return {
                 get: function() {
-                    return jvalue.value;
+                    return jvalue.value.value;
                 },
                 set: function(value) {
-                    jvalue.value = value;
+                    jvalue.value.value = value;
                 }
             };
             break;
         case ValueTypeArray:
             return {
                 get: function() {
-                    return jvalue;
+                    return jvalue.value;
                 },
                 set: function(value) {
-                    for(var i = 0; i < jvalue.length && i < value.length; i++) {
-                        jvalue[i] = value[i]
+                    var jv = jvalue.value;
+                    var length = jv.length;
+                    for(var i = 0; i < length && i < value.length; i++) {
+                        jv[i] = value[i]
                     }
                 }
             };
@@ -63,7 +65,7 @@ function baye_bridge_description_for_value(jvalue, type) {
         case ValueTypeObject:
             return {
                 get: function() {
-                    return jvalue;
+                    return jvalue.value;
                 }
             }
             break;
@@ -72,6 +74,22 @@ function baye_bridge_description_for_value(jvalue, type) {
 
 function defineProperty(obj, p, desc) {
     Object.defineProperty(obj, p, desc);
+}
+
+function defineProperties(obj, desc) {
+    Object.defineProperties(obj, desc);
+}
+
+function baye_bridge_valuedef_lazy(def, addr) {
+    var obj = {
+        get value() {
+            if (this._value == undefined) {
+                this._value = baye_bridge_valuedef(def, addr);
+            }
+            return this._value;
+        }
+    };
+    return obj;
 }
 
 function baye_bridge_valuedef(def, addr) {
@@ -127,11 +145,13 @@ function baye_bridge_valuedef(def, addr) {
             jsObj.length = length;
             var subdef = _ValueDef_get_array_subdef(def);
             var subsize = _ValueDef_get_size(subdef);
+            var properties = {};
             for (var i = 0; i < length; i++) {
-                var item_value = baye_bridge_valuedef(subdef, addr + subsize * i);
+                var item_value = baye_bridge_valuedef_lazy(subdef, addr + subsize * i);
                 var desc = baye_bridge_description_for_value(item_value, _ValueDef_get_type(subdef));
-                defineProperty(jsObj, i, desc);
+                properties[i] = desc;
             }
+            defineProperties(jsObj, properties);
             break;
         case ValueTypeMethod:
             return function() {
@@ -142,6 +162,8 @@ function baye_bridge_valuedef(def, addr) {
 
 function baye_bridge_obj(def, addr) {
     var jsObj = {};
+    var properties = {};
+
     var count = _ValueDef_get_field_count(def);
 
 
@@ -155,11 +177,12 @@ function baye_bridge_obj(def, addr) {
         var field_value_addr = _Field_get_value(field);
         var value_def = _Value_get_def(field_value_addr);
         var value_offset = _Value_get_addr(field_value_addr);
-        var field_value = baye_bridge_valuedef(value_def, addr + value_offset);
+        var field_value = baye_bridge_valuedef_lazy(value_def, addr + value_offset);
 
         var desc = baye_bridge_description_for_value(field_value, _Field_get_type(field));
-        defineProperty(jsObj, name, desc);
+        properties[name] = desc;
     }
+    defineProperties(jsObj, properties);
     return jsObj;
 }
 
