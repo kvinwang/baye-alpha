@@ -1,4 +1,8 @@
 
+Math.random = function() {
+    return _bayeRand() % 65536 / 65536;
+};
+
 var    ValueTypeU8 = 0;
 var    ValueTypeU16 = 1;
 var    ValueTypeU32 = 2;
