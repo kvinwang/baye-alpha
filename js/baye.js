@@ -17016,73 +17016,78 @@ function _BuiltAtkAttr($0, $1) {
   STACKTOP = sp;
   return;
  }
- $22 = HEAP8[$2 >> 0] | 0;
+ $22 = $4;
  $23 = $22 & 255;
- $24 = 371512 + ($23 * 24 | 0) | 0;
- $8 = $24;
- $25 = $9;
- $26 = $25 + 10 | 0;
- $27 = $8;
- $28 = $27 + 12 | 0;
- HEAP32[$28 >> 2] = $26;
+ $24 = HEAP32[92890] | 0;
+ $25 = $24 + ($23 * 15 | 0) | 0;
+ $9 = $25;
+ $26 = HEAP8[$2 >> 0] | 0;
+ $27 = $26 & 255;
+ $28 = 371512 + ($27 * 24 | 0) | 0;
+ $8 = $28;
  $29 = $9;
- $30 = $29 + 7 | 0;
+ $30 = $29 + 10 | 0;
  $31 = $8;
- $32 = $31 + 8 | 0;
+ $32 = $31 + 12 | 0;
  HEAP32[$32 >> 2] = $30;
  $33 = $9;
- $34 = $33 + 2 | 0;
+ $34 = $33 + 7 | 0;
  $35 = $8;
- HEAP32[$35 >> 2] = $34;
- $36 = HEAP8[$3 >> 0] | 0;
- $37 = $8;
- $38 = $37 + 20 | 0;
- HEAP8[$38 >> 0] = $36;
- $39 = _has_hook(367247) | 0;
- $40 = ($39 | 0) != 0;
+ $36 = $35 + 8 | 0;
+ HEAP32[$36 >> 2] = $34;
+ $37 = $9;
+ $38 = $37 + 2 | 0;
+ $39 = $8;
+ HEAP32[$39 >> 2] = $38;
+ $40 = HEAP8[$3 >> 0] | 0;
+ $41 = $8;
+ $42 = $41 + 20 | 0;
+ HEAP8[$42 >> 0] = $40;
+ $43 = _has_hook(367247) | 0;
+ $44 = ($43 | 0) != 0;
  L4 : do {
-  if ($40) {
+  if ($44) {
    $10 = 367247;
    L6 : while (1) {
-    $41 = $10;
-    $42 = ($41 | 0) != (0 | 0);
-    if (!$42) {
+    $45 = $10;
+    $46 = ($45 | 0) != (0 | 0);
+    if (!$46) {
      break L4;
     }
-    $43 = _Value_ObjectValue_new() | 0;
-    $11 = $43;
+    $47 = _Value_ObjectValue_new() | 0;
+    $11 = $47;
     while (1) {
-     $44 = $11;
-     $45 = ($44 | 0) != (0 | 0);
-     if (!$45) {
+     $48 = $11;
+     $49 = ($48 | 0) != (0 | 0);
+     if (!$49) {
       break;
      }
-     $46 = $11;
-     $47 = HEAP32[$46 >> 2] | 0;
-     $48 = $47 + 8 | 0;
-     $49 = HEAP32[$48 >> 2] | 0;
-     $12 = $49;
+     $50 = $11;
+     $51 = HEAP32[$50 >> 2] | 0;
+     $52 = $51 + 8 | 0;
+     $53 = HEAP32[$52 >> 2] | 0;
+     $12 = $53;
      while (1) {
-      $50 = $12;
-      $51 = ($50 | 0) != (0 | 0);
-      if (!$51) {
+      $54 = $12;
+      $55 = ($54 | 0) != (0 | 0);
+      if (!$55) {
        break;
       }
-      $52 = $12;
-      _ObjectDef_addFieldF($52, 367274, 0, $2, 0, 0);
-      $53 = $12;
-      _ObjectDef_addFieldF($53, 368745, 0, $3, 0, 0);
-      $54 = $10;
-      $55 = $11;
-      $56 = _call_hook($54, $55) | 0;
-      $57 = ($56 | 0) == 0;
-      if ($57) {
+      $56 = $12;
+      _ObjectDef_addFieldF($56, 367274, 0, $2, 0, 0);
+      $57 = $12;
+      _ObjectDef_addFieldF($57, 368745, 0, $3, 0, 0);
+      $58 = $10;
+      $59 = $11;
+      $60 = _call_hook($58, $59) | 0;
+      $61 = ($60 | 0) == 0;
+      if ($61) {
        break L6;
       }
       $12 = 0;
      }
-     $58 = $11;
-     _Value_ObjectValue_free($58);
+     $62 = $11;
+     _Value_ObjectValue_free($62);
      $11 = 0;
     }
     $10 = 0;
@@ -17091,11 +17096,6 @@ function _BuiltAtkAttr($0, $1) {
    return;
   }
  } while (0);
- $59 = $4;
- $60 = $59 & 255;
- $61 = HEAP32[92890] | 0;
- $62 = $61 + ($60 * 15 | 0) | 0;
- $9 = $62;
  $63 = $9;
  $64 = $63 + 4 | 0;
  $65 = HEAP8[$64 >> 0] | 0;
@@ -31657,7 +31657,7 @@ function _rom_fread($0, $1, $2, $3) {
  return $52 | 0;
 }
 
-function _sav_fopen_219($0, $1) {
+function _sav_fopen_224($0, $1) {
  $0 = $0 | 0;
  $1 = $1 | 0;
  var $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0, $25 = 0, $26 = 0, $27 = 0, $28 = 0, $29 = 0, $3 = 0, $30 = 0, $31 = 0, $32 = 0, $33 = 0, $34 = 0, $35 = 0, $36 = 0, $37 = 0, $38 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, label = 0, sp = 0;
@@ -36924,7 +36924,7 @@ function _gam_fopen($0, $1) {
    if ($12) {
     $13 = $3;
     $14 = $4;
-    $15 = _sav_fopen_219($13, $14) | 0;
+    $15 = _sav_fopen_224($13, $14) | 0;
     $2 = $15;
     break;
    } else {
@@ -40300,6 +40300,19 @@ function dynCall_iiiii(index, a1, a2, a3, a4) {
  return FUNCTION_TABLE_iiiii[index & 15](a1 | 0, a2 | 0, a3 | 0, a4 | 0) | 0;
 }
 
+function _bayeSRand($0) {
+ $0 = $0 | 0;
+ var $1 = 0, $2 = 0, label = 0, sp = 0;
+ label = 0;
+ sp = STACKTOP;
+ STACKTOP = STACKTOP + 16 | 0;
+ $1 = $0;
+ $2 = $1;
+ _gam_srand($2);
+ STACKTOP = sp;
+ return;
+}
+
 function _bind_get_global() {
  var $0 = 0, $1 = 0, label = 0, sp = 0;
  label = 0;
@@ -40634,11 +40647,27 @@ function _gam_rand() {
  return $0 | 0;
 }
 
+function _bayeGetSeed() {
+ var $0 = 0, label = 0, sp = 0;
+ label = 0;
+ sp = STACKTOP;
+ $0 = _gam_seed() | 0;
+ return $0 | 0;
+}
+
 function _gam_seed() {
  var $0 = 0, label = 0, sp = 0;
  label = 0;
  sp = STACKTOP;
  $0 = HEAP32[92866] | 0;
+ return $0 | 0;
+}
+
+function _bayeRand() {
+ var $0 = 0, label = 0, sp = 0;
+ label = 0;
+ sp = STACKTOP;
+ $0 = _gam_rand() | 0;
  return $0 | 0;
 }
 
@@ -40850,7 +40879,7 @@ var FUNCTION_TABLE_vi = [b2,b2,b2,b2,b2,__lcd_flush_cb,b2,b2,b2,b2,b2,b2,b2,b2,b
 var FUNCTION_TABLE_iiiii = [b3,b3,b3,b3,b3,b3,b3,b3,_sav_fwrite,b3,b3,_rom_fread,_rom_fwrite,b3,b3,b3];
 var FUNCTION_TABLE_v = [b4,b4,b4,b4,b4,b4,b4,b4,b4,b4,b4,b4,b4,b4,__timercb,_timed_flush_lcd];
 
-  return { _Field_get_value: _Field_get_value, _baye_set_u16_value: _baye_set_u16_value, _ValueDef_get_size: _ValueDef_get_size, _bayeSendKey: _bayeSendKey, _bitshift64Lshr: _bitshift64Lshr, _bayeGetGlobal: _bayeGetGlobal, _Value_get_addr: _Value_get_addr, _llvm_cttz_i32: _llvm_cttz_i32, _bayeSendTouchEvent: _bayeSendTouchEvent, ___udivdi3: ___udivdi3, _baye_get_u16_value: _baye_get_u16_value, _Value_get_u8_value: _Value_get_u8_value, _main: _main, _fflush: _fflush, _bayeGetCustomData: _bayeGetCustomData, ___errno_location: ___errno_location, _bayeStrLen: _bayeStrLen, _memset: _memset, _sbrk: _sbrk, _Value_get_type: _Value_get_type, _memcpy: _memcpy, _baye_get_u8_value: _baye_get_u8_value, ___muldi3: ___muldi3, _ValueDef_get_field_by_index: _ValueDef_get_field_by_index, _bayeGetSkillName: _bayeGetSkillName, _bitshift64Shl: _bitshift64Shl, ___uremdi3: ___uremdi3, _ValueDef_get_array_length: _ValueDef_get_array_length, _bayeScriptInit: _bayeScriptInit, _bayeSetLcdSize: _bayeSetLcdSize, _baye_get_u32_value: _baye_get_u32_value, _i64Subtract: _i64Subtract, _Field_get_type: _Field_get_type, ___udivmoddi4: ___udivmoddi4, _bayeGetPersonName: _bayeGetPersonName, _i64Add: _i64Add, _pthread_self: _pthread_self, _bayeSetDebug: _bayeSetDebug, _baye_set_u8_value: _baye_set_u8_value, _bayeGetCityName: _bayeGetCityName, _Value_set_u32_value: _Value_set_u32_value, _Object_get_field_by_index: _Object_get_field_by_index, _ValueDef_get_type: _ValueDef_get_type, _bayeCityDelGoods: _bayeCityDelGoods, _ValueDef_get_field_count: _ValueDef_get_field_count, _bayeSetCustomData: _bayeSetCustomData, ___muldsi3: ___muldsi3, _free: _free, _baye_set_u32_value: _baye_set_u32_value, _Value_get_u32_value: _Value_get_u32_value, _Value_get_u16_value: _Value_get_u16_value, _bayeCityAddGoods: _bayeCityAddGoods, _malloc: _malloc, _Object_get_field_count: _Object_get_field_count, _Value_set_u16_value: _Value_set_u16_value, _Field_get_name: _Field_get_name, _bayeGetCurrentPeriod: _bayeGetCurrentPeriod, _Value_set_u8_value: _Value_set_u8_value, _bayeGetToolName: _bayeGetToolName, _ValueDef_get_array_subdef: _ValueDef_get_array_subdef, _Value_get_def: _Value_get_def, runPostSets: runPostSets, stackAlloc: stackAlloc, stackSave: stackSave, stackRestore: stackRestore, establishStackSpace: establishStackSpace, setThrew: setThrew, setTempRet0: setTempRet0, getTempRet0: getTempRet0, emterpret: emterpret, setAsyncState: setAsyncState, emtStackSave: emtStackSave, emtStackRestore: emtStackRestore, dynCall_ii: dynCall_ii, dynCall_iiii: dynCall_iiii, dynCall_vi: dynCall_vi, dynCall_iiiii: dynCall_iiiii, dynCall_v: dynCall_v };
+  return { _Field_get_value: _Field_get_value, _baye_set_u16_value: _baye_set_u16_value, _ValueDef_get_size: _ValueDef_get_size, _bayeSendKey: _bayeSendKey, _bitshift64Lshr: _bitshift64Lshr, _bayeGetGlobal: _bayeGetGlobal, _Value_get_addr: _Value_get_addr, _bayeGetSeed: _bayeGetSeed, _llvm_cttz_i32: _llvm_cttz_i32, _bayeSendTouchEvent: _bayeSendTouchEvent, ___udivdi3: ___udivdi3, _baye_get_u16_value: _baye_get_u16_value, _Value_get_u8_value: _Value_get_u8_value, _bayeSRand: _bayeSRand, _main: _main, _fflush: _fflush, _bayeRand: _bayeRand, _bayeGetCustomData: _bayeGetCustomData, ___errno_location: ___errno_location, _bayeStrLen: _bayeStrLen, _memset: _memset, _sbrk: _sbrk, _Value_get_type: _Value_get_type, _memcpy: _memcpy, _baye_get_u8_value: _baye_get_u8_value, ___muldi3: ___muldi3, _ValueDef_get_field_by_index: _ValueDef_get_field_by_index, _bayeGetSkillName: _bayeGetSkillName, _bitshift64Shl: _bitshift64Shl, ___uremdi3: ___uremdi3, _ValueDef_get_array_length: _ValueDef_get_array_length, _bayeScriptInit: _bayeScriptInit, _bayeSetLcdSize: _bayeSetLcdSize, _baye_get_u32_value: _baye_get_u32_value, _i64Subtract: _i64Subtract, _Field_get_type: _Field_get_type, ___udivmoddi4: ___udivmoddi4, _bayeGetPersonName: _bayeGetPersonName, _i64Add: _i64Add, _pthread_self: _pthread_self, _bayeSetDebug: _bayeSetDebug, _baye_set_u8_value: _baye_set_u8_value, _bayeGetCityName: _bayeGetCityName, _Value_set_u32_value: _Value_set_u32_value, _Object_get_field_by_index: _Object_get_field_by_index, _ValueDef_get_type: _ValueDef_get_type, _bayeCityDelGoods: _bayeCityDelGoods, _ValueDef_get_field_count: _ValueDef_get_field_count, _bayeSetCustomData: _bayeSetCustomData, ___muldsi3: ___muldsi3, _free: _free, _baye_set_u32_value: _baye_set_u32_value, _Value_get_u32_value: _Value_get_u32_value, _Value_get_u16_value: _Value_get_u16_value, _bayeCityAddGoods: _bayeCityAddGoods, _malloc: _malloc, _Object_get_field_count: _Object_get_field_count, _Value_set_u16_value: _Value_set_u16_value, _Field_get_name: _Field_get_name, _bayeGetCurrentPeriod: _bayeGetCurrentPeriod, _Value_set_u8_value: _Value_set_u8_value, _bayeGetToolName: _bayeGetToolName, _ValueDef_get_array_subdef: _ValueDef_get_array_subdef, _Value_get_def: _Value_get_def, runPostSets: runPostSets, stackAlloc: stackAlloc, stackSave: stackSave, stackRestore: stackRestore, establishStackSpace: establishStackSpace, setThrew: setThrew, setTempRet0: setTempRet0, getTempRet0: getTempRet0, emterpret: emterpret, setAsyncState: setAsyncState, emtStackSave: emtStackSave, emtStackRestore: emtStackRestore, dynCall_ii: dynCall_ii, dynCall_iiii: dynCall_iiii, dynCall_vi: dynCall_vi, dynCall_iiiii: dynCall_iiiii, dynCall_v: dynCall_v };
 })
 // EMSCRIPTEN_END_ASM
 (Module.asmGlobalArg, Module.asmLibraryArg, buffer);
@@ -40861,13 +40890,16 @@ var _bayeSendKey = Module["_bayeSendKey"] = asm["_bayeSendKey"];
 var _bitshift64Lshr = Module["_bitshift64Lshr"] = asm["_bitshift64Lshr"];
 var _baye_get_u32_value = Module["_baye_get_u32_value"] = asm["_baye_get_u32_value"];
 var _Value_get_addr = Module["_Value_get_addr"] = asm["_Value_get_addr"];
+var _bayeGetSeed = Module["_bayeGetSeed"] = asm["_bayeGetSeed"];
 var _llvm_cttz_i32 = Module["_llvm_cttz_i32"] = asm["_llvm_cttz_i32"];
 var _Value_get_u8_value = Module["_Value_get_u8_value"] = asm["_Value_get_u8_value"];
 var _baye_get_u16_value = Module["_baye_get_u16_value"] = asm["_baye_get_u16_value"];
 var _bayeSendTouchEvent = Module["_bayeSendTouchEvent"] = asm["_bayeSendTouchEvent"];
+var _bayeSRand = Module["_bayeSRand"] = asm["_bayeSRand"];
 var _main = Module["_main"] = asm["_main"];
 var _ValueDef_get_type = Module["_ValueDef_get_type"] = asm["_ValueDef_get_type"];
 var _fflush = Module["_fflush"] = asm["_fflush"];
+var _bayeRand = Module["_bayeRand"] = asm["_bayeRand"];
 var _Object_get_field_count = Module["_Object_get_field_count"] = asm["_Object_get_field_count"];
 var _bayeStrLen = Module["_bayeStrLen"] = asm["_bayeStrLen"];
 var _memset = Module["_memset"] = asm["_memset"];
