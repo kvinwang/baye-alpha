@@ -1,0 +1,8 @@
+﻿注意：
+平衡版1.6的一些改动使用了新代码，老地址不支持新代码，导致一些改动不能实现。
+所以平衡版1.6在新地址上线。
+
+新地址：<a href="http://bgwp.oschina.io/baye-alpha/">http://bgwp.oschina.io/baye-alpha/</a>
+
+老地址只能玩1.5版本，以下是1.5版本
+
