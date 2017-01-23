@@ -3,6 +3,18 @@ Math.random = function() {
     return _bayeRand() % 65536 / 65536;
 };
 
+if (!String.prototype.format) {
+  String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) {
+      return typeof args[number] != 'undefined'
+        ? args[number]
+        : match
+      ;
+    });
+  };
+}
+
 var    ValueTypeU8 = 0;
 var    ValueTypeU16 = 1;
 var    ValueTypeU32 = 2;
@@ -306,6 +318,53 @@ $(function(){
     baye.getFighterPositionByName = function(name) {
         var idx = baye.getFighterIndexByName(name);
         return baye.data.g_GenPos[idx];
+    };
+
+    baye.getPersonNameByID = function(id) {
+        switch (id) {
+        case 0:
+            return "-";
+        case 0xff:
+            return "俘虏";
+        default:
+            return baye.getPersonName(id - 1);
+        }
+    };
+
+    baye.printCity = function(i) {
+        var city = baye.data.g_Cities[i];
+        var people = baye.data.g_Persons;
+        var queue = baye.data.g_PersonsQueue;
+
+        var belong = baye.getPersonNameByID(city.Belong);
+
+        console.log("--------" + baye.getCityName(i) + "--------");
+        console.log("归属: " + belong);
+        console.log("-");
+        for (var qi = 0; qi  < city.Persons; qi++) {
+            var pind = queue[city.PersonQueue + qi];
+            var person = people[pind];
+            var name = baye.getPersonName(pind);
+            var belong = baye.getPersonNameByID(person.Belong);
+            console.log(sprintf("%-10s 归属:%-10s", name, belong));
+        }
+        console.log("-");
+        var queue = baye.data.g_GoodsQueue;
+        var tools = baye.data.g_Tools;
+        for (var qi = 0; qi  < city.Tools; qi++) {
+            var tindex = queue[city.ToolQueue + qi];
+            var tool = tools[pind];
+            var name = baye.getToolName(pind);
+            console.log(name);
+        }
+    };
+
+    baye.printAllCities = function() {
+        var cities = baye.data.g_Cities;
+
+        for (var i = 0; i < cities.length; i++) {
+            baye.printCity(i);
+        }
     };
 });
 
