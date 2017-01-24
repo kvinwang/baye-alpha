@@ -1,3 +1,8 @@
+if (window._bayeRand === undefined) {
+    window._bayeRand = function() {
+        return 0.5;
+    };
+}
 
 Math.random = function() {
     return _bayeRand() % 65536 / 65536;
