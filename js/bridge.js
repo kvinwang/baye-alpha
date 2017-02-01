@@ -273,15 +273,6 @@ $(function(){
         Module._free(buffer);
     }
 
-    baye.printPeople = function () {
-        for (var i = 0; i < 250; i++) {
-            var p = baye.data.g_Persons[i];
-            if (p.Level > 0) {
-                console.log('index:' + i + ' name:' + baye.getPersonName(i) + ' 归属:' + p.Belong);
-            }
-        }
-    };
-
     baye.alert = function(msg, then){
         baye.data.g_asyncActionID = 1;
         baye.data.g_asyncActionParams[0] = 3;
@@ -368,6 +359,15 @@ $(function(){
         }
     };
 
+    baye.printPeople = function () {
+        for (var i = 0; i < 250; i++) {
+            var p = baye.data.g_Persons[i];
+            if (p.Level > 0) {
+                console.log(sprintf('index: %03d name: %-08s 归属:%-08s', i, baye.getPersonName(i), baye.getPersonNameByID(p.Belong)));
+            }
+        }
+    };
+
     baye.printAllCities = function() {
         var cities = baye.data.g_Cities;
 
@@ -394,6 +394,11 @@ $(function(){
 
     baye.deleteToolInCity = function(city, tool) {
         return _bayeDeleteToolInCity(city, tool);
+    };
+
+    baye.getPersonByGeneralIndex = function(gIndex) {
+        var pid = baye.data.g_FgtParam.GenArray[gIndex];
+        return baye.data.g_Persons[pid - 1];
     };
 
 });
