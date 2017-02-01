@@ -44,3 +44,41 @@ baye.hooks.battleBuildAttackAttriutes = function(context) {
     result.df = df;
 };
 
+baye.hooks.battleDrivePersonState = function(context) {
+    var person = baye.getPersonByGeneralIndex(context.generalIndex);
+    if (person.Arms > 0) person.Arms -= 1;
+};
+
+baye.hooks.countAttackHurt = function(context) {
+    /*
+        计算伤害示例
+
+        查阅文档可知, 可以使用计算普通攻击伤害的钩子
+            http://bgwp.oschina.io/baye-doc/script/index.html#baye-hooks-countattackhurt
+
+        context.hurt: 计算结果存放位置序号
+
+        如下是引擎默认算法:
+    */
+
+    var KeZhiMatrix = [
+        [1.0, 1.2, 0.8, 1.0, 0.7, 1.3],
+        [0.8, 1.0, 1.2, 1.0, 0.6, 1.2],
+        [1.2, 0.8, 1.0, 1.0, 1.1, 1.2],
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        [1.1, 1.3, 0.9, 1.0, 1.0, 1.5],
+        [0.6, 0.6, 0.6, 0.6, 0.6, 0.6]
+    ];
+
+    var p0 = baye.data.g_GenAtt[0]; //攻击方数据
+    var p1 = baye.data.g_GenAtt[1]; //防守方数据
+
+    var person = baye.getPersonByGeneralIndex(p0.generalIndex);
+
+    /* 基本伤害 hurt = (at / df) * arms / 8 */
+    var hurt = p0.at / p1.df * (person.Arms >> 3);
+
+    /* 相克加层 hurt *= modu */
+    hurt *= KeZhiMatrix[p0.armsType][p1.armsType];
+    context.hurt = hurt;
+};
