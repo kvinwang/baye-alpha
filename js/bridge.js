@@ -149,6 +149,8 @@ function baye_bridge_valuedef(def, addr) {
                     return _baye_get_u8_value(this._addr);
                 },
                 set: function(value) {
+                    if (value > 0xff) value = 0xff;
+                    if (value < 0) value = 0;
                     return _baye_set_u8_value(this._addr, value);
                 }
             });
@@ -159,6 +161,8 @@ function baye_bridge_valuedef(def, addr) {
                     return _baye_get_u16_value(this._addr);
                 },
                 set: function(value) {
+                    if (value > 0xffff) value = 0xffff;
+                    if (value < 0) value = 0;
                     return _baye_set_u16_value(this._addr, value);
                 }
             });
@@ -371,5 +375,26 @@ $(function(){
             baye.printCity(i);
         }
     };
+
+    baye.getTerrainByGeneralIndex = function(index) {
+        return _bayeFgtGetGenTer(index);
+    };
+
+    baye.putPersonInCity = function(city, person) {
+        return _bayePutPersonInCity(city, person);
+    };
+
+    baye.putToolInCity = function(city, tool, hide) {
+        return _bayePutToolInCity(city, tool, hide ? 1 : 0);
+    };
+
+    baye.deletePersonInCity = function(city, person) {
+        return _bayeDeletePersonInCity(city, person);
+    };
+
+    baye.deleteToolInCity = function(city, tool) {
+        return _bayeDeleteToolInCity(city, tool);
+    };
+
 });
 

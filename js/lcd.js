@@ -553,12 +553,6 @@ function touchPadInit(elementID) {
             var speedY = dX / dt;
             var ratio = Math.abs(speedX / speedY);
 
-            if (ratio < 0.6) {//考虑垂直锁定
-                lastX = x;
-            } else if (ratio > 1.8) { //水平锁定
-                lastY = y;
-            }
-
             lastY = processPointMove(y, previousY, lastY, dt, 30, 0.3, 2000, 800, VK_UP, VK_DOWN);
             lastX = processPointMove(x, previousX, lastX, dt, 30, 8, 1000, 500, VK_LEFT, VK_RIGHT);
 
