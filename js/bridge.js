@@ -292,7 +292,6 @@ $(function(){
                 l += 1;
             }
         }
-        console.log('truncate ' + s + ' n=' + n + ' pad=' + pad + ' rv=' + rv);
         return rv;
     }
 
