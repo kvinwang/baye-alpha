@@ -272,6 +272,30 @@ function range(start, stop, step) {
 }
 
 $(function(){
+
+    function truncate(s, n, pad) {
+        var l = 0;
+        var c = 0;
+        for (var i = 0; i < s.length; i++) {
+            var cs = s.charCodeAt(i) > 256 ? 2 : 1;
+            if (l + cs <= n) {
+                l += cs;
+                c += 1;
+            } else {
+                break;
+            }
+        }
+        var rv = s.slice(0, c);
+        if (pad) {
+            while (l < n) {
+                rv += ' ';
+                l += 1;
+            }
+        }
+        console.log('truncate ' + s + ' n=' + n + ' pad=' + pad + ' rv=' + rv);
+        return rv;
+    }
+
     if (window.baye === undefined) {
         window.baye = {};
     }
@@ -318,11 +342,11 @@ $(function(){
         baye.data.g_asyncActionParams[3] = h;
         baye.data.g_asyncActionParams[4] = init;
 
-        var n = w / 6;
+        var n = Math.floor(w / 6);
         var s = "";
 
         for (var i = 0; i < items.length; i++) {
-            s += sprintf("%-" + n + "s", items[i]);
+            s += truncate(items[i], n, true);
         }
 
         baye.data.g_asyncActionStringParam = s;
