@@ -334,6 +334,16 @@ $(function(){
         baye.callback = then;
     };
 
+    function setcb0(then) {
+        if (then) {
+            baye.callback = function() {
+                return then(baye.data.g_asyncActionParams[0]);
+            };
+        } else {
+            baye.callback = undefined;
+        }
+    }
+
     baye.choose = function(x, y, w, h, items, init, then){
         baye.data.g_asyncActionID = 3;
         baye.data.g_asyncActionParams[0] = x;
@@ -350,10 +360,7 @@ $(function(){
         }
 
         baye.data.g_asyncActionStringParam = s;
-
-        baye.callback = function() {
-            return then(baye.data.g_asyncActionParams[0]);
-        };
+        setcb0(then);
     };
 
     baye.centerChoose = function(w, h, items, init, then) {
@@ -372,10 +379,7 @@ $(function(){
         for (var i = 0; i < items.length; i++) {
             baye.data.g_asyncActionStringParamArray[i] = items[i];
         }
-
-        baye.callback = function() {
-            return then(baye.data.g_asyncActionParams[0]);
-        };
+        setcb0(then);
     };
 
     baye.chooseTool = function(items, init, then) {
@@ -386,17 +390,12 @@ $(function(){
         for (var i = 0; i < items.length; i++) {
             baye.data.g_asyncActionStringParamArray[i] = items[i];
         }
-
-        baye.callback = function() {
-            return then(baye.data.g_asyncActionParams[0]);
-        };
+        setcb0(then);
     };
 
     baye.chooseCity = function(then) {
         baye.data.g_asyncActionID = 6;
-        baye.callback = function() {
-            return then(baye.data.g_asyncActionParams[0]);
-        };
+        setcb0(then);
     };
 
     baye.getPersonByName = function(name) {
