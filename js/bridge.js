@@ -310,6 +310,71 @@ $(function(){
         baye.callback = then;
     };
 
+    baye.choose = function(x, y, w, h, items, init, then){
+        baye.data.g_asyncActionID = 3;
+        baye.data.g_asyncActionParams[0] = x;
+        baye.data.g_asyncActionParams[1] = y;
+        baye.data.g_asyncActionParams[2] = w;
+        baye.data.g_asyncActionParams[3] = h;
+        baye.data.g_asyncActionParams[4] = init;
+
+        var n = w / 6;
+        var s = "";
+
+        for (var i = 0; i < items.length; i++) {
+            s += sprintf("%-" + n + "s", items[i]);
+        }
+
+        baye.data.g_asyncActionStringParam = s;
+
+        baye.callback = function() {
+            return then(baye.data.g_asyncActionParams[0]);
+        };
+    };
+
+    baye.centerChoose = function(w, h, items, init, then) {
+
+        var x = (baye.data.g_screenWidth - w) / 2;
+        var y = (baye.data.g_screenHeight - h) / 2;
+
+        return baye.choose(x, y, w, h, items, init, then);
+    };
+
+    baye.choosePerson = function(items, init, then) {
+        baye.data.g_asyncActionID = 4;
+        baye.data.g_asyncActionParams[0] = items.length;
+        baye.data.g_asyncActionParams[1] = init;
+
+        for (var i = 0; i < items.length; i++) {
+            baye.data.g_asyncActionStringParamArray[i] = items[i];
+        }
+
+        baye.callback = function() {
+            return then(baye.data.g_asyncActionParams[0]);
+        };
+    };
+
+    baye.chooseTool = function(items, init, then) {
+        baye.data.g_asyncActionID = 5;
+        baye.data.g_asyncActionParams[0] = items.length;
+        baye.data.g_asyncActionParams[1] = init;
+
+        for (var i = 0; i < items.length; i++) {
+            baye.data.g_asyncActionStringParamArray[i] = items[i];
+        }
+
+        baye.callback = function() {
+            return then(baye.data.g_asyncActionParams[0]);
+        };
+    };
+
+    baye.chooseCity = function(then) {
+        baye.data.g_asyncActionID = 6;
+        baye.callback = function() {
+            return then(baye.data.g_asyncActionParams[0]);
+        };
+    };
+
     baye.getPersonByName = function(name) {
         var all = baye.data.g_Persons;
         for (var i = 0; i < all.length; i++) {
