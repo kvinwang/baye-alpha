@@ -96,7 +96,7 @@ function baye_bridge_description_for_value(jvalue, type) {
                 },
                 set: function(value) {
                     var jv = jvalue.value;
-                    var arr = gbkEncoder.encode(value);
+                    var arr = gbkEncoder.encode('' + value);
                     var length = Math.min(jv.length - 1, arr.length);
                     for(var i = 0; i < length; i++) {
                         jv[i] = arr[i]
