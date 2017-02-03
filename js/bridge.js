@@ -512,5 +512,11 @@ $(function(){
         return baye.data.g_Persons[pid - 1];
     };
 
+    baye.moveHere = function(name) {
+        var i = baye.getFighterIndexByName(name);
+        var pd = baye.data.g_GenPos[i];
+        pd.x = baye.data.g_FoucsX;
+        pd.y = baye.data.g_FoucsY;
+    };
 });
 
