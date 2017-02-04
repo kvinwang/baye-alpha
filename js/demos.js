@@ -211,6 +211,8 @@ baye.hooks.willGiveTool = function(c) {
     return -1;
 };
 
+// ==========================================
+
 baye.createCustomData = function() {
     // 创建初始数据
     switch (baye.data.g_PIdx) {
@@ -239,4 +241,77 @@ baye.hooks.willSaveGame = function() {
     // 存档后前需要保存自定义数据
     var data = JSON.stringify(baye.data.customData);
     baye.setCustomData(data);
+};
+
+// ==========================================
+
+baye.hooks.cityMakeCommand = function() {
+    var items = ['继续', '取消'];
+
+    baye.choose(4, 5, 40, 30, items, 1, function(ind) {
+        console.log("Choosing: " + ind);
+        return ind == 0 ? -1 : 0;
+    });
+};
+
+baye.hooks.cityMakeCommand = function() {
+    var items = range(20);
+
+    baye.choosePerson(items, 0, function(ind) {
+        console.log("Choosing: " + baye.getPersonName(ind));
+    });
+};
+
+
+baye.hooks.cityMakeCommand = function() {
+    var items = range(20);
+
+    baye.chooseTool(items, 0, function(ind) {
+        console.log("Choosing: " + baye.getToolName(ind));
+    });
+};
+
+// ==========================================
+
+// 配置道具表格列数量
+baye.data.g_uiCfg.toolPropertyCount = 6;
+
+// 配置表格列宽度
+baye.data.g_uiCfg.toolPropertiesDisplayWitdh = [4, 6, 6, 6, 6, 6];
+
+// 定义道具表格表头
+var baye_tool_heads = ["类型", "加武力", "加智力", "加统率", "加移动", "变兵种"];
+
+// 填写表头的钩子
+baye.hooks.getToolPropertyTitle = function(c) {
+    c.title = baye_tool_heads[c.propertyIndex];
+    return 0;
+};
+
+// 填写单元格的钩子
+baye.hooks.getToolPropertyValue = function(c) {
+
+    var tool = baye.data.g_Tools[c.toolIndex];
+
+    switch (baye_tool_heads[c.propertyIndex]) {
+        case "类型":
+            c.value = ["装备", "使用"][tool.useflag];
+            break;
+        case "加武力":
+            c.value = tool.at; // 转成字符串
+            break;
+        case "加智力":
+            c.value = tool.iq; // 转成字符串
+            break;
+        case "加统率":
+            c.value = baye.TOOL_AGE_TAB[c.toolIndex];
+            break;
+        case "加移动":
+            c.value = '' + tool.move; // 转成字符串
+            break;
+        case "变兵种":
+            c.value = ['无', '水', '玄', '极', "骑兵", "步兵", "弓兵", "水兵", "极兵", "玄兵"][tool.arm];
+            break;
+    }
+    return 0;
 };
