@@ -518,5 +518,9 @@ $(function(){
         pd.x = baye.data.g_FoucsX;
         pd.y = baye.data.g_FoucsY;
     };
+
+    baye.getArmType = function(pindex) {
+        return _bayeGetArmType(pindex);
+    };
 });
 
