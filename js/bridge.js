@@ -20,6 +20,12 @@ if (!String.prototype.format) {
   };
 }
 
+if (!Array.prototype.includes) {
+    Array.prototype.includes = function(searchElement, fromIndex) {
+        return this.indexOf(searchElement, fromIndex) >= 0;
+    }
+}
+
 var    ValueTypeU8 = 0;
 var    ValueTypeU16 = 1;
 var    ValueTypeU32 = 2;
