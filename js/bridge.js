@@ -339,6 +339,23 @@ $(function(){
         baye.callback = then;
     };
 
+    baye.delay = function(ticks, flag, then){
+        baye.data.g_asyncActionID = 7;
+        baye.data.g_asyncActionParams[0] = ticks;
+        baye.data.g_asyncActionParams[1] = flag;
+        setcb0(then);
+    };
+
+    baye.playSPE = function(x, y, speid, index, flag, then){
+        baye.data.g_asyncActionID = 8;
+        baye.data.g_asyncActionParams[0] = speid;
+        baye.data.g_asyncActionParams[1] = index;
+        baye.data.g_asyncActionParams[2] = x;
+        baye.data.g_asyncActionParams[3] = y;
+        baye.data.g_asyncActionParams[4] = flag;
+        setcb0(then);
+    };
+
     function setcb0(then) {
         if (then) {
             baye.callback = function() {
@@ -527,6 +544,36 @@ $(function(){
 
     baye.getArmType = function(pindex) {
         return _bayeGetArmType(pindex);
+    };
+
+    var gbkPtr = _bayeGetGBKBuffer();
+    baye.drawText = function (x, y, text) {
+        baye.data.g_asyncActionStringParam = text;
+        _bayeLcdDrawText(gbkPtr, x, y);
+    };
+
+    baye.drawImage = function(x, y, resid, resitem, picIndex) {
+        _bayeLcdDrawImage(resid, resitem, picIndex, x, y, 1);
+    };
+
+    baye.clearRect = function(left, top, right, bottom) {
+        _bayeLcdClearRect(left, top, right, bottom);
+    };
+
+    baye.revertRect = function(left, top, right, bottom) {
+        _bayeLcdRevertRect(left, top, right, bottom);
+    };
+
+    baye.drawLine = function(startX, startY, endX, endY) {
+        _bayeLcdDrawLine(startX, startY, endX, endY, 1);
+    };
+
+    baye.drawRect = function(left, top, right, bottom) {
+        _bayeLcdDrawRect(left, top, right, bottom, 1);
+    };
+
+    baye.drawDot = function(x, y, color) {
+        _bayeLcdDot(x, y, color);
     };
 });
 
