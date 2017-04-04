@@ -16,16 +16,18 @@ function lcdInit()
     if(navigator.userAgent.match(/(Android|ARM)/i)){
         lcdDotSize = 2;
     }
+    var width = 16*10;
+    var height = 16*6;
 
     //分辨率
     switch (window.localStorage["baye/resolution"]) {
     case '0':
-        lcdWidth = 16*10;
-        lcdHeight = 16*6;
+        width = 16*10;
+        height = 16*6;
         break;
     case '1':
-        lcdWidth = 16*13;
-        lcdHeight = 16*8;
+        width = 16*13;
+        height = 16*8;
         break;
     }
 
@@ -39,15 +41,20 @@ function lcdInit()
         break;
     }
 
-    var canvas = document.getElementById('lcd');
-    canvas.width = lcdWidth * lcdDotSize;
-    canvas.height = lcdHeight * lcdDotSize;
-    _bayeSetLcdSize(lcdWidth, lcdHeight);
-
+    bayeResizeScreen(width, height);
 
     if (window.localStorage["baye/debug"] == '1') {
         _bayeSetDebug(1);
     }
+}
+
+function bayeResizeScreen(width, height) {
+    lcdWidth = width;
+    lcdHeight = height;
+    var canvas = document.getElementById('lcd');
+    canvas.width = width * lcdDotSize;
+    canvas.height = height * lcdDotSize;
+    _bayeSetLcdSize(width, height);
 }
 
 function imagePixel(img, i)

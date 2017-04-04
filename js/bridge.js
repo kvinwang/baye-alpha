@@ -580,5 +580,9 @@ $(function(){
     baye.clearScreen = function() {
         baye.clearRect(0, 0, baye.data.g_screenWidth, baye.data.g_screenHeight);
     };
+
+    baye.resizeScreen = function(width, height) {
+        bayeResizeScreen(width, height);
+    };
 });
 
