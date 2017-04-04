@@ -98,7 +98,8 @@ function baye_bridge_description_for_value(jvalue, type) {
         case ValueTypeGBKBuffer:
             return {
                 get: function() {
-                    return gbkDecoder.decode(jvalue.value);
+                    var buffer = bayeU8Array(jvalue.value._addr, _bayeStrLen(jvalue.value._addr));
+                    return gbkDecoder.decode(buffer);
                 },
                 set: function(value) {
                     var jv = jvalue.value;
@@ -574,6 +575,10 @@ $(function(){
 
     baye.drawDot = function(x, y, color) {
         _bayeLcdDot(x, y, color);
+    };
+
+    baye.clearScreen = function() {
+        baye.clearRect(0, 0, baye.data.g_screenWidth, baye.data.g_screenHeight);
     };
 });
 
