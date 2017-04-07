@@ -584,5 +584,7 @@ $(function(){
     baye.resizeScreen = function(width, height) {
         bayeResizeScreen(width, height);
     };
+
+    baye.None = 255;
 });
 
