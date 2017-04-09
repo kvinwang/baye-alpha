@@ -550,7 +550,7 @@ $(function(){
     var gbkPtr = _bayeGetGBKBuffer();
     baye.drawText = function (x, y, text) {
         baye.data.g_asyncActionStringParam = text;
-        _bayeLcdDrawText(gbkPtr, x, y);
+        return _bayeLcdDrawText(gbkPtr, x, y);
     };
 
     baye.drawImage = function(x, y, resid, resitem, picIndex) {
