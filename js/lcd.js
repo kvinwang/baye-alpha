@@ -54,6 +54,7 @@ function bayeResizeScreen(width, height) {
     var canvas = document.getElementById('lcd');
     canvas.width = width * lcdDotSize;
     canvas.height = height * lcdDotSize;
+    _bayeSetLcdSize(lcdWidth, lcdHeight);
 }
 
 function imagePixel(img, i)
