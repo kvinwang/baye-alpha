@@ -54,7 +54,6 @@ function bayeResizeScreen(width, height) {
     var canvas = document.getElementById('lcd');
     canvas.width = width * lcdDotSize;
     canvas.height = height * lcdDotSize;
-    _bayeSetLcdSize(width, height);
 }
 
 function imagePixel(img, i)
@@ -679,6 +678,10 @@ function touchScreenInit(lcdID) {
 
 function bayeFlushLcdBuffer(buffer) {
     lcdFlushBuffer(buffer);
+}
+
+function bayeStart() {
+    _bayeSetLcdSize(lcdWidth, lcdHeight);
 }
 
 function bayeExit() {
