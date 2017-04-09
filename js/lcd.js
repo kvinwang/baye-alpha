@@ -695,3 +695,5 @@ function bayeSaveFileContent(filename, content) {
     window.localStorage[filename] = content;
 }
 
+Module = {};
+Module.memoryInitializerPrefixURL = "/baye-engine/";
