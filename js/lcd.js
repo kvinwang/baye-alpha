@@ -696,4 +696,4 @@ function bayeSaveFileContent(filename, content) {
 }
 
 Module = {};
-Module.memoryInitializerPrefixURL = "/baye-engine/";
+Module.memoryInitializerPrefixURL = "../baye-engine/";
