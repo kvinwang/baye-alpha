@@ -315,3 +315,331 @@ baye.hooks.getToolPropertyValue = function(c) {
     }
     return 0;
 };
+
+
+baye.hooks.tacticStage4 = function() {
+    var allPerson = baye.data.g_Persons;
+    var allCity = baye.data.g_Cities;
+	var maxLevel = baye.data.g_engineConfig.maxLevel;
+    var playerKingId = baye.data.g_PlayerKing + 1;
+	var mixLevel = 0.4 * maxLevel;
+
+    for (var i = 0; i < allPerson.length; i++) { //征兵机制
+        var p = allPerson[i];
+        if (
+            p.Belong > 0
+            && p.Belong != playerKingId
+            && p.Belong != 255
+        ) {
+			var chance = Math.random();
+			var maxArms = p.Level*100 + p.Age*150 + p.Force*80 + p.IQ*70;
+			var halfArms = p.Level*50 + p.Age*80 + p.Force*40 + p.IQ*30;
+			if (p.Arms == 800) {
+			 p.Arms = maxArms;
+			}
+			else if (chance < 0.7 && p.Arms >= halfArms) {
+			 p.Arms = maxArms;
+			}
+			else if (chance < 0.9 && p.Arms <= halfArms) {
+			 p.Arms = halfArms;
+			}
+		}
+	}
+
+	for (var a = 0; a < allPerson.length; a++) { //AI升级机制
+        var p = allPerson[a];
+        if (
+            p.Belong > 0
+            && p.Belong != playerKingId
+            && p.Belong != 255
+            && p.Level < maxLevel
+        ) {
+            var chance = Math.random();
+            if (chance < 0.285) {
+                p.Level = p.Level + 1;
+            }
+			else if  (chance < 0.325 && p.Force > 75) {
+                p.Level = p.Level + 1;
+            }
+			else if  (chance < 0.325 && p.IQ > 75) {
+                p.Level = p.Level + 1;
+            }
+        }
+    }
+
+	for (var b = 0; b < allCity.length; b++) { //AI内政完善
+		var city = allCity[b];
+		if (
+			city.Belong > 0
+			&& city.Belong != playerKingId
+		) {
+			var chance = Math.random();
+			if (chance < 0.8 && city.Food < 1200) { //防缺粮机制1
+			 city.Food = city.Food + 300;
+			}
+			else if (chance < 0.9 && city.Food < 600) { //防缺粮机制2
+			 city.Food = city.Food + 500;
+			}
+			if (city.Food > 40000) { //AI粮草管控
+			 city.Food = city.Food/1.5
+			}
+			if (city.Money > 25000) { //AI金钱管控
+			 city.Money = city.Money/2.5
+			}
+			if (city.Commerce > 6000) { //AI商业管控
+			 city.Commerce = city.Commerce/1.5
+			}
+			if (city.MothballArms > 0) { //AI后备兵力清空
+			 city.MothballArms = 0;
+			}
+		}
+	}
+
+	for (var c = 0; c < allPerson.length; c++) {  //玩家自动获得经验机制
+        var p = allPerson[c];
+        if (
+            p.Belong == playerKingId
+            && p.Belong != 255
+			&& p.Level < mixLevel
+        ) {
+			if (
+            p.Experience >= 95
+        ) {
+             p.Level = p.Level + 1;
+			 p.Experience = 0;
+            }
+			else if (
+            p.Experience < 100
+        ) {
+             p.Experience = p.Experience + 5;
+            }
+        }
+    }
+
+}
+
+
+baye.data.g_uiCfg.personPropertiesCount = 13;                          // 配置人物表格 列数量
+
+baye.data.g_uiCfg.personPropertiesDisplayWitdh = [                     // 配置人物表格 列宽度
+4, 4, 4, 4, 4, 4, 4, 4, 4, 10, 10, 8, 4,]
+
+var baye_person_heads = [                                        // 定义人物表格 表头
+"等级", "统率", "武力", "智力", "兵种", "兵力", "忠诚", "体力", "经验", "主道具", "副道具", "归属", "城池",]
+
+
+baye.hooks.getPersonPropertyTitle = function(c) {                // 填写人物表头的钩子
+    c.value = baye_person_heads[c.propertyIndex];
+    return 0;
+};
+
+baye.hooks.getPersonPropertyValue = function(c) {                // 填写人物单元格的钩子
+    var person = baye.data.g_Persons[c.personIndex];
+
+    function toolName(id) {
+        if (id == 0)
+            return '';
+        else
+            return baye.getToolName(id - 1);
+    }
+
+    function belongName(id) {
+        if (id == 0)
+            return '无';
+        if (id == 0xff)
+            return '俘虏';
+        if (id - 1 == c.personIndex)
+            return '君主';
+        return baye.getPersonName(id - 1)
+    }
+
+    function getPersonCityName(pindex) {
+    // 根据人物序号查找所在城池
+    // 算法: 去每个城里面看有没有这个人, 找到则返回该城市名称
+        var cities = baye.data.g_Cities;
+        for (var i = 0; i < cities.length; i++) {
+            var city = cities[i];
+            var start = city.PersonQueue;
+            var end = city.PersonQueue + city.Persons;
+            for (var p = start; p < end; p++) {
+                if (baye.data.g_PersonsQueue[p] == pindex) {
+                    return baye.getCityName(i);
+                }
+            }
+        }
+        return '-'
+    }
+
+    switch (baye_person_heads[c.propertyIndex]) {
+        case "等级":
+            if (person.Level == baye.maxLevel)
+                c.value = 'MAX';
+            else
+                c.value = person.Level;
+            break;
+        case "统率":
+            c.value = person.Age;
+            break;
+        case "武力":
+            c.value = person.Force;
+            break;
+        case "智力":
+            c.value = person.IQ;
+            break;
+        case "兵种":
+            c.value = ["骑兵", "步兵", "弓兵", "水兵", "极兵", "玄兵"][person.ArmsType];
+            break;
+        case "兵力":
+            c.value = person.Arms;
+            break;
+        case "忠诚":
+            c.value = person.Devotion;
+            break;
+        case "体力":
+            c.value = person.Thew;
+            break;
+        case "经验":
+            c.value = person.Experience;
+            break;
+        case "主道具":
+            c.value = toolName(person.Tool1);
+            break;
+        case "副道具":
+            c.value = toolName(person.Tool2);
+            break;
+        case "归属":
+            c.value = belongName(person.Belong);
+            break;
+        case "城池":
+            c.value = getPersonCityName(c.personIndex);
+            break;
+    }
+    return 0;
+};
+
+baye.hooks.getFighterInfo = function(c) {
+    var pp = baye.data.g_GenPos[c.generalIndex];
+    var st = pp.extStates.map(function(v) {
+        switch (v) {
+            case 1:
+                return "状态1"
+            case 2:
+                return "状态2"
+            case 3:
+                return "状态3"
+        }
+        return "其它" + v;
+    });
+    c.info = "额外状态:[" + st.join(",") + "]"
+}
+
+// 调试, 列出战场全部人物
+function pa() {
+    for (var i = 0; i < 20; i++) {
+        var id = baye.data.g_FgtParam.GenArray[i];
+        if (id) {
+            console.log('' + i + ':' + baye.getPersonName(id-1));
+        }
+    }
+}
+
+function reset() {
+    baye.data.g_LookMovie = 0;
+    for (var i = 0; i < 10; i++) {
+        var id = baye.data.g_FgtParam.GenArray[i];
+        if (id) {
+            baye.data.g_GenPos[i].active = 0;
+            baye.data.g_GenPos[i].hp = 100;
+            baye.data.g_GenPos[i].mp = 100;
+            baye.data.g_Persons[id-1].Arms = 10000;
+        }
+    }
+}
+
+// 调试, 移动指定任务到跟前来
+function mv(i) {
+    var pd = baye.data.g_GenPos[i];
+    pd.x = baye.data.g_FoucsX;
+    pd.y = baye.data.g_FoucsY;
+}
+
+
+// 战斗动画前播放自定义特效
+baye.hooks.willShowPKAnimation = function() {
+	if (baye.data.g_LookMovie) {
+        var x = 0;
+        var y = 0;
+        /* 调用开场动画 resid: 3, itemindex: 0*/
+        var resid = 3;
+        var item = 0;
+        var canskip = 0;
+	    baye.playSPE(x, y, resid, item, canskip);
+	}
+	return -1;
+}
+function hexprint(x, n) {
+    var r = '';
+    for (var i = 0; i < n; i++) {
+        r += sprintf('%x ', x[i]);
+    }
+    console.log(r);
+}
+
+// -------------- 显示版本 --------------
+var libversion = "1.2.3.5";
+var customData = {};
+
+baye.hooks.showMainHelp = function() {
+    baye.clearScreen();
+    text = "版本信息\n";
+    text += "引擎:" + baye.data.g_engineVersion + "\n";
+    text += "数据:" + libversion + "\n";
+    text += "开局:" + customData.libversion + "\n";
+    baye.drawText(0, 0, text);
+};
+
+baye.hooks.didOpenNewGame = function() {
+    // 开局时记住lib的版本
+    customData.libversion = libversion;
+};
+
+baye.hooks.willSaveGame = function() {
+    // 存档时写入自定义数据
+    var data = JSON.stringify(customData);
+    console.log('save:' + data);
+    baye.setCustomData(data);
+};
+
+baye.hooks.didLoadGame = function() {
+    // 读档后载入自定义数据
+    var dat = JSON.parse(baye.getCustomData());
+    console.log('load:'+baye.getCustomData());
+    baye.data.customData = dat ? dat : {};
+};
+
+baye.hooks.showSkill = function(c) {c.result = 1;}
+
+
+// ---------------------------------------
+
+// 已知两点, 求直线方程
+function resolveEquationWithPoints(x0, y0, x1, y1) {
+    var res = {a: 0, b: 0, c: 0};
+    res.a = y2 - y1;
+    res.b = x1 - x2;
+    res.c = x2*y1 - x1*y2;
+    return res;
+}
+
+// 求点到直线的距离
+function distanceFromPointToLine(x, y, line) {
+    return Math.abs(line.a*x + line.b*y + line.c) / Math.sqrt(line.a*line.a + line.b*line.b);
+}
+
+// 两点间距离公式
+function distanceOfTwoPoints(x0, y0, x1, y1) {
+    var dx = x0 - x1;
+    var dy = y0 - y1;
+    return Math.sqrt(dx*dx + dy*dy);
+}
+
