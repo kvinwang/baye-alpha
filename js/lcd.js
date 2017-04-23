@@ -424,6 +424,7 @@ function disablePageScroll() {
     document.body.addEventListener('touchmove', function(event) {
         event.preventDefault();
     }, false);
+    window.onscroll = function() {  window.scrollTo(0, 0); }
 }
 
 function touchPadInit(elementID) {
