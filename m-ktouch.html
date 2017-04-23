@@ -40,7 +40,7 @@
         <script src="js/encoding.js"></script>
         <script src="js/sprintf.js"></script>
     </head>
-    <body onkeydown="onKeyDown()" id="touchpad">
+    <body onkeydown="onKeyDown()">
         <div class="container" style="">
             <div class="dummy"></div>
             <div class="element lcd" id="lcd-container" ontap="sendKey(VK_ENTER)">
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div id="tip" class="alert alert-success" style="display:none"></div>
-        <div>
+        <div id="touchpad">
             <div class="keypad" id="keypad1">
                 <div class="container" style="margin-top:2px">
                     <div class="dummy30"></div>
@@ -96,7 +96,7 @@
 <script src="js/tappy.js"></script>
 <script src="js/bridge.js?ver=4"></script>
 <script src="js/lcd.js?ver=11"></script>
-<script src="../baye-engine/baye.js?ver=32"></script>
+<script src="../baye-engine/baye.js?ver=33"></script>
 <script>
     lcdInit();
 
@@ -123,6 +123,7 @@
             });
         }
         $(".btn").each(tap);
-        $("#lcd-container").each(tap);
+        //$("#lcd-container").each(tap);
+        touchScreenInit("lcd");
     })();
 </script>

@@ -401,6 +401,9 @@ function redirect(page) {
         case '2':
             defaultMPage = "m-ges.html"
             break;
+        case '3':
+            defaultMPage = "m-ktouch.html"
+            break;
         }
         console.log('page:' + page);
         console.log('defpage:' + defaultMPage);
