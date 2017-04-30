@@ -5,13 +5,13 @@ __author__ = 'loong'
 import glob
 import re
 import sys
+import time
 
 jsname = sys.argv[1]
-ver = sys.argv[2]
+ver = time.strftime("%Y%m%d%H%M")
 
 regstr = '({})([0-9]+)'.format(re.escape(jsname + '?ver='))
 
-print(regstr)
 regex = re.compile(regstr)
 
 for filename in glob.glob('./*.html'):
