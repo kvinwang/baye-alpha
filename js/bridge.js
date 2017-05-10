@@ -593,6 +593,56 @@ $(function(){
         bayeResizeScreen(width, height);
     };
 
+    baye.patchNames = function() {
+        var l = baye.data.g_Persons.length;
+        for (var i = 0; i < l; i++) {
+            baye.data.g_Persons[i].name = baye.getPersonName(i);
+        }
+
+        l = baye.data.g_Tools.length;
+        for (var i = 0; i < l; i++) {
+            baye.data.g_Tools[i].name = baye.getToolName(i);
+        }
+
+        l = baye.data.g_Skills.length;
+        for (var i = 0; i < l; i++) {
+            baye.data.g_Skills[i].name = baye.getSkillName(i);
+        }
+    };
+
     baye.None = 255;
 });
 
+$(function(){
+    baye.debug = {};
+
+    baye.debug.pa = function () {
+        for (var i = 0; i < 20; i++) {
+            var id = baye.data.g_FgtParam.GenArray[i];
+            if (id) {
+                console.log('' + i + ':' + baye.getPersonName(id-1));
+            }
+        }
+    };
+
+    baye.debug.reset = function () {
+        baye.data.g_LookMovie = 0;
+        for (var i = 0; i < 10; i++) {
+            var id = baye.data.g_FgtParam.GenArray[i];
+            if (id) {
+                baye.data.g_GenPos[i].active = 0;
+                baye.data.g_GenPos[i].hp = 100;
+                baye.data.g_GenPos[i].mp = 100;
+                baye.data.g_Persons[id-1].Arms = 10000;
+            }
+        }
+    };
+
+    // 调试, 移动指定任务到跟前来
+    baye.debug.mv = function (i) {
+        var pd = baye.data.g_GenPos[i];
+        pd.x = baye.data.g_FoucsX;
+        pd.y = baye.data.g_FoucsY;
+    };
+
+});
