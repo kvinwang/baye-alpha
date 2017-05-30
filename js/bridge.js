@@ -224,7 +224,7 @@ function baye_bridge_valuedef(def, addr) {
 }
 
 function baye_bridge_obj(def, addr) {
-    var jsObj = {};
+    var jsObj = new BayeObject();
     var properties = {};
 
     var count = _ValueDef_get_field_count(def);
