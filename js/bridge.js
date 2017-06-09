@@ -610,6 +610,10 @@ $(function(){
         }
     };
 
+    baye.saveScreen = _bayeSaveScreen;
+
+    baye.restoreScreen = _bayeRestoreScreen;
+
     baye.None = 255;
 });
 
