@@ -408,7 +408,7 @@ $(function(){
         baye.data.g_asyncActionParams[1] = init;
 
         for (var i = 0; i < items.length; i++) {
-            baye.data.g_asyncActionStringParamArray[i] = items[i];
+            baye.data.g_asyncActionU16ParamArray[i] = items[i];
         }
         setcb0(then);
     };
@@ -419,7 +419,7 @@ $(function(){
         baye.data.g_asyncActionParams[1] = init;
 
         for (var i = 0; i < items.length; i++) {
-            baye.data.g_asyncActionStringParamArray[i] = items[i];
+            baye.data.g_asyncActionU16ParamArray[i] = items[i];
         }
         setcb0(then);
     };
