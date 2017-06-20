@@ -561,8 +561,8 @@ $(function(){
         return _bayeLcdDrawText(gbkPtr, x, y);
     };
 
-    baye.drawImage = function(x, y, resid, resitem, picIndex) {
-        _bayeLcdDrawImage(resid, resitem, picIndex, x, y, 1);
+    baye.drawImage = function(x, y, resid, resitem, picIndex, scr) {
+        _bayeLcdDrawImage(resid, resitem, picIndex, x, y, scr);
     };
 
     baye.clearRect = function(left, top, right, bottom) {
