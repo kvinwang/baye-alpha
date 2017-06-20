@@ -562,7 +562,7 @@ $(function(){
     };
 
     baye.drawImage = function(x, y, resid, resitem, picIndex, scr) {
-        _bayeLcdDrawImage(resid, resitem, picIndex, x, y, scr);
+        _bayeLcdDrawImage(resid, resitem, picIndex, x, y, scr == 1 ? 0 : 1);
     };
 
     baye.clearRect = function(left, top, right, bottom) {
