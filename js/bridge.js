@@ -614,6 +614,16 @@ $(function(){
 
     baye.restoreScreen = _bayeRestoreScreen;
 
+    //计算将领在屏幕的像素位置
+    baye.getFighterXY = function (index) {
+        var ox = baye.data.g_GenPos[index].x - baye.data.g_MapSX;
+        var oy = baye.data.g_GenPos[index].y - baye.data.g_MapSY;
+        return {
+            x: ox * 16,
+            y: oy * 16
+        };
+    };
+
     baye.None = 255;
 });
 
