@@ -1,6 +1,5 @@
 var lcdWidth = 16*10;
 var lcdHeight = 16*6;
-var lcdDotSize = 1;
 
 function getLCD() {
     var canvas = document.getElementById('lcd');
@@ -13,9 +12,6 @@ function getLCD() {
 
 function lcdInit()
 {
-    if(navigator.userAgent.match(/(Android|ARM)/i)){
-        lcdDotSize = 2;
-    }
     var width = 16*10;
     var height = 16*6;
 
@@ -31,16 +27,6 @@ function lcdInit()
         break;
     }
 
-    // 锐化
-    switch (window.localStorage["baye/clearmode"]) {
-    case '0':
-        lcdDotSize = 1;
-        break;
-    case '1':
-        lcdDotSize = 2;
-        break;
-    }
-
     bayeResizeScreen(width, height);
 
     if (window.localStorage["baye/debug"] == '1') {
@@ -52,8 +38,8 @@ function bayeResizeScreen(width, height) {
     lcdWidth = width;
     lcdHeight = height;
     var canvas = document.getElementById('lcd');
-    canvas.width = width * lcdDotSize;
-    canvas.height = height * lcdDotSize;
+    canvas.width = width * 2;
+    canvas.height = height * 2;
     _bayeSetLcdSize(lcdWidth, lcdHeight);
 }
 
@@ -67,32 +53,23 @@ function imagePixel(img, i)
 
 function imageDot(img, x, y, lineSize)
 {
-    x *= lcdDotSize;
-    y *= lcdDotSize;
-    lineSize *= lcdDotSize;
-
-    for (var x0 = x; x0 < x+lcdDotSize; x0++)
-        for (var y0 = y; y0 < y+lcdDotSize; y0++) {
-            var ind = lineSize*y0 + x0;
-            imagePixel(img, ind*4);
-        }
+    var ind = lineSize*y + x;
+    imagePixel(img, ind*4);
 }
 
 function lcdFlushBuffer(buffer) {
-    var scale = 2;
     var lcd = getLCD();
-    var w = lcdWidth;
-    var h = lcdHeight;
-    var lineSize = lcdWidth;
+    var w = lcdWidth*2;
+    var h = lcdHeight*2;
 
-    var img = lcd.createImageData(lcdWidth*lcdDotSize, lcdHeight*lcdDotSize);
+    var img = lcd.createImageData(lcdWidth*2, lcdHeight*2);
 
     for (var y = 0; y < h; y += 1) {
         for (var x = 0; x < w; x += 1) {
-            var ind = lineSize*y + x;
+            var ind = w*y + x;
             var pixel = getValue(buffer + ind, "i8");
             if (pixel != 0) {
-                imageDot(img, x, y, lineSize);
+                imageDot(img, x, y, w);
             }
         }
     }
