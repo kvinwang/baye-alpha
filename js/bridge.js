@@ -624,7 +624,7 @@ $(function(){
         };
     };
 
-    baye.None = 255;
+    baye.None = 0xffff;
 });
 
 $(function(){
