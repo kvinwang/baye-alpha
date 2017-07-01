@@ -593,7 +593,14 @@ function touchScreenInit(lcdID) {
             gameY = webX / rect.width * lcdHeight;
             break;
         }
-
+        if (window.bayeDebugMode) {
+            var html = "";
+            html += sprintf('canvas:(%.1f,%.1f)<br>', rect.left, rect.top);
+            html += sprintf('client:(%.1f,%.1f)<br>', touch.clientX, touch.clientY);
+            html += sprintf('web:(%.1f,%.1f)<br>', webX, webY);
+            html += sprintf('game:(%.1f,%.1f)<br>', gameX, gameY);
+            $('#info').html(html);
+        }
         _bayeSendTouchEvent(key, gameX, gameY);
     }
 

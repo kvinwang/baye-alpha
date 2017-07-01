@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <script>
+    window.bayeDebugMode = window.location.href.match(/(localhost|debug=1)/);
     //goHomeIfNeeded
     (function() {
-        var match = window.location.hash.match(/#([0-9]*)/i)
-        if(match){
-            var ts = parseInt(match[1]);
-            var now = new Date().getTime() / 1000;
-            var dt = now - ts;
-            if (ts && 0 <= dt && dt < 3600) {
-                return;
+        if (!bayeDebugMode) {
+            match = window.location.hash.match(/#([0-9]*)/i);
+            if(match){
+                var ts = parseInt(match[1]);
+                var now = new Date().getTime() / 1000;
+                var dt = now - ts;
+                if (ts && 0 <= dt && dt < 3600) {
+                    return;
+                }
             }
+            window.location.href = "index.html";
         }
-        window.location.href = "index.html";
     })();
 </script>
 <html>
@@ -39,6 +42,15 @@
                 overflow: hidden;
                 margin:0px;
             }
+            #info {
+                float:left;
+                position: fixed;
+                left: 0;
+                top: 0;
+                background: white;
+                opacity: 0.8;
+                pointer-events:none;
+            }
         </style>
         <script>
             var _hmt = _hmt || [];
@@ -56,6 +68,7 @@
     </head>
     <body>
         <canvas id="lcd" width="160" height="96">然而你的浏览器并不支持HTML5</canvas>
+        <div id="info"></div>
     </body>
 </html>
 <script src="js/bridge.js?ver=4"></script>
@@ -103,6 +116,11 @@ function reloadLCD(){
 
     $(window).resize(reloadLCD);
 
+    if (bayeDebugMode) {
+        $("#info").show();
+    } else {
+        $("#info").hide();
+    }
 })();
 
 </script>
