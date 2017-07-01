@@ -328,7 +328,7 @@ $(function(){
 
     baye.setCustomData = function(data) {
         var length = lengthBytesUTF8(data) + 1;
-        var buffer = Module._malloc(length);
+        var buffer = Module._bayeAlloc(length);
         stringToUTF8(data, buffer, length);
         _bayeSetCustomData(buffer);
         Module._free(buffer);
