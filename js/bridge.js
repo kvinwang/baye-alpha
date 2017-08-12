@@ -556,9 +556,9 @@ $(function(){
     };
 
     var gbkPtr = _bayeGetGBKBuffer();
-    baye.drawText = function (x, y, text) {
+    baye.drawText = function (x, y, text, scr) {
         baye.data.g_asyncActionStringParam = text;
-        return _bayeLcdDrawText(gbkPtr, x, y);
+        return _bayeLcdDrawText(gbkPtr, x, y, scr);
     };
 
     baye.drawImage = function(x, y, resid, resitem, picIndex, scr) {
