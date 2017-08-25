@@ -158,16 +158,26 @@ function binarray2hex (arr) {
 }
 
 function loadHexLib(hexLib) {
-    window.localStorage['baye//data/dat.lib'] = hexLib;
+    window.localStorage['baye//data/dat.lib'] = compressLib(hexLib);
     redirect();
 }
 
+function decompressLib(b64data) {
+    var lzma = Base64.decode(b64data);
+    return LZMA.decompress(lzma);
+}
+
+function compressLib(data) {
+    var result = LZMA.compress(data, 9);
+    return Base64.encode(result);
+}
 
 function loadLibBin(bin) {
     console.log('bin length:' + bin.length);
     if (bin.length == 622874) {
         bin = bin.slice(425984);
     }
+
     var data = bin2hex(bin);
     loadHexLib(data);
 }
@@ -679,7 +689,12 @@ function bayeExit() {
 
 function bayeLoadFileContent(filename) {
     console.log("Loading " + filename);
-    return window.localStorage[filename];
+    var data = window.localStorage[filename];
+    if (filename == 'baye//data/dat.lib') {
+        return decompressLib(data);
+    } else {
+        return data;
+    }
 }
 
 function bayeSaveFileContent(filename, content) {
