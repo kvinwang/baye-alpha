@@ -158,34 +158,26 @@ function binarray2hex (arr) {
 }
 
 function loadHexLib(hexLib) {
-    window.localStorage['baye//data/dat.lib'] = compressLib(hexLib);
+    var arr = [];
+    for (var i = 0; i < hexLib.length; i++)
+        arr[i] = hexLib.charCodeAt(i);
+
+    window.localStorage['baye//data/dat.lib'] = Base64.encode(arr);
     redirect();
-}
-
-function decompressLib(b64data) {
-    var lzma = Base64.decode(b64data);
-    return LZMA.decompress(lzma);
-}
-
-function compressLib(data) {
-    var result = LZMA.compress(data, 9);
-    return Base64.encode(result);
 }
 
 function loadLibBin(bin) {
     console.log('bin length:' + bin.length);
-    if (bin.length == 622874) {
-        bin = bin.slice(425984);
-    }
-
-    var data = bin2hex(bin);
-    loadHexLib(data);
+    //var data = bin2hex(bin);
+    //loadHexLib(data);
+    loadHexLib(bin);
 }
 
 function loadLibBinAndName(bin, name) {
     window.localStorage['baye/libname'] = name;
-    var hex = binarray2hex(bin);
-    loadHexLib(hex);
+    //var hex = binarray2hex(bin);
+    //loadHexLib(hex);
+    loadHexLib(bin);
 }
 
 function loadLib(files) {
@@ -691,7 +683,7 @@ function bayeLoadFileContent(filename) {
     console.log("Loading " + filename);
     var data = window.localStorage[filename];
     if (filename == 'baye//data/dat.lib') {
-        return decompressLib(data);
+        return binarray2hex(Base64.decode(data));
     } else {
         return data;
     }
@@ -704,3 +696,4 @@ function bayeSaveFileContent(filename, content) {
 
 Module = {};
 Module.memoryInitializerPrefixURL = "../baye-engine/";
+Module.TOTAL_MEMORY = 16777216 * 3;
