@@ -365,6 +365,13 @@ $(function(){
         setcb0(then);
     };
 
+    baye.getNumber = function(min, max, then) {
+        baye.data.g_asyncActionID = 9;
+        baye.data.g_asyncActionParams[0] = min;
+        baye.data.g_asyncActionParams[1] = max;
+        setcb0(then);
+    };
+
     function setcb0(then) {
         if (then) {
             baye.callback = function() {
