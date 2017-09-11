@@ -157,48 +157,10 @@ function binarray2hex (arr) {
   return o;
 }
 
-function loadHexLib(hexLib) {
-    var arr = [];
-    for (var i = 0; i < hexLib.length; i++)
-        arr[i] = hexLib.charCodeAt(i);
-
-    window.localStorage['baye//data/dat.lib'] = Base64.encode(arr);
-    redirect();
-}
-
-function loadLibBin(bin) {
-    console.log('bin length:' + bin.length);
-    //var data = bin2hex(bin);
-    //loadHexLib(data);
-    loadHexLib(bin);
-}
-
-function loadLibBinAndName(bin, name) {
-    window.localStorage['baye/libname'] = name;
-    //var hex = binarray2hex(bin);
-    //loadHexLib(hex);
-    loadHexLib(bin);
-}
-
-function loadLib(files) {
-    window.localStorage['baye/libname'] = "自定义lib";
-    loadLibFromFile(files[0]);
-}
-
-function loadLibFromFile(file) {
-    var reader = new FileReader();
-    if (!reader) {
-        alert("浏览器不支持载入文件");
-    }
-    reader.onload = function() {
-        loadLibBin(reader.result);
-    }
-    reader.readAsBinaryString(file);
-}
-
 function clearLib() {
     window.localStorage.removeItem('baye//data/dat.lib');
     window.localStorage.removeItem('baye/libname');
+    window.localStorage.removeItem('baye/libpath');
     redirect();
 }
 
@@ -311,20 +273,45 @@ function ajaxGet(path, callback) {
     xhr.send();
 }
 
+var dynLib = null;
+
+function loadLibFromUrl(url, then) {
+    console.log("loading from " + url);
+    ajaxGet(url, function(file){
+        console.log("ajax ok");
+        var reader = new FileReader();
+        reader.onload = function() {
+            dynLib = bin2hex(reader.result);
+            console.log("read ok");
+            then();
+        }
+        reader.readAsBinaryString(file);
+    });
+}
+
+function bayeMain() {
+    var url = window.localStorage['baye/libpath'];
+    if (!url) {
+        alert("没有选择版本");
+    } else {
+        loadLibFromUrl(url, function(){
+            _main();
+        });
+    }
+}
+
 function chooseLib(title, path, self_) {
     var self = $(self_);
     self.html("请稍候...");
     self.attr("disabled", "disabled");
 
+    clearLib();
     if (path && path.length > 0) {
-        ajaxGet(path, function(blob) {
-            window.localStorage['baye/libname'] = title;
-            loadLibFromFile(blob);
-        });
-    } else {
-        clearLib();
+        window.localStorage['baye/libname'] = title;
+        window.localStorage['baye/libpath'] = path;
     }
 }
+
 
 function loadDetail(id, path) {
     var e = $(id);
@@ -683,7 +670,7 @@ function bayeLoadFileContent(filename) {
     console.log("Loading " + filename);
     var data = window.localStorage[filename];
     if (filename == 'baye//data/dat.lib') {
-        return binarray2hex(Base64.decode(data));
+        return dynLib;
     } else {
         return data;
     }
@@ -697,3 +684,5 @@ function bayeSaveFileContent(filename, content) {
 Module = {};
 Module.memoryInitializerPrefixURL = "../baye-engine/";
 Module.TOTAL_MEMORY = 16777216 * 3;
+Module.noInitialRun = true;
+
