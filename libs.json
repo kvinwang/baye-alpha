@@ -3,5 +3,9 @@
     {
         "title": "群魔乱舞-乱战三国",
         "path": "libs/qmlw-LZSG.lib"
+    },
+    {
+        "title": "群魔乱舞-血色华夏",
+        "path": "libs/qmlw-XSHX.lib"
     }
 ]
