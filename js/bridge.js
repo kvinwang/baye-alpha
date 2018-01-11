@@ -572,8 +572,8 @@ $(function(){
         _bayeLcdDrawImage(resid, resitem, picIndex, x, y, scr == 1 ? 0 : 1);
     };
 
-    baye.clearRect = function(left, top, right, bottom) {
-        _bayeLcdClearRect(left, top, right, bottom);
+    baye.clearRect = function(left, top, right, bottom, scr) {
+        _bayeLcdClearRect(left, top, right, bottom, scr);
     };
 
     baye.revertRect = function(left, top, right, bottom) {
@@ -584,8 +584,8 @@ $(function(){
         _bayeLcdDrawLine(startX, startY, endX, endY, 1);
     };
 
-    baye.drawRect = function(left, top, right, bottom) {
-        _bayeLcdDrawRect(left, top, right, bottom, 1);
+    baye.drawRect = function(left, top, right, bottom, color, scr) {
+        _bayeLcdDrawRect(left, top, right, bottom, color, scr);
     };
 
     baye.drawDot = function(x, y, color) {
