@@ -372,6 +372,11 @@ $(function(){
         setcb0(then);
     };
 
+    baye.enterBattle = function(then) {
+        baye.data.g_asyncActionID = 10;
+        setcb0(then);
+    };
+
     function setcb0(then) {
         if (then) {
             baye.callback = function() {
