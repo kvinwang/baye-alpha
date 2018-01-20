@@ -369,6 +369,15 @@ $(function(){
         baye.data.g_asyncActionID = 9;
         baye.data.g_asyncActionParams[0] = min;
         baye.data.g_asyncActionParams[1] = max;
+        baye.data.g_asyncActionParams[2] = max;
+        setcb0(then);
+    };
+
+    baye.getNumber2 = function(init, min, max, then) {
+        baye.data.g_asyncActionID = 9;
+        baye.data.g_asyncActionParams[0] = min;
+        baye.data.g_asyncActionParams[1] = max;
+        baye.data.g_asyncActionParams[2] = init;
         setcb0(then);
     };
 
