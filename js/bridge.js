@@ -287,6 +287,43 @@ function range(start, stop, step) {
 }
 
 $(function(){
+    function Promise(fn) {
+        _this = this
+        var complated = false;
+        fn(function(x){
+            if (typeof _this.onfulfilled == 'function') {
+                if (!complated) {
+                    complated = true
+                    _this.onfulfilled(x)
+                }
+            }
+        }, function(e){
+            if (typeof _this.onrejected == "function") {
+                if (!complated) {
+                    complated = true
+                    _this.onrejected(e)
+                }
+            }
+        });
+    }
+
+    Promise.prototype.then = function(onfulfilled, onrejected) {
+        this.onfulfilled = onfulfilled
+        this.onrejected = onrejected
+    };
+
+    window.Promise = Promise;
+
+    function wrapAsync(f) {
+        return function() {
+            var args = Array.from(arguments);
+            var _this = this;
+            return Promise(function(resolve, reject){
+                args.push(resolve);
+                f.apply(_this, args);
+            });
+        }
+    }
 
     function truncate(s, n, pad) {
         var l = 0;
@@ -341,6 +378,8 @@ $(function(){
         baye.callback = then;
     };
 
+    baye.asyncAlert = wrapAsync(baye.alert);
+
     baye.say = function(personIndex, msg, then){
         baye.data.g_asyncActionID = 2;
         baye.data.g_asyncActionParams[0] = personIndex;
@@ -348,12 +387,16 @@ $(function(){
         baye.callback = then;
     };
 
+    baye.asyncSay = wrapAsync(baye.say);
+
     baye.delay = function(ticks, flag, then){
         baye.data.g_asyncActionID = 7;
         baye.data.g_asyncActionParams[0] = ticks;
         baye.data.g_asyncActionParams[1] = flag;
         setcb0(then);
     };
+
+    baye.asyncDelay = wrapAsync(baye.delay);
 
     baye.playSPE = function(x, y, speid, index, flag, then){
         baye.data.g_asyncActionID = 8;
@@ -365,6 +408,8 @@ $(function(){
         setcb0(then);
     };
 
+    baye.asyncPlaySPE = wrapAsync(baye.playSPE);
+
     baye.getNumber = function(min, max, then) {
         baye.data.g_asyncActionID = 9;
         baye.data.g_asyncActionParams[0] = min;
@@ -372,6 +417,8 @@ $(function(){
         baye.data.g_asyncActionParams[2] = max;
         setcb0(then);
     };
+
+    baye.asyncGetNumber = wrapAsync(baye.getNumber);
 
     baye.getNumber2 = function(init, min, max, then) {
         baye.data.g_asyncActionID = 9;
@@ -381,10 +428,14 @@ $(function(){
         setcb0(then);
     };
 
+    baye.asyncGetNumber2 = wrapAsync(baye.getNumber2);
+
     baye.enterBattle = function(then) {
         baye.data.g_asyncActionID = 10;
         setcb0(then);
     };
+
+    baye.asyncEnterBattle = wrapAsync(baye.enterBattle);
 
     function setcb0(then) {
         if (then) {
@@ -415,6 +466,8 @@ $(function(){
         setcb0(then);
     };
 
+    baye.asyncChoose = wrapAsync(baye.choose);
+
     baye.centerChoose = function(w, h, items, init, then) {
 
         var x = (baye.data.g_screenWidth - w) / 2;
@@ -422,6 +475,8 @@ $(function(){
 
         return baye.choose(x, y, w, h, items, init, then);
     };
+
+    baye.asyncCenterChoose = wrapAsync(baye.centerChoose);
 
     baye.choosePerson = function(items, init, then) {
         baye.data.g_asyncActionID = 4;
@@ -434,6 +489,8 @@ $(function(){
         setcb0(then);
     };
 
+    baye.asyncChoosePerson = wrapAsync(baye.choosePerson);
+
     baye.chooseTool = function(items, init, then) {
         baye.data.g_asyncActionID = 5;
         baye.data.g_asyncActionParams[0] = items.length;
@@ -445,10 +502,14 @@ $(function(){
         setcb0(then);
     };
 
+    baye.asyncChooseTool = wrapAsync(baye.chooseTool);
+
     baye.chooseCity = function(then) {
         baye.data.g_asyncActionID = 6;
         setcb0(then);
     };
+
+    baye.asyncChooseCity = wrapAsync(baye.chooseCity);
 
     baye.getPersonByName = function(name) {
         var all = baye.data.g_Persons;
