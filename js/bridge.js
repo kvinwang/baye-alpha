@@ -289,18 +289,18 @@ function range(start, stop, step) {
 $(function(){
     function Promise(fn) {
         _this = this
-        var complated = false;
+        var done = false;
         fn(function(x){
             if (typeof _this.onfulfilled == 'function') {
-                if (!complated) {
-                    complated = true
+                if (!done) {
+                    done = true
                     _this.onfulfilled(x)
                 }
             }
         }, function(e){
             if (typeof _this.onrejected == "function") {
-                if (!complated) {
-                    complated = true
+                if (!done) {
+                    done = true
                     _this.onrejected(e)
                 }
             }
