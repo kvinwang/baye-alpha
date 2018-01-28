@@ -356,6 +356,7 @@ $(function(){
     baye.getToolName = bayeWrapFunctionS(_bayeGetToolName);
     baye.getSkillName = bayeWrapFunctionS(_bayeGetSkillName);
     baye.getCityName = bayeWrapFunctionS(_bayeGetCityName);
+    baye.getPersonCount = bayeWrapFunctionS(_bayeGetPersonCount);
 
     baye.getCustomData = function() {
         var cstr = _bayeGetCustomData();
@@ -651,16 +652,16 @@ $(function(){
         _bayeLcdClearRect(left, top, right, bottom, scr);
     };
 
-    baye.revertRect = function(left, top, right, bottom) {
-        _bayeLcdRevertRect(left, top, right, bottom);
+    baye.revertRect = function(left, top, right, bottom, scr) {
+        _bayeLcdRevertRect(left, top, right, bottom, scr);
     };
 
     baye.drawLine = function(startX, startY, endX, endY) {
         _bayeLcdDrawLine(startX, startY, endX, endY, 1);
     };
 
-    baye.drawRect = function(left, top, right, bottom, color, scr) {
-        _bayeLcdDrawRect(left, top, right, bottom, color, scr);
+    baye.drawRect = function(left, top, right, bottom, scr) {
+        _bayeLcdDrawRect(left, top, right, bottom, 1, scr);
     };
 
     baye.drawDot = function(x, y, color) {
