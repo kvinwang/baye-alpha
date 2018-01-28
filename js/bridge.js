@@ -356,7 +356,7 @@ $(function(){
     baye.getToolName = bayeWrapFunctionS(_bayeGetToolName);
     baye.getSkillName = bayeWrapFunctionS(_bayeGetSkillName);
     baye.getCityName = bayeWrapFunctionS(_bayeGetCityName);
-    baye.getPersonCount = bayeWrapFunctionS(_bayeGetPersonCount);
+    baye.getPersonCount = _bayeGetPersonCount;
 
     baye.getCustomData = function() {
         var cstr = _bayeGetCustomData();
