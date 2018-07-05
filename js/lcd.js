@@ -96,7 +96,9 @@ var 		VK_DEL		=		0x31;
 var 		VK_MODIFY	=		0x32;
 var 		VK_SEARCH	=		0x33;
 
-function onKeyDown() {
+function onKeyDown(e) {
+    var event = e?e:window.event;
+
     switch (event.keyCode) {
         case 13:
             sendKey(VK_ENTER);

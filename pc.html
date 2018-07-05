@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>三国霸业</title>
         <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/flex-layout-attribute/1.0.3/css/flex-layout-attribute.css" />
+        <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/flex-layout-attribute/1.0.3/css/flex-layout-attribute.css" />
         <link rel="stylesheet" type="text/css" href="baye.css" />
         <script>
         var _hmt = _hmt || [];
@@ -22,7 +22,7 @@
         <script src="js/lzma_worker-min.js"></script>
         <script src="js/base64.js"></script>
     </head>
-    <body onkeydown="onKeyDown()">
+    <body>
         <div layout="row center-center" >
             <div class="container" style="width:480px">
                 <div class="dummy"></div>
@@ -64,5 +64,6 @@
     var libName = getLibName() || "步步高原版";
     $("#lib-name").html("当前版本: " + libName);
     bayeMain();
+    document.onkeydown = onKeyDown;
 </script>
 
