@@ -512,6 +512,12 @@ $(function(){
 
     baye.asyncChooseCity = wrapAsync(baye.chooseCity);
 
+    baye.makeBattle = function(city, then) {
+        baye.data.g_asyncActionParams[0] = city;
+        baye.data.g_asyncActionID = 11;
+        setcb0(then);
+    };
+
     baye.getPersonByName = function(name) {
         var all = baye.data.g_Persons;
         for (var i = 0; i < all.length; i++) {
@@ -674,10 +680,6 @@ $(function(){
 
     baye.resizeScreen = function(width, height) {
         bayeResizeScreen(width, height);
-    };
-
-    baye.makeBattle = function(city) {
-        _bayeMakeBattle(city);
     };
 
     baye.patchNames = function() {
