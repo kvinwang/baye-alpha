@@ -676,6 +676,10 @@ $(function(){
         bayeResizeScreen(width, height);
     };
 
+    baye.makeBattle = function(city) {
+        _bayeMakeBattle(city);
+    };
+
     baye.patchNames = function() {
         var l = baye.data.g_Persons.length;
         for (var i = 0; i < l; i++) {
