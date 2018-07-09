@@ -518,6 +518,13 @@ $(function(){
         setcb0(then);
     };
 
+    baye.makeCommand = function(city, cmd, then) {
+        baye.data.g_asyncActionParams[0] = city;
+        baye.data.g_asyncActionParams[1] = cmd;
+        baye.data.g_asyncActionID = 12;
+        setcb0(then);
+    };
+
     baye.getPersonByName = function(name) {
         var all = baye.data.g_Persons;
         for (var i = 0; i < all.length; i++) {
