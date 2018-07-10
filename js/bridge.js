@@ -358,6 +358,24 @@ $(function(){
     baye.getCityName = bayeWrapFunctionS(_bayeGetCityName);
     baye.getPersonCount = _bayeGetPersonCount;
 
+    baye._cbs = [];
+    baye.pushCallback = function(cb) {
+        if (baye.data.g_asyncActionID > 0)
+            baye._cbs.push(cb ? cb : function(x){ return x; });
+    }
+
+    baye.callCallback = function() {
+        var rv = baye._cbs.pop()();
+        baye.pushCallback(baye.callback);
+        return rv;
+    }
+
+    baye.callHook = function(name, context) {
+        var rv = window.baye.hooks[name](context);
+        baye.pushCallback(baye.callback);
+        return rv;
+    };
+
     baye.getCustomData = function() {
         var cstr = _bayeGetCustomData();
         if (cstr == 0) return null;
