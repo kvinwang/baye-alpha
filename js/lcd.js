@@ -1,5 +1,6 @@
 var lcdWidth = 16*10;
 var lcdHeight = 16*6;
+var dotSize = 2;
 
 function getLCD() {
     var canvas = document.getElementById('lcd');
@@ -38,8 +39,8 @@ function bayeResizeScreen(width, height) {
     lcdWidth = width;
     lcdHeight = height;
     var canvas = document.getElementById('lcd');
-    canvas.width = width * 2;
-    canvas.height = height * 2;
+    canvas.width = width * dotSize;
+    canvas.height = height * dotSize
     _bayeSetLcdSize(lcdWidth, lcdHeight);
 }
 
@@ -57,12 +58,17 @@ function imageDot(img, x, y, lineSize)
     imagePixel(img, ind*4);
 }
 
+function lcdSetDotSize(s)
+{
+    dotSize = s;
+}
+
 function lcdFlushBuffer(buffer) {
     var lcd = getLCD();
-    var w = lcdWidth*2;
-    var h = lcdHeight*2;
+    var w = lcdWidth*dotSize;
+    var h = lcdHeight*dotSize
 
-    var img = lcd.createImageData(lcdWidth*2, lcdHeight*2);
+    var img = lcd.createImageData(lcdWidth*dotSize, lcdHeight*dotSize);
 
     for (var y = 0; y < h; y += 1) {
         for (var x = 0; x < w; x += 1) {
