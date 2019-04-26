@@ -17,6 +17,10 @@
         "path": "libs/qmlw-XSHX.lib"
     },
     {
+        "title": "群魔乱舞-水浒英豪",
+        "path": "libs/qmlw-SHYH.lib"
+    },
+    {
         "title": "群魔乱舞-三国杀（开发中）",
         "path": "libs/qmlw-SGS-300.lib"
     }
