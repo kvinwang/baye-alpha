@@ -9,10 +9,6 @@
         "path": "libs/qmlw-LZSG4.lib"
     },
     {
-        "title": "群魔乱舞-乱战三国",
-        "path": "libs/qmlw-LZSG.lib"
-    },
-    {
         "title": "群魔乱舞-血色华夏",
         "path": "libs/qmlw-XSHX.lib"
     },
@@ -23,5 +19,13 @@
     {
         "title": "群魔乱舞-三国杀（开发中）",
         "path": "libs/qmlw-SGS-300.lib"
+    },
+    {
+        "title": "群魔乱舞-乱战三国",
+        "path": "libs/qmlw-LZSG.lib"
+    },
+    {
+        "title": "无痕修复版",
+        "path": "libs/whxf.lib"
     }
 ]
