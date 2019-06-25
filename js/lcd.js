@@ -11,6 +11,15 @@ function getLCD() {
     return ctx;
 }
 
+function getLCDOverlay() {
+    var canvas = document.getElementById('overlay');
+    if (canvas.getContext === undefined) {
+        alert("你的浏览器不支持HTML5");
+    }
+    var ctx = canvas.getContext('2d');
+    return ctx;
+}
+
 function lcdInit()
 {
     var width = 16*10;
@@ -40,7 +49,12 @@ function bayeResizeScreen(width, height) {
     lcdHeight = height;
     var canvas = document.getElementById('lcd');
     canvas.width = width * dotSize;
-    canvas.height = height * dotSize
+    canvas.height = height * dotSize;
+
+    canvas = document.getElementById('overlay');
+    canvas.width = width * dotSize;
+    canvas.height = height * dotSize;
+
     _bayeSetLcdSize(lcdWidth, lcdHeight);
 }
 
