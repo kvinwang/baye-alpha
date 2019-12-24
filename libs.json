@@ -28,4 +28,9 @@
         "title": "无痕修复版",
         "path": "libs/whxf.lib"
     }
+    ,
+    {
+        "title": "水友自嗨版",
+        "path": "libs/sc-mod.lib"
+    }
 ]
