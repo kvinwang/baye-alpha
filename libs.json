@@ -32,4 +32,9 @@
         "title": "霸哥自制版",
         "path": "libs/sc-mod.lib"
     }
+    ,
+    {
+        "title": "群友猴子自制版",
+        "path": "libs/hz-mod.lib"
+    }
 ]
