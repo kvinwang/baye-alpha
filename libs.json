@@ -36,5 +36,9 @@
     {
         "title": "群友猴子自制版",
         "path": "libs/hz-mod.lib"
+    } ,
+    {
+        "title": "三国霸业竞速PK赛专用",
+        "path": "libs/sgjs.lib"
     }
 ]
