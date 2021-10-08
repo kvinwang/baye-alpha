@@ -741,6 +741,7 @@ $(function(){
             y: oy * 16
         };
     };
+    baye.loadPeriod = _bayeLoadPeriod;
 
     baye.None = 0xffff;
 });
