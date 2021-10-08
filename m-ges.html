@@ -90,15 +90,24 @@
     </body>
 </html>
 <script src="js/tappy.js"></script>
+<script src="http://cdn.bootcss.com/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script src="js/bridge.js?ver=201801201234"></script>
 <script src="js/lcd.js?ver=11"></script>
-<script src="js/baye.js?ver=201801201234"></script>
-<script src="http://cdn.bootcss.com/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 <script>
 
-(function (){
+Module.postRun = function (){
     lcdInit();
+    reloadLCD();
+    //判断手机横竖屏状态：
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        reloadLCD();
+    }, false);
 
+    $(window).resize(reloadLCD);
+    bayeMain();
+};
+
+$(function() {
     function tap(){
         var action = $(this).attr("ontap");
         $(this).bind( "tap", function(){
@@ -124,7 +133,7 @@
         threshold:0
     });
     touchPadInit("directionControl");
-})();
+});
 
 
 function reloadLCD(){
@@ -152,18 +161,5 @@ function reloadLCD(){
         lcdRotateMode = 0;
     }
 }
-
-
-(function (){
-    reloadLCD();
-
-    //判断手机横竖屏状态：
-    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
-        reloadLCD();
-    }, false);
-
-    $(window).resize(reloadLCD);
-    bayeMain();
-})();
-
 </script>
+<script src="js/baye.js?ver=201801201234"></script>

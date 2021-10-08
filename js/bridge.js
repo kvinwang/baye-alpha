@@ -13,7 +13,11 @@ if (window._bayeRand === undefined) {
 }
 
 Math.random = function() {
-    return _bayeRand() % 65536 / 65536;
+    try {
+        return _bayeRand() % 65536 / 65536;
+    } catch {
+        return 0;
+    }
 };
 
 if (!String.prototype.format) {
@@ -669,8 +673,8 @@ $(function(){
         return _bayeGetArmType(pindex);
     };
 
-    var gbkPtr = _bayeGetGBKBuffer();
     baye.drawText = function (x, y, text, scr) {
+        var gbkPtr = _bayeGetGBKBuffer();
         baye.data.g_asyncActionStringParam = text;
         return _bayeLcdDrawText(gbkPtr, x, y, scr);
     };

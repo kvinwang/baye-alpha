@@ -75,11 +75,7 @@
 </html>
 <script src="js/bridge.js?ver=201801201234"></script>
 <script src="js/lcd.js?ver=11"></script>
-<script src="js/baye.js?ver=201801201234"></script>
 <script>
-lcdInit();
-
-
 function reloadLCD(){
     var height = window.innerHeight;
     var width = window.innerWidth;
@@ -106,8 +102,8 @@ function reloadLCD(){
     }
 }
 
-
-(function (){
+Module.postRun = function (){
+    lcdInit();
     touchScreenInit("lcd");
     reloadLCD();
 
@@ -124,6 +120,6 @@ function reloadLCD(){
         $("#info").hide();
     }
     bayeMain();
-})();
-
+};
 </script>
+<script src="js/baye.js?ver=201801201234"></script>

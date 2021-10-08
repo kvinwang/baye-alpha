@@ -58,12 +58,14 @@
 </html>
 <script src="js/bridge.js?ver=201801201234"></script>
 <script src="js/lcd.js?ver=11"></script>
-<script src="js/baye.js?ver=201801201234"></script>
 <script>
-    lcdInit();
-    var libName = getLibName() || "步步高原版";
-    $("#lib-name").html("当前版本: " + libName);
-    bayeMain();
+    Module.postRun = function() {
+        lcdInit();
+        var libName = getLibName() || "步步高原版";
+        $("#lib-name").html("当前版本: " + libName);
+        bayeMain();
+    }
     document.onkeydown = onKeyDown;
 </script>
+<script src="js/baye.js?ver=201801201234"></script>
 

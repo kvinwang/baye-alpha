@@ -98,34 +98,34 @@
 <script src="js/tappy.js"></script>
 <script src="js/bridge.js?ver=201801201234"></script>
 <script src="js/lcd.js?ver=11"></script>
-<script src="js/baye.js?ver=201801201234"></script>
 <script>
+
+Module.postRun = function (){
     lcdInit();
+    touchPadInit("touchpad");
+    layoutKeyboard();
 
-    (function (){
-        touchPadInit("touchpad");
-        layoutKeyboard();
+    $(window).resize(layoutKeyboard);
 
-        $(window).resize(layoutKeyboard);
+    var libName = getLibName() || "步步高原版";
+    if (libName && libName.length > 0) {
+        document.title = document.title + ' - ' + libName;
+        $("#tip").html("当前版本: " + libName);
+        $("#tip").show();
+        setTimeout(function(){
+            $("#tip").hide(200);
+        }, 3000);
+    }
 
-        var libName = getLibName() || "步步高原版";
-        if (libName && libName.length > 0) {
-            document.title = document.title + ' - ' + libName;
-            $("#tip").html("当前版本: " + libName);
-            $("#tip").show();
-            setTimeout(function(){
-                $("#tip").hide(200);
-            }, 3000);
-        }
-
-        function tap(){
-            var action = $(this).attr("ontap");
-            $(this).bind( "tap", function(){
-                eval(action);
-            });
-        }
-        $(".btn").each(tap);
-        $("#lcd-container").each(tap);
-        bayeMain();
-    })();
+    function tap(){
+        var action = $(this).attr("ontap");
+        $(this).bind( "tap", function(){
+            eval(action);
+        });
+    }
+    $(".btn").each(tap);
+    $("#lcd-container").each(tap);
+    bayeMain();
+};
 </script>
+<script src="js/baye.js?ver=201801201234"></script>
