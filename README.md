@@ -6,5 +6,10 @@
 引擎源码地址：http://gitee.com/bgwp/iBaye
 
 #### 
+新版在线游戏地址：https://bgwp.gitee.io/baye-alpha/
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1105/091343_6aab9c2d_5122967.png "屏幕截图 2021-11-05 091251.png")
+
 另附伏魔记地址:
 http://gitee.com/bgwp/fmj.kt
+
+
