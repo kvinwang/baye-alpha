@@ -353,7 +353,7 @@ function loadLibLists(container) {
              title: json[i]["title"],
              libpath: json[i]["path"],
              descid: i,
-             descpath: json[i]["path"]+'.txt',
+             descpath: json[i]["path"]+'.about',
             }
             );
         }
