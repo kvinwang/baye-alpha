@@ -324,16 +324,17 @@ function chooseLib(title, path, self_) {
 function loadDetail(id, path) {
     var e = $(id);
     if (e.is(":hidden")) {
-        if (e.html().length > 0) {
+        if (e.attr("data-loaded")) {
             e.show();
         } else {
             e.show();
             $.get(path, {}, function(text) {
                 e.html(text.replace(/(?:\r\n|\r|\n)/g, '<br />'));
-                e.show();
+                e.attr("data-loaded", "1");
             }).fail(function(req){
                 if (req.status == 404) {
                     e.html("待补充");
+                    e.attr("data-loaded", "1");
                 } else {
                     e.html("错误: " + req.status);
                 }
