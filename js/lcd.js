@@ -327,6 +327,7 @@ function loadDetail(id, path) {
         if (e.html().length > 0) {
             e.show();
         } else {
+            e.show();
             $.get(path, {}, function(text) {
                 e.html(text.replace(/(?:\r\n|\r|\n)/g, '<br />'));
                 e.show();
