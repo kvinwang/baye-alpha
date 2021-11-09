@@ -330,6 +330,13 @@ function loadDetail(id, path) {
             $.get(path, {}, function(text) {
                 e.html(text.replace(/(?:\r\n|\r|\n)/g, '<br />'));
                 e.show();
+            }).fail(function(req){
+                if (req.status == 404) {
+                    e.html("待补充");
+                } else {
+                    e.html("错误: " + req.status);
+                }
+                e.show();
             });
         }
     } else {
