@@ -290,7 +290,7 @@ function range(start, stop, step) {
     return result;
 }
 
-$(function(){
+function baye_bridge_init() {
     function Promise(fn) {
         _this = this
         var done = false;
@@ -744,9 +744,8 @@ $(function(){
     baye.loadPeriod = _bayeLoadPeriod;
 
     baye.None = 0xffff;
-});
 
-$(function(){
+    // for debug
     baye.debug = {};
 
     baye.debug.pa = function () {
@@ -777,5 +776,5 @@ $(function(){
         pd.x = baye.data.g_FoucsX;
         pd.y = baye.data.g_FoucsY;
     };
+}
 
-});
