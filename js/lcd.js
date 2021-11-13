@@ -1,6 +1,6 @@
 var lcdWidth = 16*10;
 var lcdHeight = 16*6;
-var dotSize = 2;
+var dotSize = 4;
 
 function getLCD() {
     var canvas = document.getElementById('lcd');
@@ -33,6 +33,7 @@ function lcdInit()
     if (window.localStorage["baye/debug"] == '1') {
         _bayeSetDebug(1);
     }
+    baye_bridge_init();
 }
 
 function bayeResizeScreen(width, height) {
@@ -60,7 +61,10 @@ function imageDot(img, x, y, lineSize)
 
 function lcdSetDotSize(s)
 {
+    var canvas = document.getElementById('lcd');
     dotSize = s;
+    canvas.width = lcdWidth * dotSize;
+    canvas.height = lcdHeight * dotSize
 }
 
 function lcdFlushBuffer(buffer) {
@@ -690,6 +694,7 @@ function bayeLoadFileContent(filename) {
     console.log("Loading " + filename);
     var data = window.localStorage[filename];
     if (filename == 'baye//data/dat.lib') {
+        console.log("libsize: " + dynLib.length);
         return dynLib;
     } else {
         return data;
@@ -703,6 +708,6 @@ function bayeSaveFileContent(filename, content) {
 
 Module = {};
 Module.memoryInitializerPrefixURL = "../baye-engine/";
-Module.TOTAL_MEMORY = 16777216 * 3;
+Module.TOTAL_MEMORY = 16777216 * 16;
 Module.noInitialRun = true;
 
