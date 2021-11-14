@@ -1448,19 +1448,19 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  175016: function() {if (window.bayeStart) bayeStart();},  
- 175055: function() {if (window.bayeExit) bayeExit();},  
- 175092: function($0) {bayeFlushLcdBuffer($0);},  
- 175120: function($0) {if (window.lcdSetDotSize) { window.lcdSetDotSize($0) }},  
- 175179: function($0) {var key = UTF8ToString($0); var value = ""; var filename = "baye/" + key; if (window.bayeLoadFileContent) { value = window.bayeLoadFileContent(filename); } else { value = window.localStorage[filename]; } if (value) { var buffer = Module._bayeAlloc(value.length+1); Module.stringToUTF8(value, buffer, value.length+1); return buffer; } return 0;},  
- 175527: function($0, $1) {var key = UTF8ToString($0); var value = UTF8ToString($1); var filename = "baye/" + key; if (window.bayeSaveFileContent) { window.bayeSaveFileContent(filename, value); } else { window.localStorage[filename] = value; }},  
- 175748: function() {if (window.baye == undefined) { window.baye = {}; } if (window.baye.hooks == undefined) { window.baye.hooks = {}; } window.baye.data = baye_bridge_value(_bayeGetGlobal());},  
- 175924: function($0) {var script = UTF8ToString($0); eval(script);},  
- 175973: function($0, $1) {var name = UTF8ToString($0); var rv = 0; if (window.baye == undefined || window.baye.hooks == undefined || window.baye.hooks[name] == undefined) { rv = -1; } else { var cContext = $1; if (cContext != 0) { var jsContext = baye_bridge_value(cContext); rv = baye.callHook(name, jsContext); } else { rv = baye.callHook(name, undefined); } } return rv;},  
- 176325: function($0) {var name = UTF8ToString($0); if (window.baye && window.baye.hooks && window.baye.hooks[name]) { return 1; } else { return 0; }},  
- 176456: function($0) {var scr = UTF8ToString($0); eval(scr);},  
- 176499: function($0) {return baye.callCallback($0);},  
- 176533: function() {var now = new Date(); return now.getTime();}
+  175032: function() {if (window.bayeStart) bayeStart();},  
+ 175071: function() {if (window.bayeExit) bayeExit();},  
+ 175108: function($0) {bayeFlushLcdBuffer($0);},  
+ 175136: function($0) {if (window.lcdSetDotSize) { window.lcdSetDotSize($0) }},  
+ 175195: function($0) {var key = UTF8ToString($0); var value = ""; var filename = "baye/" + key; if (window.bayeLoadFileContent) { value = window.bayeLoadFileContent(filename); } else { value = window.localStorage[filename]; } if (value) { var buffer = Module._bayeAlloc(value.length+1); Module.stringToUTF8(value, buffer, value.length+1); return buffer; } return 0;},  
+ 175543: function($0, $1) {var key = UTF8ToString($0); var value = UTF8ToString($1); var filename = "baye/" + key; if (window.bayeSaveFileContent) { window.bayeSaveFileContent(filename, value); } else { window.localStorage[filename] = value; }},  
+ 175764: function() {if (window.baye == undefined) { window.baye = {}; } if (window.baye.hooks == undefined) { window.baye.hooks = {}; } window.baye.data = baye_bridge_value(_bayeGetGlobal());},  
+ 175940: function($0) {var script = UTF8ToString($0); eval(script);},  
+ 175989: function($0, $1) {var name = UTF8ToString($0); var rv = 0; if (window.baye == undefined || window.baye.hooks == undefined || window.baye.hooks[name] == undefined) { rv = -1; } else { var cContext = $1; if (cContext != 0) { var jsContext = baye_bridge_value(cContext); rv = baye.callHook(name, jsContext); } else { rv = baye.callHook(name, undefined); } } return rv;},  
+ 176341: function($0) {var name = UTF8ToString($0); if (window.baye && window.baye.hooks && window.baye.hooks[name]) { return 1; } else { return 0; }},  
+ 176472: function($0) {var scr = UTF8ToString($0); eval(scr);},  
+ 176515: function($0) {return baye.callCallback($0);},  
+ 176549: function() {var now = new Date(); return now.getTime();}
 };
 
 
