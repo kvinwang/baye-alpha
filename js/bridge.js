@@ -731,6 +731,7 @@ function baye_bridge_init() {
     baye.saveScreen = _bayeSaveScreen;
 
     baye.restoreScreen = _bayeRestoreScreen;
+    baye.setFont = _bayeSetFont;
 
     //计算将领在屏幕的像素位置
     baye.getFighterXY = function (index) {
