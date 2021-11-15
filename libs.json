@@ -56,4 +56,9 @@
         "title": "小君王自制版",
         "path": "libs/xjw-mod.lib"
     }
+    ,
+    {
+        "title": "兵种图测试",
+        "path": "libs/dat-mod.lib"
+    }
 ]
