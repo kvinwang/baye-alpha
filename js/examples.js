@@ -53,3 +53,6 @@ baye.hooks.fightChooseSkill = function(ctx) {
         }
     });
 }
+
+// 设置战场全军撤退是否需要二次确认
+baye.data.g_engineConfig.confirmOnEscape = 1;
