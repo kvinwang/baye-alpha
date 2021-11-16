@@ -1,5 +1,5 @@
-
-baye.hooks.loadPeriod = function(ctx) {
+// 开局选择时期
+baye.hooks.loadPeriod = function() {
     baye.centerChoose(100, 80, ["简单", "困难"], 0, function(idx) {
         console.log('chosen: ' + idx);
         if (idx == baye.None) {
@@ -11,3 +11,45 @@ baye.hooks.loadPeriod = function(ctx) {
     });
 }
 
+// 菜单空闲时每隔大约半秒多调用一次onMenuIdle
+baye.hooks.onMenuIdle = function(ctx) {
+    baye.drawText(0, 0, "selected:" + ctx.index);
+    var x = 8*ctx.index;
+    var y = 20;
+    var w = 8, h = 8;
+    baye.revertRect(x, y, x+w-1, y+h-1);
+}
+
+// 战场系统菜单
+baye.hooks.fightOpenMainMenu = function() {
+    baye.centerChoose(60, 30, ["回合结束", "全军撤退"], 0, function(idx) {
+        // 返回值被当做原系统菜单的选择项
+        return idx;
+    });
+}
+
+// 战场移动将领后动作选择菜单
+baye.hooks.fightOpenTargetMenu = function(ctx) {
+    console.log("person = " + ctx.index);
+    baye.centerChoose(30, 60, ["攻击", "计谋", "查看", "待机"], 0, function(idx) {
+        // 返回值被当做原始菜单的选择项
+        return idx;
+    });
+}
+
+// 战场技能选择菜单
+baye.hooks.fightChooseSkill = function(ctx) {
+    console.log("person = " + ctx.index);
+    var skills = [2, 3, 4];
+    var skillNames = skills.map(x => baye.getSkillName(x)); // 注意有些浏览器没有map函数
+
+    baye.centerChoose(30, 60, skillNames, 0, function(idx) {
+        if (idx == baye.None) {
+            // 取消选择
+            return baye.None;
+        } else {
+            // 返回技能ID
+            return skills[idx];
+        }
+    });
+}
