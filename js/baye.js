@@ -1448,19 +1448,19 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  2575424: function() {if (window.bayeStart) bayeStart();},  
- 2575463: function() {if (window.bayeExit) bayeExit();},  
- 2575500: function($0) {bayeFlushLcdBuffer($0);},  
- 2575528: function($0) {if (window.lcdSetDotSize) { window.lcdSetDotSize($0) }},  
- 2575587: function($0) {var key = UTF8ToString($0); var value = ""; var filename = "baye/" + key; if (window.bayeLoadFileContent) { value = window.bayeLoadFileContent(filename); } else { value = window.localStorage[filename]; } if (value) { var buffer = Module._bayeAlloc(value.length+1); Module.stringToUTF8(value, buffer, value.length+1); return buffer; } return 0;},  
- 2575935: function($0, $1) {var key = UTF8ToString($0); var value = UTF8ToString($1); var filename = "baye/" + key; if (window.bayeSaveFileContent) { window.bayeSaveFileContent(filename, value); } else { window.localStorage[filename] = value; }},  
- 2576156: function() {if (window.baye == undefined) { window.baye = {}; } if (window.baye.hooks == undefined) { window.baye.hooks = {}; } window.baye.data = baye_bridge_value(_bayeGetGlobal());},  
- 2576332: function($0) {var script = UTF8ToString($0); eval(script);},  
- 2576381: function($0, $1) {var name = UTF8ToString($0); var rv = 0; if (window.baye == undefined || window.baye.hooks == undefined || window.baye.hooks[name] == undefined) { rv = -1; } else { var cContext = $1; if (cContext != 0) { var jsContext = baye_bridge_value(cContext); rv = baye.callHook(name, jsContext); } else { rv = baye.callHook(name, undefined); } } return rv;},  
- 2576733: function($0) {var name = UTF8ToString($0); if (window.baye && window.baye.hooks && window.baye.hooks[name]) { return 1; } else { return 0; }},  
- 2576864: function($0) {var scr = UTF8ToString($0); eval(scr);},  
- 2576907: function($0) {return baye.callCallback($0);},  
- 2576941: function() {var now = new Date(); return now.getTime();}
+  2587856: function() {if (window.bayeStart) bayeStart();},  
+ 2587895: function() {if (window.bayeExit) bayeExit();},  
+ 2587932: function($0) {bayeFlushLcdBuffer($0);},  
+ 2587960: function($0) {if (window.lcdSetDotSize) { window.lcdSetDotSize($0) }},  
+ 2588019: function($0) {var key = UTF8ToString($0); var value = ""; var filename = "baye/" + key; if (window.bayeLoadFileContent) { value = window.bayeLoadFileContent(filename); } else { value = window.localStorage[filename]; } if (value) { var buffer = Module._bayeAlloc(value.length+1); Module.stringToUTF8(value, buffer, value.length+1); return buffer; } return 0;},  
+ 2588367: function($0, $1) {var key = UTF8ToString($0); var value = UTF8ToString($1); var filename = "baye/" + key; if (window.bayeSaveFileContent) { window.bayeSaveFileContent(filename, value); } else { window.localStorage[filename] = value; }},  
+ 2588588: function() {if (window.baye == undefined) { window.baye = {}; } if (window.baye.hooks == undefined) { window.baye.hooks = {}; } window.baye.data = baye_bridge_value(_bayeGetGlobal());},  
+ 2588764: function($0) {var script = UTF8ToString($0); eval(script);},  
+ 2588813: function($0, $1) {var name = UTF8ToString($0); var rv = 0; if (window.baye == undefined || window.baye.hooks == undefined || window.baye.hooks[name] == undefined) { rv = -1; } else { var cContext = $1; if (cContext != 0) { var jsContext = baye_bridge_value(cContext); rv = baye.callHook(name, jsContext); } else { rv = baye.callHook(name, undefined); } } return rv;},  
+ 2589165: function($0) {var name = UTF8ToString($0); if (window.baye && window.baye.hooks && window.baye.hooks[name]) { return 1; } else { return 0; }},  
+ 2589296: function($0) {var scr = UTF8ToString($0); eval(scr);},  
+ 2589339: function($0) {return baye.callCallback($0);},  
+ 2589373: function() {var now = new Date(); return now.getTime();}
 };
 
 
@@ -5407,6 +5407,11 @@ var _bayeSetFont = Module["_bayeSetFont"] = function() {
 };
 
 /** @type {function(...*):?} */
+var _bayeSetFontEn = Module["_bayeSetFontEn"] = function() {
+  return (_bayeSetFontEn = Module["_bayeSetFontEn"] = Module["asm"]["bayeSetFontEn"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
 var _main = Module["_main"] = function() {
   return (_main = Module["_main"] = Module["asm"]["main"]).apply(null, arguments);
 };
@@ -5459,6 +5464,11 @@ var _emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = function()
 /** @type {function(...*):?} */
 var dynCall_vi = Module["dynCall_vi"] = function() {
   return (dynCall_vi = Module["dynCall_vi"] = Module["asm"]["dynCall_vi"]).apply(null, arguments);
+};
+
+/** @type {function(...*):?} */
+var dynCall_iii = Module["dynCall_iii"] = function() {
+  return (dynCall_iii = Module["dynCall_iii"] = Module["asm"]["dynCall_iii"]).apply(null, arguments);
 };
 
 /** @type {function(...*):?} */
