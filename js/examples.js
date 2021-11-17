@@ -29,7 +29,7 @@ baye.hooks.fightOpenMainMenu = function() {
 }
 
 // 战场移动将领后动作选择菜单
-baye.hooks.fightOpenTargetMenu = function(ctx) {
+baye.hooks.fightChooseAction = function(ctx) {
     console.log("person = " + ctx.index);
     baye.centerChoose(30, 60, ["攻击", "计谋", "查看", "待机"], 0, function(idx) {
         // 返回值被当做原始菜单的选择项
