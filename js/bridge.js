@@ -746,6 +746,7 @@ function baye_bridge_init() {
     baye.loadPeriod = _bayeLoadPeriod;
 
     baye.None = 0xffff;
+    baye.OK = 0;
 
     baye.blurScreen = lcdBlur;
 

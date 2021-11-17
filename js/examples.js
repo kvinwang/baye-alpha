@@ -1,3 +1,5 @@
+
+
 // 开局选择时期
 baye.hooks.loadPeriod = function() {
     baye.centerChoose(100, 80, ["简单", "困难"], 0, function(idx) {
@@ -59,4 +61,38 @@ baye.data.g_engineConfig.confirmOnEscape = 1;
 
 // 设置是否开启像素模糊化, 高DPI时，有些情况可能开启blur会好看点
 baye.blurScreen(true);
+
+
+
+
+
+
+
+var currentFont = 0;
+
+function setFont(font) {
+    if (baye.setFont(font) == baye.OK) {
+        currentFont = font;
+    }
+}
+
+baye.hooks.willCloseMenu = function(ctx) {
+    baye.hooks.willChangeMenuSelection = null;
+};
+
+baye.hooks.showMainHelp = function() {
+    baye.hooks.willChangeMenuSelection = function(ctx) {
+        var oldFont = currentFont; // 备份当前字体
+        setFont(ctx.index);
+        baye.clearRect(0, 0, 60, 30)
+        baye.drawText(0, 0, "字体预览")
+        setFont(oldFont); // 预览完恢复当前字体
+    };
+    baye.centerChoose(28, 50, ["默认", "仿宋", "黑体", "楷体"], 0, function(idx) {
+        if (idx != baye.None) {
+            setFont(idx);
+        }
+    });
+}
+
 
