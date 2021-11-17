@@ -88,7 +88,7 @@ baye.hooks.showMainHelp = function() {
         baye.drawText(0, 0, "字体预览")
         setFont(oldFont); // 预览完恢复当前字体
     };
-    baye.centerChoose(28, 50, ["默认", "仿宋", "黑体", "楷体"], 0, function(idx) {
+    baye.centerChoose(28, 50, ["默认", "仿宋", "黑体", "楷体", "宋体"], currentFont, function(idx) {
         if (idx != baye.None) {
             setFont(idx);
         }
