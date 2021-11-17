@@ -56,3 +56,7 @@ baye.hooks.fightChooseSkill = function(ctx) {
 
 // 设置战场全军撤退是否需要二次确认
 baye.data.g_engineConfig.confirmOnEscape = 1;
+
+// 设置是否开启像素模糊化, 高DPI时，有些情况可能开启blur会好看点
+baye.blurScreen(true);
+

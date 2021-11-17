@@ -11,6 +11,14 @@ function getLCD() {
     return ctx;
 }
 
+function lcdBlur(blur) {
+    if (blur) {
+        $('#lcd').removeClass('no_blur')
+    } else {
+        $('#lcd').addClass('no_blur')
+    }
+}
+
 function lcdInit()
 {
     var width = 16*10;
@@ -33,6 +41,7 @@ function lcdInit()
     if (window.localStorage["baye/debug"] == '1') {
         _bayeSetDebug(1);
     }
+    lcdBlur(false);
     baye_bridge_init();
 }
 

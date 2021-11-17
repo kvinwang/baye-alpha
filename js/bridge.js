@@ -747,6 +747,8 @@ function baye_bridge_init() {
 
     baye.None = 0xffff;
 
+    baye.blurScreen = lcdBlur;
+
     // for debug
     baye.debug = {};
 
