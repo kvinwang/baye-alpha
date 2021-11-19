@@ -77,12 +77,23 @@
             if (data.length < 100) {
                 $("#url-title").html("");
                 $("#url").html("该存档为空!");
-                spinner.stop();
                 return;
             }
 
             $("#url-title").html("全选复制下列存档代码:");
-            $("#url").html("<textarea rows=5 style='width: 100%;'>" + data + "</textarea>");
+            $("#url").html("<textarea rows=5 style='width: 100%;'>" + data.length + '/' + data + "</textarea>");
+
+            if ($("#use-short-url").val() == '1') {
+                spinner.spin(document.body);
+                $.post("https://store.kvin.wang/kvstore", data, function(resp) {
+                    spinner.stop();
+                    $("#code").html("云端码: <textarea rows=5 style='width: 100%;'>" + resp.token + "</textarea>");
+                })
+                .fail(function() {
+                    spinner.stop();
+                    $("#code").html('上传云端失败');
+                });
+            }
         }
     </script>
     <script>
@@ -100,8 +111,8 @@
 
     <div >
         <div id="lib-name"></div>
-        <div class="config-item" style="display: none;">
-            使用短网址:
+        <div class="config-item">
+            上传云端:
             <select name="" id="use-short-url">
                 <option value="0">否</option>
                 <option value="1">是</option>
@@ -109,6 +120,7 @@
         </div>
         <div id="url-title"></div>
         <div id="url"></div>
+        <div id="code"></div>
         <br>
         <div id="osize"></div>
         <div id="zsize"></div>
